@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .all {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    input {
+        padding: 10px;
+        margin-top: 10px;
+        width: 200px;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 10px;
+    }
+
+
+</style>
+<body>
+    <div class="all">
+        <h1>Number Guessing Game</h1>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" id="guessInput" min="1" max="100">
+        <button type="button" onclick="check()">Submit Guess</button>
+        <p id="message"></p>
+        <p id="attempts"></p>
+    </div>
+
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function check() {
+            let User = document.getElementById("guessInput").value;
+            let msg = document.getElementById("message")
+            let attempts = document.getElementById("attempts")
+            attempts++;
+
+            if(!User){
+                msg.textContent = "Please enter a number between 1 and 100."
+                msg.style.color = "red"
+                attempts.textContent = "Attempts :" + attempts;
+                return; 
+            }
+
+
+            if(User == randomNumber){
+                msg.textContent = " 🎉 You guess correct Answer"
+                msg.style.color = "green"
+                attempts.textContent = "Attempts :" + attempts;
+            }else if (User < randomNumber){
+                msg.textContent = " 📉Too low! Try again."
+                msg.style.color = "orange"
+            } else {
+                msg.textContent = " 📈Too high! Try again."
+                msg.style.color = "red"
+            }
+        }   
+    
+    </script>
+</body>
+</html>
