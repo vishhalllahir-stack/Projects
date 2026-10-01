@@ -1,0 +1,55 @@
+import {
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+
+
+function ProtectedRoute({
+  children,
+}) {
+  const location =
+    useLocation();
+
+
+  /* =================================================
+     GET LOGIN DATA
+  ================================================= */
+
+  const token =
+    localStorage.getItem(
+      "token"
+    );
+
+  const user =
+    localStorage.getItem(
+      "user"
+    );
+
+
+  /* =================================================
+     CHECK AUTHENTICATION
+  ================================================= */
+
+  if (!token || !user) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{
+          from:
+            location.pathname,
+        }}
+      />
+    );
+  }
+
+
+  /* =================================================
+     ALLOW USER
+  ================================================= */
+
+  return children;
+}
+
+
+export default ProtectedRoute;
