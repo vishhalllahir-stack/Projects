@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="Weather-App.css">
+</head>
+<body>
+    <div class="container">
+        <div class="weather-header">
+            <h1>Weather App</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Enter city name..." class="search-input">
+                <button id="searchBtn" class="search-btn">Search</button>
+            </div>
+        </div>
+
+        <div class="weather-main">
+            <div class="city-info">
+                <h2 id="cityName">New York</h2>
+                <p id="dateTime"></p>
+            </div>
+
+            <div class="temperature-section">
+                <div class="temp-display">
+                    <span id="temperature" class="temp-value">72</span>
+                    <span class="temp-unit">°F</span>
+                </div>
+                <p id="weatherDescription" class="weather-desc">Partly Cloudy</p>
+            </div>
+        </div>
+
+        <div class="weather-details">
+            <div class="detail-card">
+                <div class="detail-icon">☀️</div>
+                <div class="detail-content">
+                    <p class="detail-label">UV Index</p>
+                    <p id="uvIndex" class="detail-value">6 (Extreme)</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">💧</div>
+                <div class="detail-content">
+                    <p class="detail-label">Humidity</p>
+                    <p id="humidity" class="detail-value">65%</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">💨</div>
+                <div class="detail-content">
+                    <p class="detail-label">Wind</p>
+                    <p id="wind" class="detail-value">12 km/h</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">🌡️</div>
+                <div class="detail-content">
+                    <p class="detail-label">Dew Point</p>
+                    <p id="dewPoint" class="detail-value">55°F</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">🔺</div>
+                <div class="detail-content">
+                    <p class="detail-label">Pressure</p>
+                    <p id="pressure" class="detail-value">1013 mb</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">👁️</div>
+                <div class="detail-content">
+                    <p class="detail-label">Visibility</p>
+                    <p id="visibility" class="detail-value">10 km</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hourly-forecast-section">
+            <h3>Hourly Forecast</h3>
+            <div class="hourly-container" id="hourlyContainer">
+                <!-- Hourly forecast items will be added here by JavaScript -->
+            </div>
+        </div>
+
+        <div class="forecast-section">
+            <h3>5-Day Forecast</h3>
+            <div class="forecast-container" id="forecastContainer">
+                <!-- Forecast items will be added here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="Weather-App.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typing Speed Test</title>
+  <style>
+    :root { font-family: Inter, system-ui, sans-serif; color: #f3f4f6; background: #0f172a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; background: radial-gradient(circle at top, rgba(59,130,246,.18), transparent 28%), linear-gradient(180deg, #020617 0%, #0f172a 100%); }
+    .app { width: min(100%, 900px); background: rgba(15,23,42,.98); border: 1px solid rgba(148,163,184,.18); border-radius: 24px; padding: 2rem; box-shadow: 0 20px 60px rgba(15,23,42,.6); }
+    .top { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    .title { margin: 0; font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1.05; }
+    .subtitle { margin: .4rem 0 0; color: #94a3b8; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(90px, 1fr)); gap: 1rem; margin: 1.8rem 0; }
+    .stat { background: rgba(148,163,184,.08); padding: 1rem; border-radius: 18px; text-align: center; }
+    .stat strong { display: block; font-size: 1.5rem; color: #fff; }
+    .stat span { display: block; margin-top: .25rem; color: #cbd5e1; font-size: .95rem; }
+    .text-box { background: #020617; border: 1px solid rgba(148,163,184,.12); border-radius: 20px; padding: 1.4rem; line-height: 1.8; color: #e2e8f0; font-size: 1rem; min-height: 180px; }
+    .text-box mark { background: rgba(59,130,246,.28); color: #e0f2fe; padding: 0 0.15rem; border-radius: 4px; }
+    .text-box .incorrect { color: #fb7185; }
+    .controls { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: flex-start; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: .9rem 1.4rem; border-radius: 999px; border: none; cursor: pointer; font-weight: 700; background: linear-gradient(135deg, #38bdf8, #6366f1); color: #0f172a; transition: transform .2s ease, filter .2s ease; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .input-row { display: grid; grid-template-columns: 1fr auto; gap: .75rem; margin-top: 1rem; }
+    #inputArea { width: 100%; min-height: 140px; resize: vertical; padding: 1rem; border-radius: 18px; border: 1px solid rgba(148,163,184,.18); background: #020617; color: #e2e8f0; font-size: 1rem; line-height: 1.7; }
+    #inputArea:focus { outline: 2px solid rgba(56,189,248,.65); }
+    .footer { margin-top: 1.5rem; color: #94a3b8; font-size: .94rem; }
+    @media (max-width: 640px) { .stats { grid-template-columns: repeat(2, minmax(90px, 1fr)); } .input-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="top">
+      <div>
+        <h1 class="title">Typing Speed Test</h1>
+        <p class="subtitle">Test your speed and accuracy with a realistic typing challenge.</p>
+      </div>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong id="wpm">0</strong><span>WPM</span></div>
+      <div class="stat"><strong id="accuracy">100%</strong><span>Accuracy</span></div>
+      <div class="stat"><strong id="time">60</strong><span>Seconds</span></div>
+      <div class="stat"><strong id="errors">0</strong><span>Errors</span></div>
+    </div>
+
+    <div class="text-box" id="textDisplay"></div>
+    <div class="input-row">
+      <textarea id="inputArea" placeholder="Start typing here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+      <button class="btn" id="startBtn">Start</button>
+    </div>
+
+    <div class="footer">Tip: click Start, then type the passage exactly for the most accurate score.</div>
+  </div>
+
+  <script>
+    const quotes = [
+      'The only way to do great work is to love what you do.',
+      'Fast code is clean code and clean code is fast code.',
+      'Security is not a product but a process of continuous improvement.',
+      'Great software happens when design, engineering, and security work together.',
+      'Every line of code is an opportunity to make something useful and elegant.'
+    ];
+
+    const textDisplay = document.getElementById('textDisplay');
+    const inputArea = document.getElementById('inputArea');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const wpmEl = document.getElementById('wpm');
+    const accuracyEl = document.getElementById('accuracy');
+    const timeEl = document.getElementById('time');
+    const errorsEl = document.getElementById('errors');
+
+    let timer = null;
+    let timeLeft = 60;
+    let started = false;
+    let currentText = '';
+    let totalErrors = 0;
+    let correctChars = 0;
+
+    function chooseText() {
+      currentText = quotes[Math.floor(Math.random() * quotes.length)];
+      textDisplay.innerHTML = '';
+      currentText.split('').forEach(char => {
+        const span = document.createElement('mark');
+        span.textContent = char;
+        textDisplay.appendChild(span);
+      });
+    }
+
+    function updateStats() {
+      const elapsed = 60 - timeLeft;
+      const wordsTyped = Math.max(0, correctChars / 5);
+      const wpm = elapsed > 0 ? Math.round((wordsTyped / elapsed) * 60) : 0;
+      const totalTyped = correctChars + totalErrors;
+      const accuracy = totalTyped > 0 ? Math.max(0, Math.round((correctChars / totalTyped) * 100)) : 100;
+      wpmEl.textContent = wpm;
+      accuracyEl.textContent = accuracy + '%';
+      errorsEl.textContent = totalErrors;
+      timeEl.textContent = timeLeft;
+    }
+
+    function startTest() {
+      if (started) return;
+      started = true;
+      inputArea.disabled = false;
+      inputArea.focus();
+      timeLeft = 60;
+      totalErrors = 0;
+      correctChars = 0;
+      chooseText();
+      updateStats();
+      timer = setInterval(() => {
+        timeLeft -= 1;
+        updateStats();
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          inputArea.disabled = true;
+          started = false;
+        }
+      }, 1000);
+    }
+
+    function resetTest() {
+      clearInterval(timer);
+      started = false;
+      timeLeft = 60;
+      inputArea.value = '';
+      inputArea.disabled = false;
+      totalErrors = 0;
+      correctChars = 0;
+      chooseText();
+      updateStats();
+      inputArea.focus();
+    }
+
+    function handleInput() {
+      const input = inputArea.value;
+      const spans = textDisplay.querySelectorAll('mark');
+      totalErrors = 0;
+      correctChars = 0;
+      spans.forEach((span, index) => {
+        const char = input[index];
+        span.classList.remove('incorrect');
+        span.style.background = 'transparent';
+        if (char == null) return;
+        if (char === span.textContent) {
+          correctChars += 1;
+          span.style.background = 'rgba(56,189,248,0.18)';
+        } else {
+          totalErrors += 1;
+          span.classList.add('incorrect');
+          span.style.background = 'rgba(251,113,133,0.2)';
+        }
+      });
+      updateStats();
+    }
+
+    startBtn.addEventListener('click', startTest);
+    resetBtn.addEventListener('click', resetTest);
+    inputArea.addEventListener('input', handleInput);
+
+    resetTest();
+  </script>
+</body>
+</html>

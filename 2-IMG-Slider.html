@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .Slider {
+      position: relative;
+      width: 600px;
+      height: 350px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+      width: 600px;
+      height: 350px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+  </style>
+<body>
+    <div class="Slider">
+        <div class="slides" id="slides">
+            <img src="https://picsum.photos/id/1015/600/350" />
+            <img src="https://picsum.photos/id/1016/600/350" />
+            <img src="https://picsum.photos/id/1018/600/350" />
+            <img src="https://picsum.photos/id/1020/600/350" />
+            <img src="https://picsum.photos/id/1024/600/350" />
+            <img src="https://picsum.photos/id/1027/600/350" />
+            <img src="https://picsum.photos/id/1035/600/350" />
+            <img src="https://picsum.photos/id/1038/600/350" />
+            <img src="https://picsum.photos/id/1040/600/350" />
+            <img src="https://picsum.photos/id/1041/600/350" />
+            <img src="https://picsum.photos/id/1042/600/350" />
+            <img src="https://picsum.photos/id/1043/600/350" />
+            <img src="https://picsum.photos/id/1044/600/350" />
+            <img src="https://picsum.photos/id/1045/600/350" />
+          </div>
+    
+          <button class="prev" onclick="prevSlides()">❮</button>
+          <button class="next" onclick="nextSlides()">❯</button>
+        </div>
+    </div>
+
+    <script>
+      let index = 0;
+      const slide = document.getElementById('slides');
+      const totalSlides = slide.children.length
+
+      function UpdateSlides () {
+        slide.style.transform = `translateX(-${index * 100}%)`
+      }
+
+      function NextSlides () {
+        index = (index + 1) % totalSlides;
+        UpdateSlides()
+      }
+
+      function PrevSlides () {
+        index = (index -1 + totalSlides)%totalSlides;
+        UpdateSlides()
+      }
+
+      setInterval(NextSlides,2000);
+
+
+    </script>
+</body>
+</html>
