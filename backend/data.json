@@ -1,0 +1,165 @@
+{
+  "students": [
+    {
+      "id": "s1",
+      "name": "Olivia Martin",
+      "email": "olivia@example.com",
+      "className": "Grade 10",
+      "department": "Science",
+      "status": "Active"
+    },
+    {
+      "id": "s2",
+      "name": "Noah Williams",
+      "email": "noah@example.com",
+      "className": "Grade 9",
+      "department": "Commerce",
+      "status": "Active"
+    },
+    {
+      "id": "s3",
+      "name": "Emma Davis",
+      "email": "emma@example.com",
+      "className": "Grade 11",
+      "department": "Arts",
+      "status": "Active"
+    },
+    {
+      "id": "780621e0-271d-4a1d-ab18-9285e8a152c3",
+      "name": "khokar Vishal Rameshbhai",
+      "email": "khookharvishal@gmail.com",
+      "phone": "1597534628",
+      "dateOfBirth": "2026-02-05",
+      "gender": "Male",
+      "className": "12",
+      "section": "b",
+      "department": "Commerce",
+      "guardianName": "rameshbahi",
+      "guardianPhone": "7894561230",
+      "address": "bhuj kachchh",
+      "admissionDate": "2026-10-31",
+      "status": "Active",
+      "createdAt": "2026-10-05T05:42:20.669Z"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "t1",
+      "name": "Sophia Wilson",
+      "email": "sophia@example.com",
+      "subject": "Mathematics",
+      "phone": "9876543210",
+      "status": "Active"
+    },
+    {
+      "id": "6bd4b480-b5ea-48bc-b8f4-61400878bc9d",
+      "name": "hitesh goswami",
+      "email": "hitesh11@gmail.com",
+      "subject": "science",
+      "phone": "1478523690",
+      "status": "Active",
+      "createdAt": "2026-10-05T05:44:16.398Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "c1",
+      "name": "Science",
+      "code": "SCI-101",
+      "teacher": "Sophia Wilson",
+      "duration": "1 year",
+      "status": "Active"
+    },
+    {
+      "id": "f1e11b02-221a-464f-9126-65a458107724",
+      "name": "full stack developer",
+      "code": "111",
+      "teacher": "disha shah",
+      "duration": "1  year",
+      "status": "Active",
+      "createdAt": "2026-10-05T05:45:05.481Z"
+    },
+    {
+      "id": "91d2eb00-16cc-42d3-8d5f-7f18336f5343",
+      "name": "gujarati",
+      "code": "007",
+      "teacher": "ramila shah",
+      "duration": "1",
+      "status": "Active",
+      "createdAt": "2026-10-05T07:39:58.687Z"
+    },
+    {
+      "id": "f29b7606-d686-4fee-9af1-9bfc0f1d14b1",
+      "name": "Cloud course",
+      "code": "11",
+      "teacher": "ramika",
+      "duration": "1",
+      "status": "Active",
+      "createdAt": "2026-10-05T07:41:53.953Z"
+    }
+  ],
+  "attendance": [
+    {
+      "id": "a2",
+      "date": "2026-09-21",
+      "student": "Noah Williams",
+      "status": "Present"
+    },
+    {
+      "id": "a3",
+      "date": "2026-09-21",
+      "student": "Emma Davis",
+      "status": "Absent"
+    },
+    {
+      "id": "ac6b3bf3-9b07-414c-a32d-291150be3eee",
+      "studentId": "YOUR_STUDENT_MONGODB_ID",
+      "date": "2026-10-06",
+      "status": "Present",
+      "subject": "JavaScript",
+      "semester": 3,
+      "remarks": "Present in class",
+      "createdAt": "2026-10-06T05:39:30.843Z"
+    },
+    {
+      "id": "2944bdcf-4462-4e56-af9f-5df30ee02097",
+      "studentId": "YOUR_STUDENT_MONGODB_ID",
+      "date": "2026-10-06",
+      "status": "Present",
+      "subject": "JavaScript",
+      "semester": 3,
+      "remarks": "Present in class",
+      "createdAt": "2026-10-06T05:39:38.776Z"
+    }
+  ],
+  "exams": [
+    {
+      "id": "e570fe7e-2797-4f83-9293-5b7febf34a7f",
+      "name": "frontend",
+      "subject": "html, css, js",
+      "date": "2026-10-12",
+      "className": "a",
+      "status": "Completed",
+      "createdAt": "2026-10-05T05:46:43.248Z"
+    }
+  ],
+  "fees": [
+    {
+      "id": "f1",
+      "student": "Olivia Martin",
+      "amount": 25000,
+      "paid": 25000,
+      "dueDate": "2026-09-30",
+      "status": "Paid"
+    },
+    {
+      "id": "abd24068-40c1-492a-a10c-f59c3a5c9bc6",
+      "student": "kishan",
+      "amount": "20000",
+      "paid": "12000",
+      "dueDate": "2026-10-05",
+      "status": "Pending",
+      "createdAt": "2026-10-05T07:40:54.898Z"
+    }
+  ]
+}
