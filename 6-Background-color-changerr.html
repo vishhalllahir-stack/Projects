@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+</head>
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .all {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+            height: 400px;
+    }
+
+
+
+    #one {
+        background-color: red;
+        height: 100px ;
+        width: 100px;
+    }
+
+    #two {
+        background-color: blue;
+        height: 100px ;
+        width: 100px;
+    }
+
+    #three {
+        background-color: green;
+        height: 100px ;
+        width: 100px;
+    }
+
+    #four {
+        background-color: yellow;
+        height: 100px ;
+        width: 100px;
+    }
+</style>
+<body><div class="all">
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    </div>
+
+    <script>
+        document.getElementById('one').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'red';
+        });
+
+        document.getElementById('two').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'blue';
+        });
+
+        document.getElementById('three').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'green';
+        });
+
+        document.getElementById('four').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'yellow';
+        });
+    </script>
+</body>
+</html>
