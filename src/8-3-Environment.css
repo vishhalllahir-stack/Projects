@@ -1,0 +1,1673 @@
+
+
+
+
+
+
+/* =========================================================
+   3D CAROUSEL      
+Environment
+========================================================= */
+
+/* =========================================================
+   TOYOTA ENVIRONMENT PAGE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.toyota-environment-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  color: #222;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  overflow-x: hidden;
+}
+
+.toyota-environment-page a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.toyota-environment-page button {
+  font-family: inherit;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.environment-hero {
+  min-height: 670px;
+  height: calc(100vh - 70px);
+  max-height: 850px;
+  position: relative;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.12)
+    ),
+    url("https://static3.toyotabharat.com/images/toyota-in-india/environment/environment-banner.jpg")
+      center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+}
+
+.environment-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.2) 55%,
+      transparent 100%
+    );
+}
+
+.environment-hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1280px, 90%);
+  margin: auto;
+
+  color: #fff;
+}
+
+.environment-hero-content p {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.environment-hero-content h1 {
+  margin: 0;
+
+  font-size: clamp(46px, 6vw, 88px);
+  line-height: 0.96;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.hero-explore-btn {
+  margin-top: 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: transparent;
+  color: #fff;
+
+  min-width: 160px;
+  height: 52px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  font-size: 13px;
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.hero-explore-btn:hover {
+  background: #fff;
+  color: #111;
+}
+
+.hero-explore-btn span {
+  font-size: 20px;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.environment-navigation {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.environment-navigation-inner {
+  min-height: 65px;
+  width: min(1280px, 92%);
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+}
+
+.environment-nav-home,
+.environment-nav-link,
+.environment-nav-title {
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+
+  color: #333;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 0.3px;
+
+  position: relative;
+}
+
+.environment-nav-home:hover,
+.environment-nav-link:hover,
+.environment-nav-title:hover {
+  color: #e50000;
+}
+
+.environment-nav-group {
+  position: relative;
+}
+
+.environment-nav-title {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  gap: 10px;
+}
+
+.environment-nav-title span {
+  font-size: 16px;
+}
+
+.environment-dropdown {
+  position: absolute;
+
+  top: 65px;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(10px);
+
+  width: 260px;
+
+  background: #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.25s ease;
+
+  padding: 8px 0;
+}
+
+.environment-nav-group:hover .environment-dropdown {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(-50%) translateY(0);
+}
+
+.environment-dropdown a {
+  display: block;
+
+  padding: 13px 20px;
+
+  font-size: 13px;
+  color: #333;
+
+  transition: 0.2s ease;
+}
+
+.environment-dropdown a:hover {
+  background: #f6f6f6;
+  color: #e50000;
+  padding-left: 26px;
+}
+
+/* =========================================================
+   COMMON
+   ========================================================= */
+
+.section-white {
+  background: #fff;
+}
+
+.environment-intro-container,
+.global-vision-container,
+.policy-container {
+  width: min(1200px, 88%);
+  margin: auto;
+}
+
+.section-heading-center {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.section-heading-center span,
+.management-content > span,
+.policy-content > span,
+.challenge-2050-content > span {
+  display: block;
+
+  color: #777;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 15px;
+}
+
+.section-heading-center h2 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.environment-introduction {
+  padding: 110px 0;
+}
+
+.environment-intro-container {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 90px;
+}
+
+.intro-text {
+  max-width: 560px;
+}
+
+.section-kicker {
+  color: #777;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.intro-text h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  margin: 0 0 28px;
+}
+
+.intro-text p {
+  color: #555;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  margin: 0 0 20px;
+}
+
+.additional-intro {
+  animation: fadeIn 0.3s ease;
+}
+
+.text-read-button {
+  border: none;
+  background: none;
+
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+
+  color: #222;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+
+  cursor: pointer;
+}
+
+.text-read-button span {
+  font-size: 19px;
+}
+
+.intro-image-wrap {
+  position: relative;
+  min-height: 470px;
+
+  overflow: hidden;
+}
+
+.intro-image-wrap img {
+  width: 100%;
+  height: 470px;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.image-fallback {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcebdc,
+      #93b794
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  color: #fff;
+}
+
+.intro-image-wrap img + .image-fallback {
+  z-index: -1;
+}
+
+.environment-fallback span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.environment-fallback strong {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* =========================================================
+   EARTH CHARTER
+   ========================================================= */
+
+.earth-charter-section {
+  background: #f3f4f1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 620px;
+}
+
+.earth-charter-image {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+}
+
+.earth-charter-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fallback-tree {
+  font-size: 130px;
+}
+
+.earth-charter-content {
+  padding: 100px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.small-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.earth-charter-content h2 {
+  margin: 0 0 30px;
+
+  font-size: clamp(35px, 4vw, 52px);
+  font-weight: 400;
+
+  line-height: 1.15;
+}
+
+.earth-charter-content p {
+  max-width: 560px;
+
+  color: #555;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  margin: 0 0 20px;
+}
+
+.charter-line {
+  width: 80px;
+  height: 2px;
+  background: #d71920;
+
+  margin-top: 20px;
+}
+
+/* =========================================================
+   GLOBAL VISION
+   ========================================================= */
+
+.global-vision-section {
+  padding: 120px 0;
+  background: #fff;
+}
+
+.global-vision-container {
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  gap: 90px;
+
+  align-items: center;
+}
+
+.global-vision-image {
+  position: relative;
+  min-height: 540px;
+
+  overflow: hidden;
+}
+
+.global-vision-image img {
+  width: 100%;
+  height: 540px;
+
+  object-fit: cover;
+}
+
+.vision-fallback {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #a5c59c,
+      #406d48
+    );
+
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.vision-tree {
+  font-size: 150px;
+}
+
+.vision-fallback span {
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.global-vision-text p {
+  color: #555;
+
+  font-size: 16px;
+  line-height: 1.9;
+
+  margin: 0 0 24px;
+}
+
+/* =========================================================
+   CHALLENGE 2050
+   ========================================================= */
+
+.challenge-2050 {
+  min-height: 650px;
+
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+
+  background:
+    linear-gradient(
+      105deg,
+      #111 0%,
+      #222 40%,
+      #314b36 100%
+    );
+
+  color: #fff;
+}
+
+.challenge-2050-content {
+  padding: 90px 12%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.challenge-2050-content > span {
+  color: #aeb8ad;
+}
+
+.challenge-2050-content h2 {
+  margin: 0 0 28px;
+
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 0.95;
+
+  font-weight: 300;
+}
+
+.challenge-2050-content h2 strong {
+  font-weight: 700;
+}
+
+.challenge-2050-content p {
+  max-width: 450px;
+
+  color: #d1d1d1;
+
+  line-height: 1.8;
+}
+
+.challenge-button,
+.green-button {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 25px;
+
+  margin-top: 25px;
+
+  padding: 15px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  color: #fff;
+
+  font-size: 12px;
+  letter-spacing: 1.5px;
+
+  transition: 0.3s ease;
+}
+
+.challenge-button:hover,
+.green-button:hover {
+  background: #fff;
+  color: #222;
+}
+
+.challenge-button span,
+.green-button span {
+  font-size: 20px;
+}
+
+.challenge-2050-image {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.challenge-circle {
+  width: min(600px, 80%);
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle,
+      #d6e7c8 0%,
+      #a3c395 42%,
+      #537856 70%,
+      #263d2a 100%
+    );
+
+  box-shadow:
+    0 0 100px rgba(129, 185, 126, 0.2);
+}
+
+.challenge-house {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 110px;
+}
+
+.challenge-tree {
+  position: absolute;
+  font-size: 70px;
+}
+
+.tree-one {
+  left: 13%;
+  bottom: 22%;
+}
+
+.tree-two {
+  right: 14%;
+  bottom: 18%;
+}
+
+.tree-three {
+  left: 27%;
+  top: 16%;
+}
+
+.tree-four {
+  right: 28%;
+  top: 12%;
+}
+
+/* =========================================================
+   SIX CHALLENGES
+   ========================================================= */
+
+.six-challenges {
+  padding: 120px 5%;
+
+  background: #f7f7f5;
+}
+
+.challenge-grid {
+  width: min(1250px, 100%);
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.challenge-card {
+  min-height: 300px;
+
+  padding: 35px;
+
+  background: #fff;
+
+  position: relative;
+
+  border: 1px solid #ededed;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.challenge-number {
+  color: #aaa;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.challenge-card-icon {
+  margin: 35px 0 20px;
+
+  font-size: 38px;
+}
+
+.challenge-card h3 {
+  margin: 0 0 15px;
+
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.challenge-card p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.card-arrow {
+  position: absolute;
+
+  right: 30px;
+  bottom: 25px;
+
+  color: #d71920;
+
+  font-size: 22px;
+}
+
+/* =========================================================
+   COMMITTEE
+   ========================================================= */
+
+.committee-section {
+  padding: 120px 5%;
+  background: #fff;
+}
+
+.committee-container {
+  width: min(1100px, 100%);
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 35px;
+}
+
+.committee-card {
+  background: #f5f5f3;
+
+  display: grid;
+
+  grid-template-columns: 42% 58%;
+
+  min-height: 340px;
+}
+
+.committee-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.committee-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.committee-fallback {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      #b9c3b9,
+      #59685c
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+}
+
+.committee-fallback span {
+  font-size: 55px;
+  font-weight: 300;
+}
+
+.committee-info {
+  padding: 35px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.committee-info h3 {
+  margin: 0 0 10px;
+
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.committee-info p {
+  color: #777;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.committee-info button {
+  border: none;
+  background: none;
+
+  padding: 0;
+
+  width: fit-content;
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  margin-top: 20px;
+
+  font-size: 11px;
+  letter-spacing: 1.3px;
+
+  cursor: pointer;
+}
+
+.committee-info button span {
+  font-size: 18px;
+  color: #d71920;
+}
+
+/* =========================================================
+   MANAGEMENT
+   ========================================================= */
+
+.management-section {
+  min-height: 600px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: #eef1ec;
+}
+
+.management-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #cddbc9,
+      #6b866c
+    );
+}
+
+.management-visual {
+  width: 380px;
+  height: 380px;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff 0 17%,
+      transparent 18%
+    ),
+    #b7cdb2;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.management-center {
+  position: absolute;
+
+  inset: 50% auto auto 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 170px;
+  height: 170px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-size: 13px;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+.management-leaf {
+  position: absolute;
+
+  width: 70px;
+  height: 110px;
+
+  background: #4e764f;
+
+  border-radius:
+    100% 0 100% 0;
+
+  opacity: 0.8;
+}
+
+.leaf-1 {
+  left: 20%;
+  top: 12%;
+  transform: rotate(-30deg);
+}
+
+.leaf-2 {
+  right: 17%;
+  top: 20%;
+  transform: rotate(30deg);
+}
+
+.leaf-3 {
+  left: 15%;
+  bottom: 15%;
+  transform: rotate(-60deg);
+}
+
+.leaf-4 {
+  right: 18%;
+  bottom: 12%;
+  transform: rotate(60deg);
+}
+
+.management-content {
+  padding: 90px 12%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.management-content h2 {
+  margin: 0 0 30px;
+
+  font-size: clamp(35px, 4vw, 52px);
+
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.management-content p {
+  max-width: 530px;
+
+  color: #555;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   POLICY
+   ========================================================= */
+
+.policy-section {
+  padding: 120px 0;
+
+  background: #fff;
+}
+
+.policy-container {
+  display: grid;
+
+  grid-template-columns: 1fr 0.75fr;
+
+  gap: 100px;
+
+  align-items: center;
+}
+
+.policy-content h2 {
+  margin: 0 0 30px;
+
+  font-size: clamp(35px, 4vw, 52px);
+
+  font-weight: 400;
+}
+
+.policy-content p {
+  color: #555;
+
+  line-height: 1.8;
+
+  font-size: 16px;
+
+  max-width: 650px;
+}
+
+.policy-content strong {
+  color: #222;
+}
+
+.pdf-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+  margin-top: 30px;
+
+  padding: 15px 22px;
+
+  border: 1px solid #222;
+
+  font-size: 11px;
+
+  letter-spacing: 1.2px;
+
+  transition: 0.3s ease;
+}
+
+.pdf-button:hover {
+  background: #222;
+  color: #fff;
+}
+
+.policy-badge {
+  min-height: 390px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #dcebd8,
+      #739277
+    );
+
+  color: #fff;
+}
+
+.policy-badge > div {
+  width: 230px;
+  height: 230px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  text-align: center;
+}
+
+.policy-badge span {
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 18px;
+}
+
+.policy-badge strong {
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* =========================================================
+   AWARDS
+   ========================================================= */
+
+.awards-section {
+  padding: 120px 5%;
+
+  background: #f5f5f3;
+}
+
+.awards-grid {
+  width: min(1250px, 100%);
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.award-card {
+  background: #fff;
+  min-height: 340px;
+}
+
+.award-image {
+  height: 210px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e4e8e1,
+      #8a9c88
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.award-trophy {
+  font-size: 70px;
+}
+
+.award-info {
+  padding: 25px;
+}
+
+.award-info h3 {
+  margin: 0 0 10px;
+
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.award-info p {
+  margin: 0;
+
+  color: #888;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   REPORTS
+   ========================================================= */
+
+.reports-section {
+  padding: 120px 5%;
+
+  background: #fff;
+}
+
+.reports-grid {
+  width: min(1100px, 100%);
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+.report-card {
+  min-height: 125px;
+
+  border: 1px solid #e8e8e8;
+
+  padding: 22px;
+
+  display: flex;
+  gap: 20px;
+
+  align-items: center;
+
+  transition: 0.3s ease;
+}
+
+.report-card:hover {
+  border-color: #222;
+
+  transform: translateY(-3px);
+}
+
+.report-number {
+  color: #bbb;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+}
+
+.report-content {
+  flex: 1;
+}
+
+.report-content h3 {
+  margin: 0 0 15px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.report-content button {
+  border: none;
+
+  padding: 0;
+
+  background: transparent;
+
+  display: flex;
+  gap: 15px;
+
+  font-size: 10px;
+
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+}
+
+.report-content button span {
+  color: #d71920;
+  font-size: 16px;
+}
+
+/* =========================================================
+   GREEN TOGETHER
+   ========================================================= */
+
+.green-together {
+  min-height: 570px;
+
+  position: relative;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11, 38, 17, 0.9),
+      rgba(30, 69, 35, 0.55)
+    ),
+    url("https://static3.toyotabharat.com/images/toyota-in-india/environment/ecozone.jpg")
+      center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+}
+
+.green-together-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(135, 184, 118, 0.35),
+      transparent 45%
+    );
+}
+
+.green-together-content {
+  position: relative;
+
+  width: min(1200px, 88%);
+
+  margin: auto;
+
+  color: #fff;
+}
+
+.green-together-content > span {
+  display: block;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  margin-bottom: 20px;
+}
+
+.green-together-content h2 {
+  margin: 0;
+
+  font-size: clamp(60px, 9vw, 120px);
+
+  font-weight: 300;
+
+  line-height: 0.85;
+
+  letter-spacing: -4px;
+}
+
+.green-together-content p {
+  max-width: 450px;
+
+  color: #e0e0e0;
+
+  line-height: 1.7;
+
+  margin-top: 30px;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.environment-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.environment-modal-content {
+  width: min(700px, 100%);
+
+  background: #fff;
+
+  padding: 55px;
+
+  position: relative;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+  position: absolute;
+
+  right: 22px;
+  top: 18px;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+
+  background: #f4f4f4;
+
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+.environment-modal-content > span {
+  color: #777;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+}
+
+.environment-modal-content h2 {
+  margin: 20px 0 8px;
+
+  font-size: 38px;
+
+  font-weight: 400;
+}
+
+.environment-modal-content h4 {
+  color: #777;
+
+  font-weight: 400;
+}
+
+.environment-modal-content p {
+  color: #555;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .environment-navigation-inner {
+    gap: 20px;
+  }
+
+  .environment-intro-container {
+    gap: 45px;
+  }
+
+  .global-vision-container {
+    gap: 45px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+
+  .environment-hero {
+    min-height: 580px;
+  }
+
+  .environment-navigation {
+    position: relative;
+  }
+
+  .environment-navigation-inner {
+    overflow-x: auto;
+
+    justify-content: flex-start;
+
+    padding: 0 20px;
+
+    white-space: nowrap;
+  }
+
+  .environment-dropdown {
+    display: none;
+  }
+
+  .environment-introduction {
+    padding: 75px 0;
+  }
+
+  .environment-intro-container {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-image-wrap,
+  .intro-image-wrap img {
+    min-height: 380px;
+    height: 380px;
+  }
+
+  .earth-charter-section {
+    grid-template-columns: 1fr;
+  }
+
+  .earth-charter-image {
+    min-height: 450px;
+  }
+
+  .earth-charter-content {
+    padding: 70px 8%;
+  }
+
+  .global-vision-section {
+    padding: 80px 0;
+  }
+
+  .global-vision-container {
+    grid-template-columns: 1fr;
+  }
+
+  .global-vision-image,
+  .global-vision-image img {
+    min-height: 420px;
+    height: 420px;
+  }
+
+  .challenge-2050 {
+    grid-template-columns: 1fr;
+  }
+
+  .challenge-2050-content {
+    padding: 75px 8%;
+  }
+
+  .challenge-2050-image {
+    min-height: 500px;
+  }
+
+  .committee-container {
+    grid-template-columns: 1fr;
+  }
+
+  .management-section {
+    grid-template-columns: 1fr;
+  }
+
+  .management-image {
+    min-height: 450px;
+  }
+
+  .management-content {
+    padding: 70px 8%;
+  }
+
+  .policy-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .awards-grid,
+  .reports-grid,
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .environment-hero {
+    min-height: 520px;
+    height: 75vh;
+  }
+
+  .environment-hero-content {
+    width: 86%;
+  }
+
+  .environment-hero-content h1 {
+    font-size: 46px;
+  }
+
+  .environment-hero-content p {
+    font-size: 15px;
+  }
+
+  .environment-navigation-inner {
+    gap: 25px;
+  }
+
+  .committee-card {
+    grid-template-columns: 1fr;
+  }
+
+  .committee-image {
+    height: 300px;
+  }
+
+  .management-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+  .management-center {
+    width: 130px;
+    height: 130px;
+    font-size: 10px;
+  }
+
+  .policy-badge {
+    min-height: 320px;
+  }
+
+  .green-together {
+    min-height: 500px;
+  }
+
+  .green-together-content h2 {
+    font-size: 65px;
+  }
+
+  .environment-modal-content {
+    padding: 40px 25px;
+  }
+}

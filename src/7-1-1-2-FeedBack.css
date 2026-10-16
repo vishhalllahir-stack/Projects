@@ -1,0 +1,236 @@
+/* ================================
+   TOYOTA FEEDBACK PAGE
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#222;
+}
+
+/* ============================= */
+
+.toyotaFeedback{
+    width:100%;
+    min-height:100vh;
+    background:#f5f5f5;
+    padding:70px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+/* ============================= */
+
+.feedbackContainer{
+    width:100%;
+    max-width:720px;
+    background:#fff;
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    padding:50px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+/* ============================= */
+
+.feedbackTitleArea{
+    margin-bottom:35px;
+}
+
+.feedbackTitleArea h1{
+    font-size:34px;
+    color:#111;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.feedbackTitleArea p{
+    font-size:16px;
+    color:#666;
+    line-height:28px;
+}
+
+/* ============================= */
+
+.successBox{
+    width:100%;
+    background:#edf9ef;
+    color:#16833c;
+    border:1px solid #9dd6ab;
+    padding:15px 20px;
+    border-radius:6px;
+    margin-bottom:25px;
+    font-size:15px;
+}
+
+/* ============================= */
+
+.inputGroup{
+    margin-bottom:26px;
+}
+
+.inputGroup label{
+    display:block;
+    margin-bottom:10px;
+    font-size:15px;
+    font-weight:600;
+    color:#333;
+}
+
+/* ============================= */
+
+.inputGroup input,
+.inputGroup textarea{
+    width:100%;
+    border:1px solid #d9d9d9;
+    background:#fff;
+    outline:none;
+    border-radius:6px;
+    padding:15px 18px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.inputGroup input{
+    height:52px;
+}
+
+.inputGroup textarea{
+    resize:vertical;
+    min-height:180px;
+}
+
+/* ============================= */
+
+.inputGroup input:focus,
+.inputGroup textarea:focus{
+    border-color:#eb0a1e;
+    box-shadow:0 0 0 3px rgba(235,10,30,.15);
+}
+
+/* ============================= */
+
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder{
+    color:#999;
+}
+
+/* ============================= */
+
+.errorText{
+    display:block;
+    margin-top:8px;
+    color:#eb0a1e;
+    font-size:13px;
+}
+
+/* ============================= */
+
+.submitBtn{
+    width:180px;
+    height:52px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    border-radius:5px;
+    background:#eb0a1e;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    transition:.35s;
+}
+
+.submitBtn:hover{
+    background:#c90016;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(235,10,30,.35);
+}
+
+.submitBtn:active{
+    transform:scale(.98);
+}
+
+/* ============================= */
+
+input:disabled,
+textarea:disabled{
+    background:#f2f2f2;
+}
+
+/* ============================= */
+
+@media(max-width:992px){
+
+.feedbackContainer{
+    padding:40px;
+}
+
+.feedbackTitleArea h1{
+    font-size:30px;
+}
+
+}
+
+/* ============================= */
+
+@media(max-width:768px){
+
+.toyotaFeedback{
+    padding:40px 15px;
+}
+
+.feedbackContainer{
+    padding:30px 22px;
+}
+
+.feedbackTitleArea h1{
+    font-size:28px;
+}
+
+.feedbackTitleArea p{
+    font-size:15px;
+    line-height:24px;
+}
+
+.submitBtn{
+    width:100%;
+}
+
+}
+
+/* ============================= */
+
+@media(max-width:480px){
+
+.feedbackContainer{
+    padding:22px 18px;
+    border-radius:6px;
+}
+
+.feedbackTitleArea h1{
+    font-size:24px;
+}
+
+.feedbackTitleArea p{
+    font-size:14px;
+}
+
+.inputGroup input,
+.inputGroup textarea{
+    font-size:14px;
+    padding:13px 15px;
+}
+
+.submitBtn{
+    height:48px;
+    font-size:15px;
+}
+
+}

@@ -1,0 +1,1277 @@
+
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Ecozone_Virtual_Tour  page  */
+/* ============================================================
+   TOYOTA ECOZONE VIRTUAL TOUR
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+.eco-tour-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #101510;
+  color: #fff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+.eco-tour-page button {
+  font-family: inherit;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.eco-tour-header {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 500;
+
+  height: 72px;
+
+  padding: 0 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55),
+      transparent
+    );
+}
+
+.eco-tour-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+}
+
+.eco-tour-toyota {
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.eco-tour-divider {
+  opacity: 0.4;
+}
+
+.eco-menu-button {
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.5);
+
+  background:
+    rgba(0, 0, 0, 0.2);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  cursor: pointer;
+}
+
+.eco-menu-button span {
+  width: 19px;
+  height: 1px;
+
+  background: #fff;
+}
+
+/* ============================================================
+   ZONE PANEL
+   ============================================================ */
+
+.eco-zone-panel {
+  position: fixed;
+
+  z-index: 600;
+
+  top: 0;
+  right: 0;
+
+  width: 380px;
+  height: 100vh;
+
+  padding: 25px 0;
+
+  background:
+    rgba(15, 20, 16, 0.97);
+
+  transform: translateX(100%);
+
+  transition:
+    transform 0.4s ease;
+
+  overflow-y: auto;
+
+  box-shadow:
+    -20px 0 60px
+    rgba(0, 0, 0, 0.35);
+}
+
+.eco-zone-panel-open {
+  transform: translateX(0);
+}
+
+.eco-zone-panel-header {
+  height: 65px;
+
+  padding: 0 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid
+    rgba(255, 255, 255, 0.12);
+}
+
+.eco-zone-panel-header span {
+  font-size: 11px;
+
+  letter-spacing: 2px;
+}
+
+.eco-zone-panel-header button {
+  width: 35px;
+  height: 35px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+.eco-zone-list {
+  padding: 15px 0 50px;
+}
+
+.eco-zone-item {
+  width: 100%;
+
+  min-height: 60px;
+
+  padding: 0 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  border: none;
+
+  border-bottom: 1px solid
+    rgba(255, 255, 255, 0.06);
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.eco-zone-item:hover,
+.eco-zone-item.active {
+  color: #fff;
+
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+.eco-zone-item.active {
+  border-left: 3px solid #8dbd82;
+}
+
+.eco-zone-number {
+  width: 28px;
+
+  color: #8da58a;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+}
+
+.eco-zone-name {
+  font-size: 13px;
+}
+
+/* ============================================================
+   MAIN TOUR
+   ============================================================ */
+
+.eco-tour-main {
+  position: relative;
+
+  width: 100%;
+
+  height: 100vh;
+
+  min-height: 650px;
+}
+
+.eco-panorama {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  cursor:
+    grab;
+}
+
+.eco-panorama:active {
+  cursor:
+    grabbing;
+}
+
+.eco-panorama-image {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: -8%;
+  right: -8%;
+
+  width: 116%;
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-repeat: no-repeat;
+
+  transition:
+    background-image 0.5s ease;
+
+  transform:
+    translateX(0)
+    scale(1.12);
+}
+
+.eco-panorama-fallback {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #6d8668,
+      #162219 72%
+    );
+
+  pointer-events: none;
+}
+
+.eco-fallback-circle {
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: 25px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  font-size: 55px;
+}
+
+.eco-panorama-fallback span {
+  font-size: 10px;
+
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.eco-panorama-fallback strong {
+  margin-top: 14px;
+
+  font-size: 42px;
+
+  font-weight: 300;
+}
+
+.eco-panorama-gradient {
+  position: absolute;
+
+  z-index: 2;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55),
+      transparent 30%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.65)
+    );
+}
+
+/* ============================================================
+   PANORAMA TITLE
+   ============================================================ */
+
+.eco-panorama-title {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 8%;
+
+  bottom: 120px;
+}
+
+.eco-panorama-title span {
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  color:
+    rgba(255, 255, 255, 0.7);
+}
+
+.eco-panorama-title h1 {
+  margin: 15px 0 0;
+
+  font-size:
+    clamp(40px, 6vw, 78px);
+
+  font-weight: 300;
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+}
+
+/* ============================================================
+   ROTATE
+   ============================================================ */
+
+.eco-rotate {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+
+  bottom: 90px;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  flex-direction: column;
+
+  color:
+    rgba(255, 255, 255, 0.8);
+}
+
+.eco-rotate-icon {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.7);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+.eco-rotate span {
+  font-size: 8px;
+
+  letter-spacing: 2px;
+}
+
+/* ============================================================
+   ARROWS
+   ============================================================ */
+
+.eco-arrow {
+  position: absolute;
+
+  z-index: 10;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 50px;
+  height: 70px;
+
+  border: none;
+
+  background:
+    rgba(0, 0, 0, 0.2);
+
+  color: #fff;
+
+  font-size: 45px;
+
+  font-weight: 200;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.eco-arrow:hover {
+  background:
+    rgba(0, 0, 0, 0.5);
+}
+
+.eco-arrow-left {
+  left: 25px;
+}
+
+.eco-arrow-right {
+  right: 25px;
+}
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
+
+.eco-tour-controls {
+  position: absolute;
+
+  z-index: 20;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 68px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 35px;
+
+  background:
+    rgba(10, 15, 11, 0.82);
+
+  backdrop-filter:
+    blur(12px);
+}
+
+.eco-tour-modes {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+}
+
+.eco-tour-modes button {
+  height: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color:
+    rgba(255, 255, 255, 0.55);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 9px;
+
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.eco-tour-modes button.active {
+  color: #fff;
+}
+
+.eco-tour-modes button.active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  background: #91b98a;
+}
+
+.eco-mode-icon {
+  font-size: 14px;
+}
+
+.eco-zone-counter {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    rgba(255, 255, 255, 0.55);
+
+  font-size: 10px;
+}
+
+.eco-zone-counter strong {
+  color: #fff;
+
+  font-size: 18px;
+
+  font-weight: 400;
+}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.eco-intro-overlay {
+  position: fixed;
+
+  z-index: 1000;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8, 20, 10, 0.96),
+      rgba(26, 54, 29, 0.95)
+    );
+
+  animation:
+    ecoIntroIn 0.45s ease;
+}
+
+.eco-intro-content {
+  width: min(700px, 90%);
+
+  text-align: center;
+
+  color: #fff;
+}
+
+.eco-intro-logo {
+  margin-bottom: 50px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 5px;
+}
+
+.eco-intro-small {
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  color:
+    rgba(255, 255, 255, 0.6);
+}
+
+.eco-intro-content h1 {
+  margin: 22px 0 0;
+
+  font-size:
+    clamp(55px, 8vw, 100px);
+
+  line-height: 0.87;
+
+  font-weight: 300;
+
+  letter-spacing: -4px;
+}
+
+.eco-intro-content p {
+  max-width: 500px;
+
+  margin: 35px auto 0;
+
+  color:
+    rgba(255, 255, 255, 0.7);
+
+  line-height: 1.8;
+}
+
+.eco-intro-actions {
+  margin-top: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 25px;
+}
+
+.eco-start-button {
+  min-width: 170px;
+
+  height: 50px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.7);
+
+  background: #fff;
+
+  color: #172018;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 25px;
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+}
+
+.eco-start-button span {
+  font-size: 18px;
+}
+
+.eco-skip-button {
+  border: none;
+
+  background: transparent;
+
+  color:
+    rgba(255, 255, 255, 0.65);
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+}
+
+/* ============================================================
+   LEADERSHIP
+   ============================================================ */
+
+.eco-leadership {
+  padding: 120px 6%;
+
+  background:
+    #f4f5f1;
+
+  color: #1a1d1a;
+}
+
+.eco-leadership-heading {
+  width: min(1150px, 100%);
+
+  margin: 0 auto 70px;
+
+  text-align: center;
+}
+
+.eco-leadership-heading > span {
+  color: #777;
+
+  font-size: 10px;
+
+  letter-spacing: 2.5px;
+}
+
+.eco-leadership-heading h2 {
+  margin: 20px 0;
+
+  font-size:
+    clamp(40px, 5vw, 65px);
+
+  font-weight: 300;
+
+  line-height: 0.95;
+}
+
+.eco-leadership-heading p {
+  max-width: 600px;
+
+  margin: auto;
+
+  color: #777;
+
+  line-height: 1.8;
+}
+
+.eco-leader-grid {
+  width: min(1100px, 100%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 30px;
+}
+
+.eco-leader-card {
+  min-height: 400px;
+
+  display: grid;
+
+  grid-template-columns:
+    45% 55%;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.eco-leader-card:hover {
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.1);
+}
+
+.eco-leader-image {
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #c6d0c5,
+      #5e725e
+    );
+}
+
+.eco-leader-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.eco-leader-fallback {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #c6d0c5,
+      #5e725e
+    );
+
+  color: #fff;
+}
+
+.eco-leader-fallback span {
+  font-size: 60px;
+
+  font-weight: 300;
+}
+
+.eco-leader-info {
+  padding: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.eco-leader-info > span {
+  color: #999;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}
+
+.eco-leader-info h3 {
+  margin: 18px 0 10px;
+
+  font-size: 23px;
+
+  font-weight: 400;
+}
+
+.eco-leader-info p {
+  color: #777;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.eco-leader-info button {
+  width: fit-content;
+
+  margin-top: 22px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  color: #222;
+
+  font-size: 9px;
+
+  letter-spacing: 1.3px;
+
+  cursor: pointer;
+}
+
+.eco-leader-info button span {
+  color: #d71920;
+
+  font-size: 18px;
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.eco-leader-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 3000;
+
+  padding: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(0, 0, 0, 0.78);
+}
+
+.eco-leader-modal-content {
+  position: relative;
+
+  width: min(1000px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    40% 60%;
+
+  background: #fff;
+
+  color: #222;
+}
+
+.eco-modal-close {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 20px;
+  right: 20px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  background:
+    rgba(255, 255, 255, 0.85);
+
+  font-size: 27px;
+
+  cursor: pointer;
+}
+
+.eco-modal-image {
+  min-height: 500px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #bac7b8,
+      #556d56
+    );
+}
+
+.eco-modal-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.eco-modal-text {
+  padding: 65px;
+}
+
+.eco-modal-text > span {
+  color: #777;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+.eco-modal-text h2 {
+  margin: 20px 0 8px;
+
+  font-size: 42px;
+
+  font-weight: 300;
+}
+
+.eco-modal-text h4 {
+  color: #777;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+.eco-modal-text p {
+  color: #555;
+
+  font-size: 15px;
+
+  line-height: 1.85;
+}
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+
+@keyframes ecoIntroIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .eco-leader-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eco-leader-card {
+    min-height: 350px;
+  }
+
+  .eco-zone-panel {
+    width: 340px;
+  }
+
+  .eco-panorama-title {
+    left: 5%;
+  }
+
+  .eco-modal-image {
+    min-height: 400px;
+  }
+
+  .eco-modal-text {
+    padding: 45px;
+  }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 650px) {
+
+  .eco-tour-header {
+    padding: 0 18px;
+  }
+
+  .eco-tour-brand {
+    font-size: 9px;
+  }
+
+  .eco-tour-main {
+    min-height: 620px;
+
+    height: 90vh;
+  }
+
+  .eco-panorama-title {
+    left: 25px;
+
+    bottom: 135px;
+  }
+
+  .eco-panorama-title h1 {
+    font-size: 43px;
+  }
+
+  .eco-rotate {
+    bottom: 95px;
+  }
+
+  .eco-arrow {
+    width: 40px;
+    height: 55px;
+
+    font-size: 35px;
+  }
+
+  .eco-arrow-left {
+    left: 8px;
+  }
+
+  .eco-arrow-right {
+    right: 8px;
+  }
+
+  .eco-tour-controls {
+    height: auto;
+
+    min-height: 70px;
+
+    padding: 0 15px;
+  }
+
+  .eco-tour-modes {
+    gap: 15px;
+  }
+
+  .eco-tour-modes button {
+    font-size: 8px;
+  }
+
+  .eco-zone-counter {
+    display: none;
+  }
+
+  .eco-zone-panel {
+    width: 100%;
+  }
+
+  .eco-intro-content h1 {
+    font-size: 56px;
+  }
+
+  .eco-intro-content p {
+    font-size: 13px;
+  }
+
+  .eco-intro-actions {
+    flex-direction: column;
+  }
+
+  .eco-leadership {
+    padding: 80px 18px;
+  }
+
+  .eco-leader-card {
+    grid-template-columns: 1fr;
+  }
+
+  .eco-leader-image {
+    height: 320px;
+  }
+
+  .eco-leader-info {
+    min-height: 270px;
+  }
+
+  .eco-leader-modal {
+    padding: 12px;
+  }
+
+  .eco-leader-modal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .eco-modal-image {
+    min-height: 280px;
+
+    height: 280px;
+  }
+
+  .eco-modal-text {
+    padding: 35px 25px;
+  }
+
+  .eco-modal-text h2 {
+    font-size: 32px;
+  }
+}
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .eco-panorama-title h1 {
+    font-size: 36px;
+  }
+
+  .eco-tour-modes {
+    gap: 8px;
+  }
+
+  .eco-tour-modes button {
+    gap: 5px;
+    font-size: 7px;
+  }
+
+  .eco-intro-content h1 {
+    font-size: 47px;
+  }
+}

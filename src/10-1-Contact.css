@@ -1,0 +1,1476 @@
+/* ===========================
+   TOYOTA CONTACT PAGE
+   Unique Class Names
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background:#f5f6f8;
+}
+
+/* ===========================
+      MAIN WRAPPER
+=========================== */
+
+.toyotaContactWrapper{
+  width:100%;
+  padding:70px 8%;
+  background:#f7f8fa;
+}
+
+/* ===========================
+        HERO SECTION
+=========================== */
+
+.toyotaHeroArea{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:60px;
+  margin-bottom:70px;
+  flex-wrap:wrap;
+}
+
+.toyotaHeroImageBox{
+  width:120px;
+  height:120px;
+  border-radius:30px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  transition:.4s;
+}
+
+.toyotaHeroImageBox:hover{
+  transform:translateY(-8px);
+}
+
+.toyotaHeroImage{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.toyotaHeroText{
+  max-width:650px;
+}
+
+.toyotaHeroText h1{
+  font-size:58px;
+  color:#111;
+  margin-bottom:20px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.toyotaHeroText p{
+  font-size:22px;
+  color:#666;
+  line-height:1.8;
+}
+
+/* ===========================
+      INTRO CONTENT
+=========================== */
+
+.toyotaIntroContent{
+  max-width:950px;
+  margin:auto;
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.toyotaIntroContent h2{
+  font-size:42px;
+  color:#111;
+  margin-bottom:20px;
+}
+
+.toyotaIntroContent p{
+  font-size:22px;
+  color:#666;
+  line-height:1.9;
+}
+
+/* ===========================
+       GRID
+=========================== */
+
+.toyotaSupportGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:35px;
+}
+
+/* ===========================
+       CARD
+=========================== */
+
+.toyotaSupportCard{
+  background:#fff;
+  border-radius:25px;
+  padding:45px;
+  display:flex;
+  gap:30px;
+  align-items:flex-start;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.toyotaSupportCard::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
+  height:100%;
+  background:#eb0a1e;
+}
+
+.toyotaSupportCard:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+/* ===========================
+      ICON
+=========================== */
+
+.toyotaIconCircle{
+  width:90px;
+  height:90px;
+  min-width:90px;
+  border-radius:50%;
+  background:#eb0a1e;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  transition:.35s;
+}
+
+.toyotaSupportCard:hover .toyotaIconCircle{
+  transform:rotate(10deg) scale(1.08);
+}
+
+/* ===========================
+       CARD BODY
+=========================== */
+
+.toyotaCardBody{
+  flex:1;
+}
+
+.toyotaCardBody h3{
+  font-size:32px;
+  color:#111;
+  margin-bottom:12px;
+}
+
+.toyotaSmallTitle{
+  display:inline-block;
+  color:#eb0a1e;
+  font-weight:700;
+  margin-bottom:18px;
+  font-size:18px;
+}
+
+.toyotaCardBody p{
+  font-size:19px;
+  color:#666;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.toyotaCardBody h4{
+  font-size:30px;
+  margin-top:12px;
+  color:#111;
+  font-weight:700;
+}
+
+.toyotaCardBody small{
+  display:block;
+  color:#888;
+  margin:8px 0 18px;
+  font-size:16px;
+}
+
+/* ===========================
+        LINKS
+=========================== */
+
+.toyotaCardBody a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:15px;
+  text-decoration:none;
+  color:#eb0a1e;
+  font-size:18px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.toyotaCardBody a:hover{
+  color:#000;
+  transform:translateX(8px);
+}
+
+/* ===========================
+      BUTTON
+=========================== */
+
+.toyotaPrimaryButton{
+  margin-top:20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:none;
+  outline:none;
+  background:#eb0a1e;
+  color:#fff;
+  padding:16px 28px;
+  border-radius:50px;
+  cursor:pointer;
+  font-size:17px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.toyotaPrimaryButton:hover{
+  background:#111;
+  transform:scale(1.05);
+}
+
+/* ===========================
+      TABLET
+=========================== */
+
+@media(max-width:992px){
+
+.toyotaHeroArea{
+    gap:30px;
+}
+
+.toyotaHeroText{
+    text-align:center;
+}
+
+.toyotaHeroText h1{
+    font-size:42px;
+}
+
+.toyotaHeroText p{
+    font-size:19px;
+}
+
+.toyotaIntroContent h2{
+    font-size:34px;
+}
+
+.toyotaIntroContent p{
+    font-size:18px;
+}
+
+.toyotaSupportGrid{
+    grid-template-columns:1fr;
+}
+
+.toyotaSupportCard{
+    padding:35px;
+}
+
+}
+
+/* ===========================
+        MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.toyotaContactWrapper{
+    padding:50px 20px;
+}
+
+.toyotaHeroImageBox{
+    width:180px;
+    height:180px;
+}
+
+.toyotaHeroText h1{
+    font-size:34px;
+}
+
+.toyotaHeroText p{
+    font-size:17px;
+}
+
+.toyotaIntroContent{
+    margin-bottom:50px;
+}
+
+.toyotaIntroContent h2{
+    font-size:28px;
+}
+
+.toyotaIntroContent p{
+    font-size:17px;
+}
+
+.toyotaSupportCard{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:30px 25px;
+}
+
+.toyotaIconCircle{
+    width:80px;
+    height:80px;
+    min-width:80px;
+}
+
+.toyotaCardBody h3{
+    font-size:28px;
+}
+
+.toyotaCardBody h4{
+    font-size:24px;
+}
+
+.toyotaCardBody p{
+    font-size:17px;
+}
+
+.toyotaCardBody a{
+    justify-content:center;
+}
+
+.toyotaPrimaryButton{
+    margin:auto;
+    margin-top:20px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------------- Beacome a dealer page ---------------------------*/
+
+/* ===========================
+   BecomeDealer.css
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#fff;
+    color:#222;
+}
+
+/* Hero */
+
+.dealerHero{
+    width:100%;
+    height:185px;
+    background:#000;
+    display:flex;
+    align-items:center;
+}
+
+.dealerHeroContent{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.dealerHeroContent h1{
+    color:#fff;
+    font-size:56px;
+    font-weight:700;
+}
+
+/* Red Heading */
+
+.dealerTitleBar{
+    width:100%;
+    height:52px;
+    background:#eb0a1e;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:600;
+}
+
+/* Main */
+
+.dealerContainer{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto 60px;
+}
+
+.dealerContainer h2{
+    font-size:34px;
+    margin-bottom:25px;
+    color:#111;
+}
+
+.dealerHeading{
+    margin-top:45px;
+}
+
+.dealerContainer h3{
+    font-size:25px;
+    margin-top:30px;
+    margin-bottom:12px;
+}
+
+.dealerContainer p{
+    font-size:18px;
+    color:#333;
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+/* Fraud Alert */
+
+.dealerAlert{
+    margin:60px 0 40px;
+    text-align:center;
+}
+
+.dealerAlert h2{
+    font-size:34px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    line-height:1.5;
+    margin-bottom:28px;
+}
+
+/* Buttons */
+
+.redBtn{
+    background:#eb0a1e;
+    color:#fff;
+    border:none;
+    padding:14px 34px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.redBtn:hover{
+    background:#c40018;
+}
+
+.applyBtn{
+    background:#eb0a1e;
+    color:#fff;
+    border:none;
+    padding:16px 28px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.applyBtn:hover{
+    background:#c40018;
+}
+
+.blackBtn{
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:14px 28px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.blackBtn:hover{
+    background:#333;
+}
+
+/* Divider */
+
+hr{
+    border:none;
+    border-top:1px solid #e3e3e3;
+    margin:35px 0;
+}
+
+/* Buttons Section */
+
+.dealerButtons{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.reportBox{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.reportBox span{
+    font-size:18px;
+}
+
+/* Browser */
+
+.browserSupport h4{
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.browserIcons{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.browserIcons span{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:18px;
+}
+
+.browserIcons svg{
+    font-size:28px;
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.dealerHero{
+    height:140px;
+}
+
+.dealerHeroContent h1{
+    font-size:42px;
+}
+
+.dealerTitleBar{
+    font-size:24px;
+}
+
+.dealerContainer h2{
+    font-size:28px;
+}
+
+.dealerAlert h2{
+    font-size:26px;
+}
+
+.dealerButtons{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.reportBox{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+}
+
+@media(max-width:768px){
+
+.dealerHeroContent h1{
+    font-size:34px;
+}
+
+.dealerTitleBar{
+    font-size:22px;
+    height:45px;
+}
+
+.dealerContainer{
+    width:92%;
+}
+
+.dealerContainer h2{
+    font-size:24px;
+}
+
+.dealerContainer h3{
+    font-size:21px;
+}
+
+.dealerContainer p{
+    font-size:16px;
+}
+
+.dealerAlert h2{
+    font-size:20px;
+}
+
+.browserIcons{
+    flex-direction:column;
+    gap:15px;
+}
+
+.applyBtn,
+.redBtn,
+.blackBtn{
+    width:100%;
+}
+
+}
+
+
+
+
+
+
+
+
+/*----------------------------------------- Careers page -----------------------------------------*/
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.error404{
+    width:100%;
+    min-height:100vh;
+    background:#f4f5f8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.error404Card{
+    text-align:center;
+}
+
+.error404Logo{
+    color:#EB0A1E;
+    font-size:44px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
+
+.error404Icon{
+    width:120px;
+    height:120px;
+    background:#d71920;
+    margin:0 auto 30px;
+    clip-path:polygon(50% 0%,0% 100%,100% 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.error404Icon svg{
+    color:#fff;
+    font-size:55px;
+    margin-top:20px;
+}
+
+.error404Title{
+    font-size:72px;
+    font-weight:700;
+    color:#000;
+    margin-bottom:12px;
+}
+
+.error404SubTitle{
+    font-size:32px;
+    font-weight:500;
+    color:#222;
+    margin-bottom:18px;
+}
+
+.error404Text{
+    color:#666;
+    font-size:20px;
+    margin-bottom:40px;
+}
+
+.error404Btn{
+    display:inline-block;
+    padding:15px 40px;
+    background:#EB0A1E;
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    border-radius:4px;
+    transition:.3s;
+}
+
+.error404Btn:hover{
+    background:#b80018;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.error404Logo{
+    font-size:32px;
+}
+
+.error404Icon{
+    width:90px;
+    height:90px;
+}
+
+.error404Icon svg{
+    font-size:40px;
+}
+
+.error404Title{
+    font-size:52px;
+}
+
+.error404SubTitle{
+    font-size:24px;
+}
+
+.error404Text{
+    font-size:16px;
+}
+
+.error404Btn{
+    padding:12px 28px;
+    font-size:16px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------- Testimonials  page ------------------------------------*/
+
+/*==============================
+CustomerStories.css
+===============================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#fff;
+}
+
+/*==============================
+Hero
+===============================*/
+
+.csHero{
+    width:100%;
+    height:190px;
+    background:url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600")
+    center center/cover no-repeat;
+    position:relative;
+}
+
+.csOverlay{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    align-items:center;
+}
+
+.csHeroContent{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.csHeroContent h1{
+    color:#fff;
+    font-size:60px;
+    font-weight:700;
+}
+
+/*==============================
+Tabs
+===============================*/
+
+.csTabs{
+    display:flex;
+    background:#000;
+}
+
+.csTabs a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    padding:18px 0;
+    font-size:12px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.csTabs a:hover,
+.csTabs .active{
+    background:#1d1d1d;
+    color:#eb0a1e;
+}
+
+/*==============================
+Container
+===============================*/
+
+.csContainer{
+    width:90%;
+    max-width:1400px;
+    margin:35px auto 60px;
+}
+
+.csGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+/*==============================
+Heading
+===============================*/
+
+.csLeft h3,
+.csRight h3{
+    display:flex;
+    align-items:center;
+    font-size:18px;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.csLeft h3 span,
+.csRight h3 span{
+    width:3px;
+    height:30px;
+    background:#eb0a1e;
+    margin-right:12px;
+}
+
+.csLeft h3 small{
+    font-size:15px;
+    color:#666;
+    font-weight:400;
+}
+
+/*==============================
+Inputs
+===============================*/
+
+.csLeft input,
+.csLeft select,
+.csRight textarea,
+.csCaptcha input{
+    width:100%;
+    border:1px solid #e5e5e5;
+    background:#f7f7f7;
+    padding:15px;
+    font-size:14px;
+    margin-bottom:18px;
+    outline:none;
+}
+
+.csLeft input:focus,
+.csLeft select:focus,
+.csRight textarea:focus,
+.csCaptcha input:focus{
+    border:1px solid #eb0a1e;
+}
+
+.csRight textarea{
+    resize:none;
+    height:160px;
+}
+
+/*==============================
+Rows
+===============================*/
+
+.csRow{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+/*==============================
+Upload Buttons
+===============================*/
+
+.csUpload{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin:20px 0;
+}
+
+.csUpload button{
+    flex:1;
+    background:#333;
+    color:#fff;
+    border:none;
+    padding:13px;
+    cursor:pointer;
+    font-size:13px;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.csUpload button:hover{
+    background:#eb0a1e;
+}
+
+.csUpload svg{
+    margin-right:8px;
+}
+
+/*==============================
+Captcha
+===============================*/
+
+.csCaptcha{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.captchaBox{
+    width:110px;
+    height:44px;
+    background:#f4d99d;
+    border:1px solid #ddd;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-style:italic;
+    color:#666;
+    letter-spacing:2px;
+}
+
+.refresh{
+    font-size:24px;
+    cursor:pointer;
+}
+
+.csCaptcha input{
+    margin:0;
+}
+
+/*==============================
+Submit
+===============================*/
+
+.csSubmit{
+    margin-top:22px;
+    text-align:right;
+}
+
+.csSubmit button{
+    background:#eb0a1e;
+    color:#fff;
+    border:none;
+    padding:14px 40px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.csSubmit button:hover{
+    background:#c80019;
+}
+
+/*==============================
+Disclaimer
+===============================*/
+
+.csDisclaimer{
+    margin-top:60px;
+    border-top:1px solid #e5e5e5;
+    padding-top:30px;
+}
+
+.csDisclaimer h4{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.csDisclaimer p{
+    color:#555;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/*==============================
+Responsive
+===============================*/
+
+@media(max-width:992px){
+
+.csGrid{
+    grid-template-columns:1fr;
+}
+
+.csUpload{
+    flex-direction:column;
+}
+
+.csHeroContent h1{
+    font-size:46px;
+}
+
+}
+
+@media(max-width:768px){
+
+.csHero{
+    height:140px;
+}
+
+.csHeroContent h1{
+    font-size:34px;
+}
+
+.csTabs{
+    flex-direction:column;
+}
+
+.csRow{
+    grid-template-columns:1fr;
+}
+
+.csCaptcha{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.csSubmit{
+    text-align:left;
+}
+
+.csSubmit button{
+    width:100%;
+}
+
+.csUpload button{
+    width:100%;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================
+  Feedback.css
+==============================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#fff;
+    color:#222;
+}
+
+/*==============================
+Header
+==============================*/
+
+.fbHeader{
+    width:100%;
+    padding:25px 0;
+    display:flex;
+    justify-content:center;
+    border-bottom:1px solid #ececec;
+}
+
+.fbLogo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.fbIcon{
+    color:#e4002b;
+    font-size:42px;
+}
+
+.fbLogo h1{
+    font-size:42px;
+    font-weight:700;
+    line-height:1;
+}
+
+.fbLogo span{
+    color:#777;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/*==============================
+Top Section
+==============================*/
+
+.fbTop{
+    width:90%;
+    max-width:1500px;
+    margin:35px auto 50px;
+    display:grid;
+    grid-template-columns:1fr 520px;
+    gap:60px;
+    align-items:center;
+}
+
+.fbVehicleImage{
+    text-align:center;
+}
+
+.fbVehicleImage img{
+    width:100%;
+    max-width:500px;
+}
+
+/*==============================
+Form
+==============================*/
+
+.fbVehicleForm,
+.fbForm{
+    width:90%;
+    max-width:1500px;
+    margin:auto;
+}
+
+.fbVehicleForm input,
+.fbVehicleForm select,
+.fbForm input,
+.fbForm select,
+.fbForm textarea{
+    width:100%;
+    background:#fafafa;
+    border:1px solid #e6e6e6;
+    padding:14px 15px;
+    margin-bottom:16px;
+    font-size:14px;
+    outline:none;
+    transition:.3s;
+}
+
+.fbVehicleForm input:focus,
+.fbVehicleForm select:focus,
+.fbForm input:focus,
+.fbForm select:focus,
+.fbForm textarea:focus{
+    border-color:#eb0a1e;
+}
+
+.fbForm textarea{
+    resize:none;
+    height:130px;
+}
+
+/*==============================
+Rows
+==============================*/
+
+.fbRow{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.fbGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.fbName{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:15px;
+}
+
+/*==============================
+Heading
+==============================*/
+
+.fbForm h2{
+    display:flex;
+    align-items:center;
+    margin-bottom:30px;
+    font-size:20px;
+    font-weight:700;
+}
+
+.fbForm h2 span{
+    width:3px;
+    height:30px;
+    background:#eb0a1e;
+    margin-right:12px;
+}
+
+.fbForm h2 small{
+    color:#666;
+    font-size:15px;
+    font-weight:400;
+}
+
+/*==============================
+Verify
+==============================*/
+
+.fbVerify{
+    display:grid;
+    grid-template-columns:1fr 130px;
+    gap:15px;
+}
+
+.fbVerify button{
+    background:#222;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.fbVerify button:hover{
+    background:#eb0a1e;
+}
+
+/*==============================
+Agreement
+==============================*/
+
+.fbAgree{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    margin-top:18px;
+    cursor:pointer;
+}
+
+.fbAgree svg{
+    color:#4CAF50;
+    font-size:24px;
+    margin-top:2px;
+}
+
+.fbAgree span{
+    font-size:14px;
+    line-height:1.7;
+}
+
+.fbAgree a{
+    color:#eb0a1e;
+    text-decoration:none;
+}
+
+.fbAgree a:hover{
+    text-decoration:underline;
+}
+
+/*==============================
+Submit
+==============================*/
+
+.fbSubmit{
+    margin-top:30px;
+    text-align:right;
+}
+
+.fbSubmit button{
+    background:#eb0a1e;
+    color:#fff;
+    border:none;
+    padding:14px 42px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.fbSubmit button:hover{
+    background:#c30018;
+}
+
+/*==============================
+Disclaimer
+==============================*/
+
+.fbDisclaimer{
+    margin-top:45px;
+    padding-top:25px;
+    border-top:1px solid #e8e8e8;
+}
+
+.fbDisclaimer h4{
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.fbDisclaimer p{
+    color:#555;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/*==============================
+Responsive
+==============================*/
+
+@media(max-width:1200px){
+
+.fbTop{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.fbVehicleImage{
+    order:-1;
+}
+
+.fbGrid{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.fbHeader{
+    padding:18px 0;
+}
+
+.fbLogo h1{
+    font-size:28px;
+}
+
+.fbIcon{
+    font-size:30px;
+}
+
+.fbTop{
+    width:95%;
+    gap:30px;
+}
+
+.fbVehicleForm,
+.fbForm{
+    width:95%;
+}
+
+.fbRow{
+    grid-template-columns:1fr;
+}
+
+.fbName{
+    grid-template-columns:1fr;
+}
+
+.fbVerify{
+    grid-template-columns:1fr;
+}
+
+.fbSubmit{
+    text-align:left;
+}
+
+.fbSubmit button{
+    width:100%;
+}
+
+.fbForm h2{
+    font-size:16px;
+    flex-wrap:wrap;
+}
+
+.fbForm h2 small{
+    display:block;
+    margin-left:15px;
+    margin-top:5px;
+}
+
+}

@@ -1,0 +1,794 @@
+
+
+   /*///////////////////////////////////////////////////////////////////////////////////////// TOYOTA FINANCE CSR PAGE */
+
+/* =========================================================
+   TOYOTA FINANCE PAGE
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.toyota-finance-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  color: #222;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.toyota-finance-page img {
+  display: block;
+  max-width: 100%;
+}
+
+.finance-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.finance-topbar {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.finance-topbar-inner {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 74px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.finance-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.finance-brand-mark {
+  width: 65px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #e50000;
+  border-radius: 50%;
+
+  color: #e50000;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.finance-brand-text {
+  color: #222;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.finance-mini-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.finance-mini-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 12px;
+  transition: .2s ease;
+}
+
+.finance-mini-nav a:hover {
+  color: #e40000;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.finance-intro {
+  padding: 85px 0 90px;
+  background: #fff;
+}
+
+.finance-intro-content {
+  width: 850px;
+  max-width: 100%;
+}
+
+.finance-red-label {
+  display: block;
+  margin-bottom: 18px;
+
+  color: #e40000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.finance-intro h1 {
+  margin: 0 0 28px;
+
+  font-size: 50px;
+  line-height: 1.08;
+  font-weight: 300;
+}
+
+.finance-intro h1 strong {
+  font-weight: 700;
+}
+
+.finance-intro p {
+  max-width: 900px;
+  margin: 0 0 18px;
+
+  color: #555;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.finance-section-heading {
+  margin-bottom: 48px;
+}
+
+.finance-section-heading span {
+  display: block;
+  margin-bottom: 12px;
+
+  color: #e40000;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.finance-section-heading h2 {
+  margin: 0;
+
+  color: #222;
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.finance-benefits {
+  padding: 90px 0;
+  background: #f5f5f5;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+
+  background: #ddd;
+  border: 1px solid #ddd;
+}
+
+.benefit-item {
+  min-height: 100px;
+  padding: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  background: #fff;
+}
+
+.benefit-number {
+  min-width: 48px;
+  color: #e40000;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.benefit-item h3 {
+  margin: 0;
+
+  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.finance-products {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.finance-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.finance-product-card {
+  overflow: hidden;
+  background: #f6f6f6;
+  border: 1px solid #e5e5e5;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.finance-product-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.10);
+}
+
+.finance-product-image {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.finance-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform .5s ease;
+}
+
+.finance-product-card:hover
+.finance-product-image img {
+  transform: scale(1.06);
+}
+
+.finance-product-content {
+  padding: 28px 25px 30px;
+}
+
+.finance-product-content h3 {
+  min-height: 45px;
+  margin: 0 0 18px;
+
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.finance-product-content ul {
+  min-height: 130px;
+
+  margin: 0 0 25px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.finance-product-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  margin-bottom: 12px;
+
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.finance-product-content li span {
+  color: #e40000;
+  font-weight: 700;
+}
+
+.finance-apply-button {
+  width: 100%;
+  min-height: 45px;
+
+  border: 0;
+  background: #e40000;
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  transition: .2s ease;
+}
+
+.finance-apply-button:hover {
+  background: #b90000;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.finance-modal-overlay {
+  position: fixed;
+  z-index: 9999;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0,0,0,.65);
+}
+
+.finance-modal {
+  position: relative;
+
+  width: 500px;
+  max-width: 100%;
+
+  padding: 45px;
+
+  background: #fff;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.25);
+}
+
+.finance-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+
+  width: 35px;
+  height: 35px;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 28px;
+}
+
+.finance-modal > span {
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.finance-modal h2 {
+  margin: 15px 0;
+
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.finance-modal p {
+  color: #666;
+  line-height: 1.7;
+}
+
+.finance-modal-apply {
+  margin-top: 20px;
+  padding: 14px 30px;
+
+  border: 0;
+
+  background: #e40000;
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DOCUMENTS
+========================================================= */
+
+.finance-documents {
+  padding: 100px 0;
+
+  background: #f5f5f5;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+}
+
+.finance-document-table {
+  width: 100%;
+  min-width: 1100px;
+
+  border-collapse: collapse;
+
+  font-size: 11px;
+}
+
+.finance-document-table th {
+  padding: 15px 10px;
+
+  background: #222;
+  color: #fff;
+
+  border: 1px solid #444;
+
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.finance-document-table td {
+  padding: 13px 10px;
+
+  border: 1px solid #ddd;
+
+  color: #444;
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.45;
+}
+
+.finance-document-table td:first-child {
+  width: 30%;
+
+  color: #333;
+
+  text-align: left;
+
+  font-weight: 500;
+}
+
+.finance-document-table tbody tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+.table-check {
+  color: #e40000;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.table-empty {
+  color: #bbb;
+}
+
+
+/* =========================================================
+   ADDRESS PROOF
+========================================================= */
+
+.address-proof {
+  padding: 100px 0;
+
+  background: #fff;
+}
+
+.address-content {
+  max-width: 1000px;
+}
+
+.address-content h3 {
+  margin: 35px 0 15px;
+
+  color: #222;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.address-content h4 {
+  margin: 25px 0 10px;
+
+  color: #333;
+  font-size: 16px;
+}
+
+.address-content ul {
+  margin: 0 0 25px;
+  padding-left: 22px;
+}
+
+.address-content li {
+  margin-bottom: 9px;
+
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.address-note {
+  margin: 30px 0;
+  padding: 22px 25px;
+
+  border-left: 4px solid #e40000;
+
+  background: #f5f5f5;
+}
+
+.address-note strong {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #e40000;
+}
+
+.address-note p {
+  margin: 0;
+
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.address-warning {
+  margin: 30px 0;
+  padding: 20px 25px;
+
+  background: #fff5f5;
+  border: 1px solid #f0cccc;
+}
+
+.address-warning strong {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #e40000;
+}
+
+.address-warning p {
+  margin: 0;
+
+  color: #555;
+  font-size: 13px;
+}
+
+.non-individual {
+  margin-top: 40px;
+  padding-top: 25px;
+
+  border-top: 1px solid #ddd;
+}
+
+.non-individual h3 {
+  margin-top: 0;
+}
+
+.non-individual p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   LOAN PROCESS
+========================================================= */
+
+.loan-process {
+  padding: 100px 0;
+
+  background: #f5f5f5;
+}
+
+.loan-process-image {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ddd;
+
+  border: 1px solid #ddd;
+}
+
+.loan-process-image img {
+  width: 100%;
+  min-height: 350px;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.finance-cta {
+  min-height: 350px;
+
+  padding: 80px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.72)
+    ),
+    url("https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1800&q=85")
+    center / cover;
+
+  color: #fff;
+}
+
+.finance-cta span {
+  color: #e40000;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.finance-cta h2 {
+  margin: 18px 0 10px;
+
+  font-size: 42px;
+  font-weight: 300;
+}
+
+.finance-cta p {
+  margin-bottom: 28px;
+
+  color: #ddd;
+}
+
+.finance-cta button {
+  padding: 15px 35px;
+
+  border: 0;
+
+  background: #e40000;
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.finance-cta button:hover {
+  background: #b90000;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .finance-mini-nav {
+    gap: 14px;
+  }
+
+  .finance-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .finance-topbar-inner {
+    min-height: auto;
+
+    padding: 18px 0;
+
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .finance-mini-nav {
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding-bottom: 5px;
+
+    justify-content: flex-start;
+  }
+
+  .finance-mini-nav a {
+    white-space: nowrap;
+  }
+
+  .finance-intro {
+    padding: 60px 0;
+  }
+
+  .finance-intro h1 {
+    font-size: 38px;
+  }
+
+  .finance-intro p {
+    font-size: 14px;
+  }
+
+  .finance-section-heading h2 {
+    font-size: 31px;
+  }
+
+  .finance-benefits,
+  .finance-products,
+  .finance-documents,
+  .address-proof,
+  .loan-process {
+    padding: 65px 0;
+  }
+
+  .finance-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .finance-product-image {
+    height: 230px;
+  }
+
+  .finance-modal {
+    padding: 35px 25px;
+  }
+
+  .finance-cta h2 {
+    font-size: 31px;
+  }
+
+}
+

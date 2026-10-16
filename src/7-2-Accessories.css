@@ -1,0 +1,1160 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.accHeader{
+    width:100%;
+    background:#fff;
+    border-top:3px solid #222;
+    border-bottom:2px solid #e5e5e5;
+    padding:20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.accHeaderContainer{
+    width:94%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+
+
+/* Logo */
+.accLogoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.accLogo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.accLogoBox{
+    width:140px;
+    height:90px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.accToyotaLogo{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+}
+
+
+
+
+
+/* Search */
+
+.accSearchBox{
+    width:430px;
+    display:flex;
+    align-items:center;
+    border-bottom:2px solid #d8d8d8;
+    transition:border-color 0.3s ease;
+}
+
+.accSearchBox:hover,
+.accSearchBox:focus-within {
+    border-bottom-color:#EB0A1E;
+}
+
+.accSearchInput{
+    flex:1;
+    border:none;
+    outline:none;
+    padding:14px 12px;
+    font-size:15px;
+    transition:background 0.3s ease;
+}
+
+.accSearchInput:focus {
+    background:#f9f9f9;
+}
+
+.accSearchBtn{
+    border:none;
+    background:white;
+    cursor:pointer;
+    font-size:28px;
+    transition:color 0.3s ease, transform 0.2s ease;
+    color:#333;
+}
+
+.accSearchBtn:hover {
+    color:#EB0A1E;
+    transform:scale(1.1);
+}
+
+/* Right */
+
+.accMenu{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.accMenuItem{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    transition: transform 0.3s ease;
+}
+
+.accMenuItem:hover {
+    transform: translateY(-3px);
+}
+
+.accIcon{
+    font-size:28px;
+    color:#111;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.accMenuItem:hover .accIcon {
+    color:#EB0A1E;
+    transform: scale(1.15);
+}
+
+.accMenuItem p{
+    margin-top:8px;
+    font-size:14px;
+    color:#111;
+    font-weight:500;
+    transition:color 0.3s ease;
+}
+
+.accMenuItem:hover p{
+    color:#EB0A1E;
+}
+
+/* Cart */
+
+.accCartWrapper{
+    position:relative;
+}
+
+.accCartBadge{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    width:20px;
+    height:20px;
+    background:#EB0A1E;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+    font-weight:bold;
+    box-shadow: 0 2px 6px rgba(235, 10, 30, 0.4);
+}
+
+/* Responsive */
+
+@media(max-width:1024px){
+
+.accHeaderContainer{
+    flex-direction:column;
+    gap:25px;
+}
+
+.accSearchBox{
+    width:100%;
+}
+
+.accMenu{
+    width:100%;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+   /* {============================== SECOND HEADER ===================================} */
+
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.toyotaServiceBar{
+    width:100%;
+    height:56px;
+    background:#121212;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.toyotaServiceItem{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:0 28px;
+
+    color:#ffffff;
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.toyotaServiceItem:hover{
+    color:#EB0A1E;
+}
+
+.toyotaServiceIcon{
+    font-size:28px;
+    color:white;
+    transition:.35s;
+}
+
+.toyotaServiceItem:hover .toyotaServiceIcon{
+    color:#EB0A1E;
+}
+
+.toyotaServiceItem span{
+    font-size:16px;
+    font-weight:400;
+    white-space:nowrap;
+}
+
+.toyotaServiceDivider{
+    width:1px;
+    height:34px;
+    background:#555;
+}
+
+/* Tablet */
+
+@media(max-width:1200px){
+
+.toyotaServiceBar{
+    overflow-x:auto;
+    justify-content:flex-start;
+}
+
+.toyotaServiceBar::-webkit-scrollbar{
+    display:none;
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.toyotaServiceBar{
+    height:70px;
+}
+
+.toyotaServiceItem{
+    padding:0 20px;
+}
+
+.toyotaServiceIcon{
+    font-size:24px;
+}
+
+.toyotaServiceItem span{
+    font-size:14px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<   HOME BANNER SLIDER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+.homeBannerSlider {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.homeBannerImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.homeBannerImage.activeBanner {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .homeBannerSlider {
+    height: 250px;
+  }
+}
+
+
+
+
+
+
+
+ /* >>>>>>>>>>>>>>>>>>>>>>>>>>>    7 - 2 - 14   Cars Show.jsx  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+ /* ===========================
+   TOYOTA PARTS SELECTOR
+=========================== */
+
+/* 7-2-Accessories.css */
+
+.partsSection {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.partsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Heading */
+
+.partsHeading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.partsHeading h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.partsHeading span {
+  flex: 1;
+  height: 1px;
+  background-color: #1a1a1a;
+}
+
+/* Grid */
+
+.partsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 25px;
+}
+
+@media (max-width: 992px) {
+  .partsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .partsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+
+.partCard {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.partCard:hover {
+  transform: translateY(-5px);
+}
+
+.partImage {
+  background-color: #e6e6e6;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Category tag */
+
+.partCategory {
+  margin: 14px 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.partTitle {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1a1a1a;
+  display: inline-block;
+}
+
+/* Button */
+
+.viewAllWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.viewAllBtn {
+  background-color: #eb0a1e;
+  color: #ffffff;
+  border: none;
+  padding: 14px 40px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.viewAllBtn:hover {
+  background-color: #c50818;
+}
+
+
+
+/* 7-2-Accessories.css */
+
+.partsSection {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.partsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Heading */
+
+.partsHeading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.partsHeading h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.partsHeading span {
+  flex: 1;
+  height: 1px;
+  background-color: #1a1a1a;
+}
+
+/* Grid */
+
+.partsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 25px;
+}
+
+@media (max-width: 992px) {
+  .partsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .partsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+
+.partCard {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.partCard:hover {
+  transform: translateY(-5px);
+}
+
+.partImage {
+  background-color: #e6e6e6;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.35s ease;
+}
+
+.partCard:hover .partImage img {
+  filter: grayscale(0%);
+}
+
+/* Category tag */
+
+.partCategory {
+  margin: 14px 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.partTitle {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1a1a1a;
+  display: inline-block;
+}
+
+/* Button */
+
+.viewAllWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.viewAllBtn {
+  background-color: #eb0a1e;
+  color: #ffffff;
+  border: none;
+  padding: 14px 40px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.viewAllBtn:hover {
+  background-color: #c50818;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------------------------- 7 2 15 FIRST PAGE ---------------------------------*/
+
+.homePromo{
+    width:100%;
+    background:#181818;
+    padding:80px 0;
+}
+
+.promoContainer{
+    width:1150px;
+    margin:auto;
+}
+
+.promoCard{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-bottom:60px;
+    align-items:center;
+    background:#111;
+    border:1px solid #ff0000;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.promoCard:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.5);
+}
+
+.reverse{
+    grid-template-columns:1fr 1fr;
+}
+
+.promoImage{
+    overflow:hidden;
+}
+
+.promoImage img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.promoCard:hover img{
+    transform:scale(1.08);
+}
+
+.promoContent{
+    padding:55px;
+}
+
+.promoContent h2{
+    color:white;
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.promoContent span{
+    color:#eb0a1e;
+}
+
+.promoContent p{
+    color:#cfcfcf;
+    line-height:28px;
+    margin-bottom:35px;
+}
+
+.promoContent button{
+    background:#eb0a1e;
+    color:white;
+    border:none;
+    padding:15px 38px;
+    cursor:pointer;
+    transition:.35s;
+    font-size:16px;
+}
+
+.promoContent button:hover{
+    background:white;
+    color:black;
+}
+
+@media(max-width:992px){
+
+.promoContainer{
+width:92%;
+}
+
+.promoCard{
+grid-template-columns:1fr;
+}
+
+.reverse{
+display:flex;
+flex-direction:column-reverse;
+}
+
+}
+
+@media(max-width:600px){
+
+.promoContent{
+padding:30px;
+}
+
+.promoContent h2{
+font-size:28px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------------------------- 7 2 16 SECOND PAGE ---------------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pcSection {
+  width: 100%;
+  max-width: 1220px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.pcHeading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.pcHeading h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #222;
+  white-space: nowrap;
+}
+
+.pcLine {
+  flex: 1;
+  height: 2px;
+  background: #e4002b;
+  margin-left: 25px;
+}
+
+.pcGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.pcCard {
+  cursor: pointer;
+}
+
+.pcImageBox {
+  width: 100%;
+  height: 260px;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pcImageBox img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  transition: .35s;
+}
+
+.pcCard:hover img {
+  transform: scale(1.06);
+}
+
+.pcCard h3 {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+.pcBottomLine {
+  width: 180px;
+  height: 1px;
+  background: #222;
+  margin-top: 15px;
+}
+
+@media (max-width: 992px) {
+  .pcGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .pcGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pcHeading h2 {
+    font-size: 28px;
+  }
+
+  .pcImageBox {
+    height: 220px;
+  }
+}
+
+
+
+
+/* --------------------------------------- Accessories - footer ------------------------------------------*/
+
+/* ============================
+   TOYOTA PARTS FOOTER
+============================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.tpFooter{
+    width:100%;
+    background:#000;
+    color:#fff;
+    padding:70px 0 25px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.tpFooterContainer{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* =====================
+     TOP GRID
+===================== */
+
+.tpFooterGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1.2fr;
+    gap:30px;
+    margin-bottom:20px;
+}
+
+.tpColumn h3{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:28px;
+    color:#fff;
+}
+
+.tpColumn a,
+.tpColumn p{
+    display:block;
+    color:#ddd;
+    text-decoration:none;
+    font-size:20px;
+    line-height:2;
+    transition:.3s;
+}
+
+.tpColumn a:hover{
+    color:#eb0a1e;
+    padding-left:8px;
+}
+
+.tpAddress{
+    margin-top:20px;
+}
+
+.tpAddress strong{
+    display:block;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.tpAddress p{
+    font-size:20px;
+    line-height:1.7;
+    color:#cfcfcf;
+}
+
+/* =====================
+      IMAGE
+===================== */
+
+.tpImageColumn{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.tpImageColumn img{
+    width:100%;
+    max-width:400px;
+    border-radius:4px;
+    transition:.4s;
+}
+
+.tpImageColumn img:hover{
+    transform:scale(1.04);
+}
+
+/* =====================
+      POLICY ROW
+===================== */
+
+.tpPolicyRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 0;
+    border-top:1px solid #333;
+    border-bottom:2px solid #eb0a1e;
+    gap:20px;
+}
+
+.tpPolicies{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.tpPolicies a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:21px;
+    transition:.3s;
+    position:relative;
+}
+
+.tpPolicies a:not(:last-child)::after{
+    content:"|";
+    color:#666;
+    margin-left:20px;
+}
+
+.tpPolicies a:hover{
+    color:#eb0a1e;
+}
+
+/* =====================
+      PAYMENTS
+===================== */
+
+.tpPayments{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.tpPayments span{
+    font-size:22px;
+    color:#fff;
+}
+
+.tpPayments img{
+    width:70px;
+    height:42px;
+    object-fit:contain;
+    background:#fff;
+    padding:4px;
+    border-radius:4px;
+    transition:.3s;
+}
+
+.tpPayments img:hover{
+    transform:translateY(-4px);
+}
+
+/* =====================
+      COPYRIGHT
+===================== */
+
+.tpCopyright{
+    text-align:left;
+    padding-top:25px;
+    color:#cfcfcf;
+    font-size:21px;
+}
+
+/* =====================
+      TABLET
+===================== */
+
+@media(max-width:1200px){
+
+.tpFooterGrid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* =====================
+      MOBILE
+===================== */
+
+@media(max-width:768px){
+
+.tpFooterGrid{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+.tpPolicyRow{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.tpPolicies{
+flex-direction:column;
+gap:12px;
+}
+
+.tpPolicies a::after{
+display:none;
+}
+
+.tpPayments{
+flex-wrap:wrap;
+}
+
+.tpColumn h3{
+font-size:26px;
+}
+
+.tpColumn a,
+.tpColumn p{
+font-size:18px;
+}
+
+.tpAddress strong{
+font-size:22px;
+}
+
+.tpAddress p{
+font-size:18px;
+}
+
+.tpPayments span{
+font-size:18px;
+}
+
+.tpCopyright{
+font-size:17px;
+}
+
+}
+
+
+
+
+.tpPayments{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.tpPayTitle{
+    color:#fff;
+    font-size:20px;
+    font-weight:500;
+}
+
+.tpPayIcons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.tpPayIcons img{
+    width:70px;
+    height:45px;
+    background:#fff;
+    border-radius:6px;
+    padding:6px;
+    object-fit:contain;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.tpPayIcons img:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(255,255,255,.15);
+}
+
+@media(max-width:768px){
+
+.tpPayments{
+    justify-content:flex-start;
+}
+
+.tpPayTitle{
+    width:100%;
+    margin-bottom:10px;
+}
+
+.tpPayIcons{
+    flex-wrap:wrap;
+}
+
+}

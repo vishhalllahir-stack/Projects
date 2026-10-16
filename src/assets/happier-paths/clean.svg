@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#1f5f3d"/>
+  <circle cx="330" cy="275" r="140" fill="#dff3d8"/>
+  <path d="M720 210 L980 520 L460 520 Z" fill="#7ecb6b"/>
+  <rect x="180" y="530" width="840" height="140" rx="24" fill="#ffffff" fill-opacity="0.16"/>
+  <text x="600" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#ffffff">Happier Paths To Clean</text>
+</svg>

@@ -1,0 +1,290 @@
+/* RecallLookup.css
+   Companion stylesheet for RecallLookup.jsx.
+   Import with: import "./RecallLookup.css";
+*/
+
+.recall-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+}
+
+/* ---------- Header ---------- */
+.recall-header {
+  background: #ffffff;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 28px 20px 24px;
+  text-align: center;
+}
+
+.recall-header__logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.recall-header__icon {
+  width: 36px;
+  height: 36px;
+  color: #e4002b;
+  flex-shrink: 0;
+}
+
+.recall-header__title {
+  text-align: left;
+  font-size: 19px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.recall-header__subtitle {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #333333;
+}
+
+/* ---------- Card ---------- */
+.recall-main {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.recall-card {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  padding: 36px 40px 32px;
+}
+
+.recall-intro {
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+/* ---------- Field label ---------- */
+.recall-field-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.recall-field-label__bar {
+  width: 4px;
+  height: 16px;
+  background: #e4002b;
+  display: inline-block;
+}
+
+.recall-field-label__text {
+  font-weight: 800;
+  font-size: 12.5px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* ---------- Inputs ---------- */
+.recall-input {
+  padding: 12px 14px;
+  font-size: 13px;
+  background: #f4f4f4;
+  border: 1px solid #d9d9d9;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.recall-input::placeholder {
+  color: #8a8a8a;
+  letter-spacing: 0.3px;
+}
+
+.recall-input:hover {
+  background: #eaeaea;
+  border-color: #b7b7b7;
+}
+
+.recall-input:focus {
+  background: #ffffff;
+  border-color: #e4002b;
+  box-shadow: 0 0 0 3px rgba(228, 0, 43, 0.12);
+}
+
+.recall-input--error {
+  background: #fff5f6;
+  border-color: #e4002b;
+}
+
+.recall-input--vin {
+  width: 100%;
+  max-width: 460px;
+}
+
+.recall-input--captcha {
+  width: 200px;
+}
+
+.recall-error-msg {
+  color: #e4002b;
+  font-size: 12px;
+  margin-top: 6px;
+  min-height: 14px;
+}
+
+/* ---------- Captcha ---------- */
+.recall-captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.recall-captcha-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recall-captcha-visual {
+  user-select: none;
+  font-weight: 800;
+  font-size: 20px;
+  font-style: italic;
+  letter-spacing: 6px;
+  padding: 10px 16px;
+  color: #333333;
+  border: 1px solid #d9d9d9;
+  text-decoration: line-through;
+  text-decoration-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  background-image: repeating-linear-gradient(
+    135deg,
+    #ececec,
+    #ececec 4px,
+    #e2e2e2 4px,
+    #e2e2e2 8px
+  );
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.recall-captcha-visual:hover {
+  background-color: #e0e0e0;
+}
+
+.recall-captcha-visual:active {
+  transform: scale(0.97);
+}
+
+.recall-refresh-icon {
+  width: 20px;
+  height: 20px;
+  color: #222222;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.15s ease;
+}
+
+.recall-refresh-icon:hover {
+  color: #e4002b;
+  transform: rotate(120deg);
+}
+
+/* ---------- Submit button ---------- */
+.recall-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 34px;
+  background: #e4002b;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.recall-submit-btn:hover:not(:disabled) {
+  background: #c2001f;
+  box-shadow: 0 4px 10px rgba(228, 0, 43, 0.25);
+}
+
+.recall-submit-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.recall-submit-btn:disabled {
+  background: #e29aa5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.recall-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: recall-spin 0.7s linear infinite;
+}
+
+@keyframes recall-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Divider & results ---------- */
+.recall-divider {
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  margin-top: 28px;
+}
+
+.recall-result {
+  margin-top: 24px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.recall-result strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.recall-result--found {
+  border-left: 4px solid #e4002b;
+  background: #fff5f6;
+  padding: 14px 18px;
+}
+
+.recall-result--ok {
+  border-left: 4px solid #1a8a3d;
+  background: #f2fbf4;
+  padding: 14px 18px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .recall-card {
+    padding: 28px 20px 24px;
+  }
+
+  .recall-captcha-row {
+    gap: 12px;
+  }
+
+  .recall-input--captcha {
+    width: 160px;
+  }
+
+  .recall-submit-btn {
+    padding: 12px 22px;
+  }
+}

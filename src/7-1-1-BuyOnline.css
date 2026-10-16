@@ -1,0 +1,631 @@
+.buyOnlinePage{
+    position:relative;
+    min-height:600px;
+}
+
+/* Hide by default */
+.buyDropdown{
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:210px;
+    background:#fff;
+    border:1px solid #ddd;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+    transition:.3s;
+    z-index:999;
+}
+
+/* Show only when hovering over Buy Online page */
+.buyOnlinePage:hover .buyDropdown{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.buyDropdown a{
+    display:block;
+    padding:14px 12px;
+    color:#333;
+    text-decoration:none;
+    border-bottom:1px solid #eee;
+    font-size:15px;
+}
+
+.buyDropdown a:last-child{
+    border-bottom:none;
+}
+
+.buyDropdown a:hover{
+    background:#f5f5f5;
+    color:#e4002b;
+    padding-left:18px;
+}
+
+.buyContent{
+    margin-top:40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------<    UrbanCruiserHyryder   PAGE ------------------------------------------------>*/
+/* ================================
+   Urban Cruiser Hyryder Config CSS
+================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red: #EB0A1E;
+  --ink: #1a1a1a;
+  --grey-line: #e2e2e2;
+  --grey-bg: #f5f5f5;
+  --muted: #8a8a8a;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  padding: 18px 40px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.breadcrumb .sep { margin: 0 6px; }
+
+/* ---------- Layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  padding: 20px 40px 40px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* ---------- Gallery ---------- */
+.gallery { position: relative; }
+
+.stage {
+  position: relative;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #fff 0%, #fff 78%, #ececec 79%, #fff 100%);
+  overflow: hidden;
+}
+.stage img {
+  width: 88%;
+  max-width: 560px;
+  object-fit: contain;
+  transition: filter .25s ease;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #e9e9e9;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #555;
+  z-index: 2;
+}
+.nav-btn:hover { background: #ddd; }
+.nav-btn.prev { left: 0; }
+.nav-btn.next { right: 0; }
+
+.thumbs {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+  overflow-x: auto;
+}
+.thumb {
+  flex: 0 0 auto;
+  width: 110px;
+  height: 78px;
+  background: var(--grey-bg);
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+.thumb.active { border-color: var(--red); }
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Info panel ---------- */
+.info h1,
+h1 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 1px solid var(--grey-line);
+  padding-top: 14px;
+  margin-bottom: 18px;
+}
+.price-label {
+  font-size: 12px;
+  letter-spacing: .5px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.price-value { font-size: 22px; font-weight: 700; }
+
+.field { margin-bottom: 20px; }
+.field-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.opt {
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--ink);
+  transition: all .15s ease;
+}
+.opt:hover { border-color: var(--ink); }
+.opt.selected {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+.opt:disabled { opacity: .35; cursor: not-allowed; }
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px #d8d8d8;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.swatch:hover { transform: scale(1.08); }
+.swatch.selected {
+  border-color: var(--red);
+  box-shadow: 0 0 0 1px var(--red);
+}
+
+.booking {
+  border-top: 1px solid var(--grey-line);
+  padding-top: 18px;
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.buy-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  cursor: pointer;
+}
+.buy-btn:hover { background: #c60919; }
+
+/* ---------- Specifications ---------- */
+.specs-wrap {
+  padding: 20px 40px 60px;
+  border-top: 8px solid var(--grey-bg);
+}
+.specs-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 20px 0;
+}
+
+.tabs-row {
+  display: flex;
+  border: 1px solid var(--grey-line);
+  max-width: 700px;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 14px 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  background: #fff;
+  border-bottom: 3px solid transparent;
+}
+.tab.active {
+  background: var(--grey-bg);
+  border-bottom-color: var(--red);
+}
+.tab + .tab { border-left: 1px solid var(--grey-line); }
+
+.subtabs-row {
+  display: flex;
+  max-width: 400px;
+  margin-top: 18px;
+  border: 1px solid var(--grey-line);
+}
+.subtab {
+  flex: 1;
+  text-align: center;
+  padding: 12px 10px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  background: #fff;
+  border-bottom: 2px solid transparent;
+}
+.subtab.active {
+  background: var(--grey-bg);
+  border-bottom-color: var(--red);
+}
+.subtab + .subtab { border-left: 1px solid var(--grey-line); }
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+  margin-top: 30px;
+  max-width: 1000px;
+}
+@media (max-width: 700px) {
+  .spec-grid { grid-template-columns: 1fr; }
+}
+
+.spec-group { margin-bottom: 26px; }
+.spec-group h3 {
+  color: var(--red);
+  font-size: 13px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--grey-line);
+  padding-bottom: 6px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 13.5px;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ececec;
+}
+.spec-row span:first-child { color: var(--muted); }
+.spec-row span:last-child {
+  text-align: right;
+  font-weight: 600;
+  max-width: 60%;
+}
+
+.no-data {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 20px 0;
+  font-style: italic;
+}
+
+/* ---------- Disclaimer ---------- */
+.disclaimer {
+  padding: 30px 40px 60px;
+  background: var(--grey-bg);
+}
+.disclaimer h2 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.disclaimer ol {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.disclaimer li {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #444;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------- {      Innova_Hycross PAGE    }-----------------------------------------------------*/
+
+.OnlineBookingBTN{
+  margin-top: 20px;
+  border: 1px solid rgb(218, 171, 1);
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  padding: 5px 5px;
+  background-color: #f9e8c8;
+}
+.OnlineBookingBTN h4{
+  border: 2px solid #f2a000;
+  color:#f2a000;
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 3px 10px;
+  align-items: center;
+  justify-content: center;
+}
+/*------------------- click Here to Book Online BOX */
+.preferred-note {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 10px 22px;
+  background: #f9e8c8;
+  border: 1px solid #e8c78a;
+  box-sizing: border-box;
+}
+
+.preferred-note__icon {
+  width: 34px;
+  height: 40px;
+  min-width: 34px;
+  border: 2px solid #f2a000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preferred-note__icon span {
+  color: #f2a000;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+}
+
+.preferred-note__content p {
+  margin: 0;
+  color: #222;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.preferred-note__content a {
+  display: inline-block;
+  margin-top: 4px;
+  color: #0056d6;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.preferred-note__content a:hover {
+  text-decoration: underline;
+}
+
+/*---------------------Specifications in Innova_hycross */
+.specifications-section{
+    width:100%;
+    background:#fff;
+    padding:70px 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.spec-container{
+    width:72%;
+    margin:auto;
+}
+
+.spec-heading{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:35px;
+}
+
+.accordion-item{
+    border-bottom:2px solid #333;
+    margin-bottom:28px;
+}
+
+.accordion-header{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    border:none;
+    cursor:pointer;
+    padding:0 0 16px;
+    font-size:28px;
+    font-weight:700;
+}
+
+.icon{
+    width:46px;
+    height:46px;
+    background:#333;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:16px;
+    transition:.3s;
+}
+
+.icon.open{
+    transform:rotate(180deg);
+}
+
+.accordion-content{
+    padding:25px 0 35px;
+}
+
+.spec-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.spec-table td{
+    border:1px solid #ddd;
+    padding:15px;
+    font-size:18px;
+}
+
+.spec-table td:first-child{
+    font-weight:600;
+    width:45%;
+}
+
+.feature-list{
+    padding-left:25px;
+}
+
+.feature-list li{
+    margin:12px 0;
+    font-size:18px;
+}
+
+.disclaimer{
+    margin-top:45px;
+}
+
+.disclaimer h3{
+    font-size:34px;
+    margin-bottom:18px;
+}
+
+.disclaimer p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:16px;
+}
+
+@media(max-width:992px){
+
+.spec-container{
+    width:92%;
+}
+
+.spec-heading{
+    font-size:34px;
+}
+
+.accordion-header{
+    font-size:22px;
+}
+
+.spec-table td{
+    font-size:16px;
+}
+
+.disclaimer h3{
+    font-size:28px;
+}
+
+.disclaimer p{
+    font-size:16px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------------ {  Innova Crysta PAGE IN BUY ONLINE } ------------------------------------------------------------*/
