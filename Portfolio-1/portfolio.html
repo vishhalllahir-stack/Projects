@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of a full-stack developer skilled in HTML, CSS, JavaScript, React, Node.js, MongoDB, SQL, Python, Bootstrap, and Cyber Security."
+    />
+    <title>My Portfolio | Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolio.css" />
+  </head>
+  <body>
+    <div class="bg-3d" aria-hidden="true">
+      <canvas id="dotGrid" class="dot-grid-canvas"></canvas>
+      <div class="dot-spotlight" id="dotSpotlight"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="#home" class="logo">Dev<span>Portfolio</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          ☰
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <div class="eyebrow">Available for opportunities</div>
+            <h1>
+              Hi, I'm <span class="gradient">Vishal Ahir</span><br />Full-Stack
+              Developer
+            </h1>
+            <p class="hero-text">
+              I build clean, responsive web applications using modern frontend
+              and backend technologies. Passionate about creating useful
+              products and learning cyber security best practices.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">View My Work</a>
+              <a class="btn btn-outline" href="#contact">Contact Me</a>
+            </div>
+          </div>
+
+          <aside class="hero-card tilt-card reveal">
+            <div class="card-shine"></div>
+            <div class="profile-ring float-3d">
+              <div class="profile-inner" aria-hidden="true">VA</div>
+              <div class="profile-glow"></div>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-box stat-3d">
+                <strong>10+</strong>
+                <span>Projects</span>
+              </div>
+              <div class="stat-box stat-3d">
+                <strong>9</strong>
+                <span>Core Skills</span>
+              </div>
+              <div class="stat-box stat-3d">
+                <strong>100%</strong>
+                <span>Dedication</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>About Me</h2>
+            <p>
+              I'm a developer with hands-on experience across the full stack —
+              from crafting user interfaces to working with databases and
+              backend APIs.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <article class="about-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <h3>Who I Am</h3>
+              <p>
+                I enjoy turning ideas into real websites and apps. I focus on
+                writing readable code, responsive design, and building projects
+                that solve practical problems.
+              </p>
+              <ul class="highlight-list">
+                <li>Frontend development with HTML, CSS, JavaScript & React</li>
+                <li>Backend experience with Node.js and Python</li>
+                <li>Database skills with MongoDB and SQL</li>
+                <li>UI styling with Bootstrap and custom CSS</li>
+              </ul>
+            </article>
+
+            <article class="about-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <h3>What I Do</h3>
+              <p>
+                I work on interactive web apps, e-commerce layouts, games,
+                utilities, and learning projects that strengthen my development
+                and security knowledge.
+              </p>
+              <ul class="highlight-list">
+                <li>Responsive landing pages and product websites</li>
+                <li>
+                  Interactive tools like calculators, to-do lists, and games
+                </li>
+                <li>Understanding secure coding and cyber security basics</li>
+                <li>Always learning and improving my craft</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Skills & Technologies</h2>
+            <p>
+              Technologies I use to design, build, and deploy modern web
+              applications.
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">HTML</div>
+              <h3>HTML5</h3>
+              <p>Semantic structure, accessibility, and clean page layouts.</p>
+              <div class="skill-level"><span data-level="90"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">CSS</div>
+              <h3>CSS3</h3>
+              <p>Flexbox, Grid, animations, and responsive design.</p>
+              <div class="skill-level"><span data-level="88"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">JS</div>
+              <h3>JavaScript</h3>
+              <p>DOM manipulation, events, APIs, and interactive UI logic.</p>
+              <div class="skill-level"><span data-level="85"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">R</div>
+              <h3>React</h3>
+              <p>Component-based UI, state management, and modern SPAs.</p>
+              <div class="skill-level"><span data-level="75"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">N</div>
+              <h3>Node.js</h3>
+              <p>Server-side JavaScript, REST APIs, and backend logic.</p>
+              <div class="skill-level"><span data-level="72"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">M</div>
+              <h3>MongoDB</h3>
+              <p>NoSQL databases, collections, and document-based data.</p>
+              <div class="skill-level"><span data-level="70"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">SQL</div>
+              <h3>SQL</h3>
+              <p>Relational databases, queries, and structured data storage.</p>
+              <div class="skill-level"><span data-level="72"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">Py</div>
+              <h3>Python</h3>
+              <p>Scripting, automation, and backend development basics.</p>
+              <div class="skill-level"><span data-level="68"></span></div>
+            </article>
+
+            <article class="skill-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="skill-icon icon-3d">BS</div>
+              <h3>Bootstrap</h3>
+              <p>Rapid UI development with responsive components.</p>
+              <div class="skill-level"><span data-level="80"></span></div>
+            </article>
+          </div>
+
+          <div class="skill-tags reveal">
+            <span class="tag">Cyber Security Basics</span>
+            <span class="tag">Secure Coding</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Responsive Design</span>
+            <span class="tag">Local Storage</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Featured Projects</h2>
+            <p>
+              A selection of projects I've built while learning and practicing
+              web development.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🍔</div>
+              <h3>Food Website</h3>
+              <p>
+                A premium food ordering website with modern layout, menu cards,
+                and interactive UI.
+              </p>
+              <div class="project-links">
+                <a href="FOOD-Website.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🛒</div>
+              <h3>Amazon Clone</h3>
+              <p>
+                E-commerce style homepage clone built with HTML and CSS,
+                focusing on layout and styling.
+              </p>
+              <div class="project-links">
+                <a href="Amazon.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">⌨️</div>
+              <h3>Typing Speed Test</h3>
+              <p>
+                Real-time typing test with WPM, accuracy tracking, and a
+                polished dark UI.
+              </p>
+              <div class="project-links">
+                <a href="typing-speed-test.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">💼</div>
+              <h3>Portfolio Website</h3>
+              <p>
+                Portfolio website with a modern layout, skills, and projects
+                section.
+              </p>
+              <div class="project-links">
+                <a href="Portfoliyo-website.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <artical class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🛍️</div>
+              <h3>Amazon Clone</h3>
+              <p>
+                E-commerce style homepage clone built with HTML and CSS,
+                focusing on layout and styling.
+              </p>
+              <div class="project-links">
+                <a href="Amazon-2.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </artical>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🎮</div>
+              <h3>Rock Paper Scissors</h3>
+              <p>
+                Classic game with score tracking and interactive player vs
+                computer logic.
+              </p>
+              <div class="project-links">
+                <a href="Rock-Paper-Sessor.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🖼️</div>
+              <h3>Image Slider</h3>
+              <p>
+                Responsive image carousel with smooth transitions and navigation
+                controls.
+              </p>
+              <div class="project-links">
+                <a href="2-IMG-Slider.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🎯</div>
+              <h3>Number Guessing Game</h3>
+              <p>
+                Interactive guessing game with hints and replay functionality.
+              </p>
+              <div class="project-links">
+                <a
+                  href="7-Numbe-Guessing-Game.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+             <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">🎞️</div>
+              <h3>Side Bar</h3>
+              <p>
+                Clone Website Side Bar Mordern
+              </p>
+              <div class="project-links">
+                <a
+                  href="1-Side-Bar.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <div class="project-thumb thumb-3d">📹</div>
+              <h3>Video Call UI</h3>
+              <p>
+                Video call interface concept with modern layout and control
+                buttons.
+              </p>
+              <div class="project-links">
+                <a href="video-call.html" target="_blank" rel="noopener"
+                  >Live Demo</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Get In Touch</h2>
+            <p>
+              Interested in working together or have a question? Send me a
+              message.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <article class="contact-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <h3>Contact Info</h3>
+              <p style="margin: 0; color: var(--muted)">
+                Update these details with your real information.
+              </p>
+              <ul class="contact-list">
+                <li><strong>Email</strong>vishhalllahir@gmail.com</li>
+                <li><strong>Phone</strong> +91 94290 25389</li>
+                <li><strong>Location</strong> India</li>
+                <li><strong>GitHub</strong> <a style="text-decoration: underline;" href="https://github.com/vishhalllahir-stack" target="_blank">GitHub Profile</a></li>
+                <li>
+                  <strong>LinkedIn</strong><a href="https://www.linkedin.com/in/vishhalll-ahir-466713411/?skipRedirect=true">LinkDin</a>
+                </li>
+              </ul>
+            </article>
+
+            <article class="contact-card tilt-card reveal">
+              <div class="card-shine"></div>
+              <form class="contact-form" id="contactForm">
+                <label>
+                  Your Name
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </label>
+                <label>
+                  Email Address
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </label>
+                <label>
+                  Message
+                  <textarea
+                    name="message"
+                    placeholder="Write your message here..."
+                    required
+                  ></textarea>
+                </label>
+                <button type="submit" class="btn btn-primary">
+                  Send Message
+                </button>
+                <p class="form-note">
+                  This is a frontend demo form. Connect it to EmailJS or a
+                  backend to receive messages.
+                </p>
+                <p class="form-success" id="formSuccess">
+                  Thanks! Your message was sent successfully.
+                </p>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          © <span id="year"></span>Vishal Ahir. Built with HTML, CSS &
+          JavaScript.
+        </p>
+      </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+  </body>
+</html>

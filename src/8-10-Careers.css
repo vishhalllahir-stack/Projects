@@ -1,0 +1,1386 @@
+
+
+
+
+
+
+
+/*''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' careerss toyota india  */
+/* =========================================================
+   TOYOTA CAREERS
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.tkm-careers {
+  width: 100%;
+  min-height: 100vh;
+
+  color: #222;
+  background: #fff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.tkm-careers button,
+.tkm-careers input {
+  font-family: inherit;
+}
+
+.tkm-careers img {
+  display: block;
+  width: 100%;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.tkm-container {
+  width: 88%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.tkm-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  width: 100%;
+  height: 76px;
+
+  background: #fff;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.tkm-header-inner {
+  width: 91%;
+  max-width: 1320px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.tkm-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #111;
+  text-decoration: none;
+}
+
+.tkm-logo-symbol {
+  position: relative;
+
+  width: 54px;
+  height: 32px;
+
+  display: block;
+}
+
+.tkm-logo-symbol span {
+  position: absolute;
+
+  display: block;
+
+  border: 2px solid #e40000;
+  border-radius: 50%;
+}
+
+.tkm-logo-symbol span:nth-child(1) {
+  left: 15px;
+  top: 3px;
+
+  width: 24px;
+  height: 25px;
+}
+
+.tkm-logo-symbol span:nth-child(2) {
+  left: 4px;
+  top: 9px;
+
+  width: 24px;
+  height: 14px;
+}
+
+.tkm-logo-symbol span:nth-child(3) {
+  right: 3px;
+  top: 9px;
+
+  width: 24px;
+  height: 14px;
+}
+
+.tkm-logo-text {
+  color: #222;
+
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+
+/* NAV */
+
+.tkm-nav {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.tkm-nav button,
+.tkm-nav a {
+  position: relative;
+
+  border: 0;
+  background: transparent;
+
+  color: #333;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.tkm-nav button::after,
+.tkm-nav a::after {
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+
+  width: 0;
+  height: 2px;
+
+  content: "";
+
+  background: #e40000;
+
+  transition: width .25s ease;
+}
+
+.tkm-nav button:hover::after,
+.tkm-nav a:hover::after {
+  width: 100%;
+}
+
+.tkm-nav-job {
+  padding: 12px 18px;
+
+  background: #e40000 !important;
+  color: #fff !important;
+}
+
+.tkm-nav-job::after {
+  display: none;
+}
+
+
+/* MOBILE MENU */
+
+.tkm-menu-button {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.tkm-menu-button span {
+  display: block;
+
+  width: 25px;
+  height: 2px;
+
+  margin: 5px auto;
+
+  background: #222;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.tkm-hero {
+  position: relative;
+
+  height: calc(100vh - 76px);
+  min-height: 600px;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+.tkm-hero-image {
+  position: absolute;
+  inset: 0;
+}
+
+.tkm-hero-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.tkm-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.75) 0%,
+      rgba(0,0,0,.40) 48%,
+      rgba(0,0,0,.08) 100%
+    );
+}
+
+.tkm-hero-content {
+  position: absolute;
+
+  left: 8%;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #fff;
+}
+
+.tkm-hero-line {
+  width: 45px;
+  height: 3px;
+
+  margin-bottom: 22px;
+
+  background: #e40000;
+}
+
+.tkm-hero-content p {
+  margin: 0 0 18px;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.tkm-hero-content h1 {
+  margin: 0;
+
+  font-size: clamp(48px, 6vw, 90px);
+  line-height: .95;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
+
+.tkm-hero-content h1 strong {
+  font-weight: 800;
+}
+
+.tkm-hero-subtitle {
+  display: block;
+
+  margin-top: 25px;
+
+  color: #ddd;
+
+  font-size: 15px;
+  letter-spacing: 5px;
+}
+
+.tkm-hero-button {
+  margin-top: 42px;
+
+  padding: 14px 25px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+
+  border: 1px solid rgba(255,255,255,.7);
+  background: transparent;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  transition: .25s ease;
+}
+
+.tkm-hero-button:hover {
+  background: #e40000;
+  border-color: #e40000;
+}
+
+.tkm-hero-button span {
+  font-size: 20px;
+}
+
+
+/* SCROLL */
+
+.tkm-scroll {
+  position: absolute;
+
+  right: 5%;
+  bottom: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  color: #fff;
+
+  transform: rotate(-90deg);
+  transform-origin: right center;
+}
+
+.tkm-scroll span {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.tkm-scroll-line {
+  width: 55px;
+  height: 1px;
+
+  background: #fff;
+}
+
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+.tkm-section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 35px;
+
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.tkm-section-label span {
+  width: 35px;
+  height: 2px;
+
+  background: #e40000;
+}
+
+.tkm-section-label.light {
+  color: #fff;
+}
+
+.tkm-section-label.light span {
+  background: #e40000;
+}
+
+
+/* =========================================================
+   EMPLOYEES
+========================================================= */
+
+.tkm-employees {
+  padding: 120px 0 130px;
+
+  background: #fff;
+}
+
+.tkm-two-column {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  gap: 50px;
+}
+
+.tkm-two-column h2 {
+  margin: 0;
+
+  font-size: clamp(50px, 6vw, 82px);
+  line-height: .95;
+  font-weight: 200;
+  letter-spacing: -3px;
+}
+
+.tkm-two-column h2 strong {
+  font-weight: 700;
+}
+
+.tkm-copy {
+  max-width: 700px;
+  padding-top: 5px;
+}
+
+.tkm-copy p {
+  margin: 0 0 22px;
+
+  color: #666;
+
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.tkm-copy .tkm-lead {
+  color: #222;
+
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.tkm-copy .tkm-lead strong {
+  color: #e40000;
+}
+
+
+/* =========================================================
+   TOYOTA WAY
+========================================================= */
+
+.tkm-toyota-way {
+  position: relative;
+
+  padding: 115px 0 130px;
+
+  overflow: hidden;
+
+  background: #1d1d1d;
+  color: #fff;
+}
+
+.tkm-toyota-way::before {
+  position: absolute;
+
+  right: -180px;
+  top: -180px;
+
+  width: 500px;
+  height: 500px;
+
+  content: "";
+
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 50%;
+}
+
+.tkm-toyota-way::after {
+  position: absolute;
+
+  right: -80px;
+  top: -80px;
+
+  width: 300px;
+  height: 300px;
+
+  content: "";
+
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 50%;
+}
+
+.tkm-way-heading {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 40px;
+
+  align-items: end;
+
+  margin-bottom: 75px;
+}
+
+.tkm-way-heading h2 {
+  margin: 0;
+
+  font-size: clamp(45px, 5vw, 70px);
+  line-height: 1;
+  font-weight: 200;
+}
+
+.tkm-way-heading h2 strong {
+  color: #e40000;
+  font-weight: 700;
+}
+
+.tkm-way-heading p {
+  max-width: 450px;
+
+  margin: 0;
+
+  color: #aaa;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.tkm-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+.tkm-pillar {
+  min-height: 250px;
+
+  padding: 45px;
+
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 25px;
+}
+
+.tkm-pillar + .tkm-pillar {
+  border-left: 1px solid #444;
+}
+
+.tkm-pillar-number {
+  color: #e40000;
+
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.tkm-pillar h3 {
+  margin: 0 0 20px;
+
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: 1px;
+}
+
+.tkm-pillar p {
+  margin: 0;
+
+  color: #aaa;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HR FOCUS
+========================================================= */
+
+.tkm-focus {
+  padding: 120px 0;
+
+  background: #f4f4f4;
+}
+
+.tkm-focus-heading > span {
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.tkm-focus-heading h2 {
+  margin: 18px 0 60px;
+
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1;
+  font-weight: 200;
+}
+
+.tkm-focus-heading h2 strong {
+  font-weight: 700;
+}
+
+.tkm-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+
+  background: #ddd;
+}
+
+.tkm-focus-card {
+  position: relative;
+
+  min-height: 330px;
+
+  padding: 35px;
+
+  background: #fff;
+
+  transition: .3s ease;
+}
+
+.tkm-focus-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.10);
+}
+
+.tkm-focus-number {
+  color: #e40000;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.tkm-focus-icon {
+  position: absolute;
+
+  top: 35px;
+  right: 35px;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  border-radius: 50%;
+
+  color: #e40000;
+
+  font-size: 20px;
+}
+
+.tkm-focus-card h3 {
+  margin: 80px 0 18px;
+
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.tkm-focus-card p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   IMAGE BAND
+========================================================= */
+
+.tkm-image-band {
+  position: relative;
+
+  height: 550px;
+
+  overflow: hidden;
+}
+
+.tkm-image-band img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.tkm-image-band-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.7),
+      rgba(0,0,0,.12)
+    );
+}
+
+.tkm-image-band-content {
+  position: absolute;
+
+  left: 8%;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #fff;
+}
+
+.tkm-image-band-content span {
+  color: #e40000;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.tkm-image-band-content h2 {
+  margin: 20px 0 0;
+
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1;
+  font-weight: 200;
+}
+
+.tkm-image-band-content h2 strong {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   TALENT
+========================================================= */
+
+.tkm-talent {
+  padding: 120px 0;
+
+  background: #fff;
+}
+
+.tkm-talent-inner {
+  max-width: 850px;
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.tkm-talent .tkm-section-label {
+  justify-content: center;
+}
+
+.tkm-talent h2 {
+  margin: 0 0 25px;
+
+  font-size: clamp(45px, 5vw, 70px);
+  line-height: 1;
+  font-weight: 200;
+}
+
+.tkm-talent h2 strong {
+  font-weight: 700;
+}
+
+.tkm-talent p {
+  max-width: 650px;
+
+  margin: 0 auto 40px;
+
+  color: #666;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.tkm-talent-form {
+  max-width: 620px;
+  margin: auto;
+
+  display: flex;
+
+  border-bottom: 2px solid #222;
+}
+
+.tkm-email-box {
+  flex: 1;
+}
+
+.tkm-email-box input {
+  width: 100%;
+
+  padding: 17px 0;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.tkm-talent-form button {
+  min-width: 110px;
+
+  border: 0;
+
+  background: #e40000;
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.tkm-talent-form button span {
+  margin-left: 15px;
+
+  font-size: 18px;
+}
+
+.tkm-success {
+  margin-top: 20px;
+
+  color: #168a3b;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FRAUD
+========================================================= */
+
+.tkm-fraud {
+  padding: 100px 0;
+
+  background: #f5f5f5;
+}
+
+.tkm-fraud-heading {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  margin-bottom: 65px;
+}
+
+.tkm-warning-icon {
+  width: 70px;
+  height: 70px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #e40000;
+  border-radius: 50%;
+
+  color: #e40000;
+
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.tkm-fraud-heading span {
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.tkm-fraud-heading h2 {
+  margin: 10px 0 0;
+
+  font-size: clamp(35px, 4vw, 52px);
+  line-height: 1;
+  font-weight: 300;
+}
+
+.tkm-fraud-content {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+}
+
+.tkm-fraud-date {
+  color: #e40000;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.tkm-fraud-content p,
+.tkm-fraud-old p {
+  margin: 0 0 20px;
+
+  color: #555;
+
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.tkm-fraud-content strong {
+  color: #222;
+}
+
+.tkm-fraud-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 50px 0 30px;
+
+  background: #ddd;
+}
+
+.tkm-fraud-old {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+}
+
+.tkm-fraud-old strong {
+  color: #555;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   JOB CTA
+========================================================= */
+
+.tkm-job-cta {
+  position: relative;
+
+  height: 500px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=90")
+    center / cover;
+}
+
+.tkm-job-cta-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.8),
+      rgba(0,0,0,.2)
+    );
+}
+
+.tkm-job-cta-content {
+  position: relative;
+  z-index: 1;
+
+  width: 88%;
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  color: #fff;
+}
+
+.tkm-job-cta-content > span {
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.tkm-job-cta-content h2 {
+  margin: 20px 0 35px;
+
+  font-size: clamp(45px, 5vw, 72px);
+  line-height: .95;
+  font-weight: 200;
+}
+
+.tkm-job-cta-content h2 strong {
+  font-weight: 700;
+}
+
+.tkm-job-cta-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+
+  padding: 15px 25px;
+
+  border: 1px solid #fff;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  transition: .25s ease;
+}
+
+.tkm-job-cta-content a:hover {
+  background: #e40000;
+  border-color: #e40000;
+}
+
+.tkm-job-cta-content a span {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.tkm-footer {
+  background: #151515;
+  color: #fff;
+}
+
+.tkm-footer-top {
+  padding: 70px 0;
+}
+
+.tkm-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.tkm-footer-logo {
+  color: #fff;
+
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.tkm-footer-brand p {
+  margin-top: 20px;
+
+  color: #777;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.tkm-footer h3 {
+  margin: 0 0 22px;
+
+  color: #e40000;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.tkm-footer a {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #aaa;
+  text-decoration: none;
+
+  font-size: 12px;
+}
+
+.tkm-footer a:hover {
+  color: #fff;
+}
+
+.tkm-footer-bottom {
+  padding: 20px 0;
+
+  border-top: 1px solid #292929;
+}
+
+.tkm-footer-bottom .tkm-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #666;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .tkm-nav {
+    gap: 16px;
+  }
+
+  .tkm-nav button,
+  .tkm-nav a {
+    font-size: 9px;
+  }
+
+  .tkm-focus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .tkm-header {
+    height: 68px;
+  }
+
+  .tkm-menu-button {
+    display: block;
+  }
+
+  .tkm-nav {
+    position: absolute;
+
+    top: 68px;
+    left: 0;
+    right: 0;
+
+    height: auto;
+
+    padding: 20px;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background: #fff;
+
+    box-shadow:
+      0 10px 25px rgba(0,0,0,.12);
+  }
+
+  .tkm-nav.open {
+    display: flex;
+  }
+
+  .tkm-nav button,
+  .tkm-nav a {
+    padding: 15px 5px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #eee;
+
+    font-size: 11px;
+  }
+
+  .tkm-nav-job {
+    margin-top: 10px;
+
+    text-align: center !important;
+  }
+
+  .tkm-hero {
+    height: 680px;
+    min-height: 0;
+  }
+
+  .tkm-hero-content {
+    left: 7%;
+    right: 7%;
+  }
+
+  .tkm-hero-content h1 {
+    font-size: 50px;
+  }
+
+  .tkm-scroll {
+    display: none;
+  }
+
+  .tkm-employees,
+  .tkm-talent,
+  .tkm-fraud,
+  .tkm-focus {
+    padding: 75px 0;
+  }
+
+  .tkm-two-column {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .tkm-two-column h2 {
+    font-size: 55px;
+  }
+
+  .tkm-way-heading {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .tkm-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .tkm-pillar {
+    min-height: auto;
+
+    padding: 35px 20px;
+  }
+
+  .tkm-pillar + .tkm-pillar {
+    border-left: 0;
+    border-top: 1px solid #444;
+  }
+
+  .tkm-focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tkm-focus-card {
+    min-height: 270px;
+  }
+
+  .tkm-image-band {
+    height: 450px;
+  }
+
+  .tkm-talent h2 {
+    font-size: 48px;
+  }
+
+  .tkm-talent-form {
+    flex-direction: column;
+
+    border-bottom: 0;
+  }
+
+  .tkm-email-box {
+    border-bottom: 2px solid #222;
+  }
+
+  .tkm-talent-form button {
+    min-height: 50px;
+
+    margin-top: 15px;
+  }
+
+  .tkm-fraud-heading {
+    align-items: flex-start;
+  }
+
+  .tkm-warning-icon {
+    width: 52px;
+    height: 52px;
+
+    font-size: 28px;
+  }
+
+  .tkm-fraud-content,
+  .tkm-fraud-old {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tkm-job-cta {
+    height: 480px;
+  }
+
+  .tkm-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 25px;
+  }
+
+  .tkm-footer-bottom .tkm-container {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .tkm-container {
+    width: 90%;
+  }
+
+  .tkm-logo-text {
+    font-size: 17px;
+  }
+
+  .tkm-hero-content h1 {
+    font-size: 42px;
+  }
+
+  .tkm-two-column h2 {
+    font-size: 47px;
+  }
+
+  .tkm-way-heading h2,
+  .tkm-focus-heading h2 {
+    font-size: 43px;
+  }
+
+  .tkm-pillar {
+    grid-template-columns: 45px 1fr;
+  }
+
+  .tkm-image-band-content h2 {
+    font-size: 43px;
+  }
+
+  .tkm-footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

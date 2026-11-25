@@ -1,0 +1,1052 @@
+/* ===========================
+   TOYOTA ABOUT PAGE
+===========================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+}
+
+/*==============================
+      TOP NAVIGATION
+==============================*/
+
+.AboutHeader{
+    width:1350px;
+    margin:45px auto 20px;
+    display:flex;
+    align-items:center;
+}
+
+.AboutHeader a{
+    width:180px;
+    height:50px;
+    text-decoration:none;
+    color:#666;
+    font-size:14px;
+    font-weight:500;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-transform:uppercase;
+    border-bottom:4px solid #9b9b9b;
+    transition:.3s;
+    letter-spacing:.5px;
+}
+
+.AboutHeader a:first-child{
+    background:#eb0000;
+    color:#fff;
+    border-bottom:none;
+}
+
+.AboutHeader a:hover{
+    color:#eb0000;
+}
+
+/* React Router Active Link */
+
+.AboutHeader a.active{
+    background:#eb0000;
+    color:#fff;
+    border-bottom:none;
+}
+
+/*==============================
+       HERO SECTION
+==============================*/
+
+.aboutHero{
+    width:1350px;
+    height:560px;
+    margin:auto;
+    position:relative;
+    overflow:hidden;
+}
+
+.aboutHero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.heroOverlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.15);
+}
+
+.heroTitle{
+    position:absolute;
+    bottom:55px;
+    left:140px;
+}
+
+.heroTitle h1{
+    font-size:84px;
+    color:#fff;
+    font-weight:900;
+    line-height:80px;
+    font-style:italic;
+}
+
+.heroTitle h2{
+    margin-left:140px;
+    font-size:92px;
+    color:#eb0000;
+    line-height:80px;
+    font-weight:900;
+    font-style:italic;
+}
+
+/*==============================
+        RESPONSIVE
+==============================*/
+
+@media(max-width:1400px){
+
+    .AboutHeader,
+    .aboutHero{
+        width:95%;
+    }
+
+}
+
+@media(max-width:991px){
+
+    .AboutHeader{
+        flex-wrap:wrap;
+    }
+
+    .AboutHeader a{
+        width:50%;
+        font-size:18px;
+        height:45px;
+    }
+
+    .aboutHero{
+        height:420px;
+    }
+
+    .heroTitle{
+        left:40px;
+        bottom:40px;
+    }
+
+    .heroTitle h1{
+        font-size:55px;
+        line-height:55px;
+    }
+
+    .heroTitle h2{
+        font-size:60px;
+        line-height:55px;
+        margin-left:70px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .AboutHeader a{
+        width:100%;
+        font-size:16px;
+    }
+
+    .aboutHero{
+        height:260px;
+    }
+
+    .heroTitle{
+        left:20px;
+        bottom:20px;
+    }
+
+    .heroTitle h1{
+        font-size:34px;
+        line-height:35px;
+    }
+
+    .heroTitle h2{
+        font-size:38px;
+        margin-left:40px;
+        line-height:35px;
+    }
+
+}
+
+
+/*----------------------------------------------------------------------------------------------------------- ////////// CEO WITH PHOTOS */
+.aboutCEO{
+    width:100%;
+    padding:90px 0;
+    background:#fff;
+}
+
+.aboutCEOContainer{
+    width:1320px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:70px;
+}
+
+.aboutCEOLeft{
+    width:430px;
+    text-align:center;
+}
+
+.aboutCEOImageBox{
+    width:390px;
+    height:470px;
+    position:relative;
+    margin:auto;
+}
+
+.aboutCEORed{
+    width:195px;
+    height:440px;
+    /* background:#e60000; */
+    border-radius:60px 0 0 0;
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.aboutCEOImage{
+    position:absolute;
+    bottom:0;
+    left:40px;
+    width:320px;
+}
+
+.aboutCEOLeft h2{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:700;
+}
+
+.aboutCEODesignation{
+    font-size:18px;
+    color:#666;
+    margin-top:8px;
+}
+
+.aboutCEOCompany{
+    color:#888;
+    margin-top:5px;
+}
+
+.aboutCEOThumbs{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:35px;
+}
+
+.thumb{
+    width:110px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.thumb img{
+    width:100%;
+    border:1px solid #bbb;
+    transition:.3s;
+}
+
+
+
+.thumb span{
+    display:block;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.aboutCEORight{
+    flex:1;
+}
+
+.aboutCEORight h1{
+    font-size:50px;
+    font-weight:800;
+    margin-bottom:25px;
+}
+
+.aboutCEORight p{
+    font-size:20px;
+    line-height:1.8;
+    color:#333;
+    margin-bottom:25px;
+}
+
+@media(max-width:991px){
+
+.aboutCEOContainer{
+    width:95%;
+    flex-direction:column;
+}
+
+.aboutCEOLeft{
+    width:100%;
+}
+
+.aboutCEOImageBox{
+    width:320px;
+    height:400px;
+}
+
+.aboutCEOImage{
+    width:270px;
+}
+
+.aboutCEORight h1{
+    font-size:34px;
+}
+
+.aboutCEORight p{
+    font-size:17px;
+}
+
+}
+
+
+
+/* ----------------------------------------------------------------------------------.employeesSection   ------------------------------------------------ */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.employeesSection{
+    width:100%;
+    max-width:1250px;
+    margin:80px auto;
+}
+
+.employeeRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:90px;
+    margin-bottom:120px;
+}
+
+.reverse{
+    flex-direction:row;
+}
+
+.employeeContent{
+    flex:1;
+}
+
+.employeeContent h2{
+    font-size:42px;
+    font-weight:800;
+    line-height:1.1;
+    color:#111;
+    margin-bottom:22px;
+    text-transform:uppercase;
+}
+
+.employeeContent p{
+    font-size:20px;
+    line-height:1.8;
+    color:#222;
+    max-width:560px;
+    margin-bottom:35px;
+}
+
+.readMore{
+    display:inline-block;
+    color:#e40000;
+    text-decoration:none;
+    font-size:17px;
+    border-top:2px solid #e40000;
+    border-right:2px solid #e40000;
+    padding:10px 20px 8px 18px;
+    transition:.3s;
+}
+
+.readMore:hover{
+    background:#e40000;
+    color:#fff;
+}
+
+.employeeImageBox{
+    flex:1;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.bgBox{
+    position:absolute;
+    width:640px;
+    height:300px;
+    background:#f3f3f3;
+    left:-35px;
+    top:120px;
+    z-index:0;
+}
+
+.employeeImageBox img{
+    width:560px;
+    height:360px;
+    object-fit:cover;
+    position:relative;
+    z-index:2;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.reverse .bgBox{
+    left:-70px;
+    top:120px;
+}
+
+@media(max-width:991px){
+
+.employeeRow,
+.reverse{
+    flex-direction:column;
+    gap:50px;
+}
+
+.employeeContent h2{
+    font-size:32px;
+}
+
+.employeeContent p{
+    font-size:17px;
+}
+
+.employeeImageBox img{
+    width:100%;
+    height:auto;
+}
+
+.bgBox{
+    width:100%;
+    height:85%;
+    left:-20px;
+    top:40px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---- H I S T O R Y PAGE --- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.history{
+width:100%;
+background:#fff;
+}
+
+.historyHero{
+height:420px;
+width: 90%;
+justify-content: center;
+align-items: center;
+margin-left: 80px;
+/* background:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600") */
+background:url("https://static3.toyotabharat.com/images/toyota-in-india/history/history-hero-img-1200x350.webp")
+center/cover;
+position:relative;
+}
+
+.historyOverlay{
+position:absolute;
+inset:0;
+/* background:rgba(0,0,0,.45); */
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:#fff;
+}
+
+.historyOverlay h1{
+font-size:65px;
+letter-spacing:2px;
+}
+
+.historyOverlay p{
+margin-top:20px;
+font-size:20px;
+}
+
+.historyContainer{
+width:1200px;
+max-width:95%;
+margin:auto;
+padding:80px 0;
+}
+
+.historyContainer h2{
+font-size:34px;
+margin-bottom:35px;
+color:#d71920;
+}
+
+.historyContainer p{
+font-size:17px;
+line-height:1.9;
+color:#555;
+margin-bottom:20px;
+}
+
+.historyBtn{
+padding:13px 35px;
+background:#d71920;
+color:#fff;
+border:none;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+}
+
+.historyBtn:hover{
+background:#000;
+}
+
+.historyGray{
+background:#f5f5f5;
+}
+
+.historyCards{
+width:1200px;
+max-width:95%;
+margin:70px auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.historyCard{
+background:#fff;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+overflow:hidden;
+transition:.4s;
+}
+
+.historyCard:hover{
+transform:translateY(-10px);
+}
+
+.historyCard img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.historyCard h3{
+padding:25px;
+font-size:24px;
+text-align:center;
+}
+
+@media(max-width:900px){
+
+.historyCards{
+grid-template-columns:1fr;
+}
+
+.historyOverlay h1{
+font-size:45px;
+}
+
+.historyContainer h2{
+font-size:28px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================<< { V I S I O N PAGE } >>==================================================  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.vision-hero {
+  height: 70vh;
+  /* background: url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600") */
+  background: url("https://static3.toyotabharat.com/images/toyota-in-india/about/vision-hero-img-1200x350.webp")
+    center/cover no-repeat;
+  position: relative;
+    width: 90%;
+    margin-left: 85px;
+}
+
+.vision-overlay {
+  position: absolute;
+  inset: 0;
+  /* background: rgba(0, 0, 0, .45); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.vision-overlay h1 {
+  font-size: 60px;
+}
+
+.vision-overlay p {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.vision-intro {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.vision-intro h2 {
+  color: #d71920;
+  margin-bottom: 20px;
+}
+
+.vision-intro p {
+  line-height: 1.8;
+}
+
+.vision-section {
+  max-width: 1000px;
+  margin: 60px auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.vision-reverse {
+  flex-direction: row-reverse;
+}
+
+.vision-image img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.vision-image,
+.vision-content {
+  flex: 1;
+}
+
+.vision-content h2 {
+  color: #d71920;
+  margin-bottom: 20px;
+}
+
+.vision-content p {
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.vision-content button {
+  padding: 12px 28px;
+  border: none;
+  background: #d71920;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.vision-content button:hover {
+  background: #111;
+}
+
+@media (max-width: 768px) {
+  .vision-section,
+  .vision-reverse {
+    flex-direction: column;
+  }
+
+  .vision-overlay h1 {
+    font-size: 42px;
+  }
+
+  .vision-overlay p {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++>>>>>------- M E D I A ___ PAGE------- <<<<<<+++++++++++++++++++++++++++++++++++++ */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+.newsHero{
+height:400px;
+background:url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1800")
+center/cover;
+position:relative;
+width: 90%;
+margin-left: 85px;
+}
+
+.newsOverlay{
+position:absolute;
+inset:0;
+background:rgba(0,25,90,.70);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.newsOverlay h1{
+color:white;
+font-size:46px;
+letter-spacing:2px;
+}
+
+.archive{
+width:1200px;
+max-width:95%;
+margin:50px auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.archiveTitle small{
+font-size:13px;
+color:#777;
+}
+
+.archiveTitle h1{
+font-size:60px;
+color:#d9d9d9;
+}
+
+.years{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.years button{
+background:none;
+border:none;
+cursor:pointer;
+padding:10px;
+font-size:15px;
+}
+
+.activeYear{
+color:#e4002b;
+border-bottom:2px solid #e4002b;
+}
+
+.newsGrid{
+width:1200px;
+max-width:95%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.newsCard{
+background:white;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.newsCard:hover{
+transform:translateY(-8px);
+}
+
+.newsCard img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.newsCard span{
+display:block;
+padding:15px 20px 5px;
+font-size:12px;
+color:#777;
+}
+
+.newsCard h3{
+padding:0 20px;
+font-size:18px;
+line-height:1.6;
+min-height:120px;
+}
+
+.newsCard button{
+margin:20px;
+background:none;
+border:none;
+color:#e4002b;
+font-weight:bold;
+cursor:pointer;
+}
+
+.loadBox{
+text-align:center;
+margin:60px 0;
+}
+
+.loadBox button{
+padding:12px 40px;
+background:#e4002b;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+@media(max-width:900px){
+
+.newsGrid{
+grid-template-columns:1fr;
+}
+
+.archive{
+flex-direction:column;
+gap:20px;
+}
+
+.newsOverlay h1{
+font-size:35px;
+}
+
+.archiveTitle h1{
+font-size:40px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||________{ A W A R D S  *  PAGE_________} |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.awardsPage{
+display:grid;
+grid-template-columns:250px 1fr;
+max-width:1400px;
+margin:40px auto;
+gap:40px;
+padding:0 20px;
+}
+
+.awardsSidebar h2{
+font-size:38px;
+margin-bottom:25px;
+}
+
+.awardsSidebar{
+display:flex;
+flex-direction:column;
+}
+
+.awardsSidebar button{
+background:none;
+border:none;
+text-align:left;
+padding:15px;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+}
+
+.awardsSidebar button:hover{
+background:#f5f5f5;
+}
+
+.activeYear{
+background:#ececec !important;
+font-weight:bold;
+}
+
+.awardsContent h1{
+font-size:52px;
+margin-bottom:30px;
+}
+
+.awardsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(420px,1fr));
+gap:30px;
+}
+
+.awardCard{
+border:1px solid #ddd;
+background:#fff;
+}
+
+.awardCard img{
+width:100%;
+height:320px;
+object-fit:cover;
+display:block;
+}
+
+.awardBody{
+padding:20px;
+}
+
+.awardBody h3{
+color:#0b4fd8;
+font-size:24px;
+margin-bottom:15px;
+}
+
+.awardBody p{
+font-size:18px;
+line-height:1.7;
+}
+
+.empty{
+font-size:22px;
+padding:50px;
+background:#fafafa;
+border:1px dashed #ccc;
+text-align:center;
+}
+
+@media(max-width:900px){
+
+.awardsPage{
+grid-template-columns:1fr;
+}
+
+.awardsSidebar{
+flex-direction:row;
+overflow:auto;
+gap:10px;
+}
+
+.awardsSidebar button{
+white-space:nowrap;
+}
+
+.awardsContent h1{
+font-size:34px;
+}
+
+.awardsGrid{
+grid-template-columns:1fr;
+}
+
+}
+
+.A-IMG{
+    height: 400px;
+    width: 100%;
+}
+

@@ -1,0 +1,34 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 280" width="300" height="280">
+  <!-- Professional Toyota Oval Logo -->
+  <defs>
+    <style>
+      .toyota-stroke { fill: none; stroke: #000000; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+      .toyota-fill { fill: #000000; }
+    </style>
+  </defs>
+  
+  <!-- Outer oval/ellipse -->
+  <ellipse cx="150" cy="75" rx="75" ry="65" class="toyota-stroke"/>
+  
+  <!-- Center vertical line -->
+  <line x1="150" y1="15" x2="150" y2="155" stroke="#000000" stroke-width="18" stroke-linecap="round"/>
+  
+  <!-- Left inner oval -->
+  <ellipse cx="105" cy="80" rx="28" ry="48" class="toyota-stroke"/>
+  
+  <!-- Right inner oval -->
+  <ellipse cx="195" cy="80" rx="28" ry="48" class="toyota-stroke"/>
+  
+  <!-- Top left curve connector -->
+  <path d="M 115 25 Q 95 45 100 70" class="toyota-stroke"/>
+  
+  <!-- Top right curve connector -->
+  <path d="M 185 25 Q 205 45 200 70" class="toyota-stroke"/>
+  
+  <!-- Bottom connections -->
+  <path d="M 90 130 Q 70 150 100 160" class="toyota-stroke"/>
+  <path d="M 210 130 Q 230 150 200 160" class="toyota-stroke"/>
+  
+  <!-- TOYOTA Text - Professional styling -->
+  <text x="150" y="230" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" text-anchor="middle" fill="#000000" letter-spacing="4">TOYOTA</text>
+</svg>

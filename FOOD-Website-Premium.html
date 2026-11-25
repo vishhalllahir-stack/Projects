@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwiftBite – Food Delivery</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ─── RESET & TOKENS ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:    #FF5A1F;
+      --orange-lt: #FF7A45;
+      --orange-glow: rgba(255,90,31,0.35);
+      --gold:      #FFB347;
+      --dark:      #0E0E0F;
+      --dark2:     #161618;
+      --dark3:     #1F1F22;
+      --dark4:     #2A2A2D;
+      --glass:     rgba(255,255,255,0.05);
+      --glass-b:   rgba(255,255,255,0.10);
+      --text:      #F0EDE8;
+      --text-muted:#9E9B96;
+      --border:    rgba(255,255,255,0.08);
+      --r-sm: 10px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --r-xl: 32px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ──────────────────────────────────────────── */
+    #cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s ease;
+    }
+    #cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--orange);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 99998;
+      transform: translate(-50%,-50%);
+      transition: all 0.12s ease;
+      opacity: 0.6;
+    }
+    body:hover #cursor-dot { transform: translate(-50%,-50%) scale(1); }
+
+    /* ─── BACKGROUND ORBS ────────────────────────────────────────── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(255,90,31,0.12); top: -150px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(255,179,71,0.07); bottom: 10%; left: -120px; animation-delay: -6s; }
+    @keyframes floatOrb {
+      from { transform: translateY(0) scale(1); }
+      to   { transform: translateY(40px) scale(1.08); }
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────────────── */
+    header.hero {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px;
+      height: 72px;
+      background: rgba(14,14,15,0.82);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown 0.6s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+
+    .section-1, .section-2 { display: flex; align-items: center; gap: 16px; }
+
+    /* Logo */
+    .logo-wrap {
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 20px var(--orange-glow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo-wrap:hover .logo-icon {
+      transform: rotate(-8deg) scale(1.1);
+      box-shadow: 0 8px 30px var(--orange-glow);
+    }
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, #fff 30%, var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Location pill */
+    .location-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-size: 0.85rem; font-weight: 500;
+    }
+    .location-pill:hover { background: var(--glass-b); border-color: var(--orange); }
+    .location-pill i { color: var(--orange); font-size: 0.8rem; }
+    .location-pill span { color: var(--text-muted); font-size: 0.75rem; }
+
+    /* Nav items */
+    .nav-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .nav-item:hover { background: var(--glass); color: var(--text); }
+    .nav-item i { color: var(--orange); font-size: 0.85rem; }
+    .nav-item sup { color: var(--orange); font-size: 0.6rem; font-weight: 700; }
+
+    .btn-signin {
+      padding: 9px 22px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
+      border: none; border-radius: 999px;
+      color: #fff; font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--orange-glow);
+      transition: all 0.25s ease;
+    }
+    .btn-signin:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--orange-glow);
+    }
+
+    /* ─── MAIN WRAPPER ───────────────────────────────────────────── */
+    .page-wrap { position: relative; z-index: 1; }
+
+    /* ─── HERO BANNER ────────────────────────────────────────────── */
+    .hero-banner {
+      position: relative;
+      margin: 32px 60px;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      height: 260px;
+      background: linear-gradient(120deg, #1a0a00 0%, #2d1200 40%, #1a0a00 100%);
+      border: 1px solid rgba(255,90,31,0.2);
+      display: flex; align-items: center; padding: 0 60px;
+      animation: fadeUp 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,90,31,0.25) 0%, transparent 70%);
+    }
+    .hero-banner-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,90,31,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,90,31,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-content h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.8rem; font-weight: 800;
+      line-height: 1.1;
+    }
+    .hero-content h1 span { color: var(--orange); }
+    .hero-content p { color: var(--text-muted); margin-top: 10px; font-size: 1rem; }
+
+    .hero-search {
+      position: relative; margin-top: 20px;
+      display: flex; align-items: center; gap: 0;
+      max-width: 440px;
+    }
+    .hero-search input {
+      flex: 1;
+      padding: 13px 20px 13px 44px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px 0 0 999px;
+      color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .hero-search input::placeholder { color: var(--text-muted); }
+    .hero-search input:focus { border-color: var(--orange); }
+    .hero-search .search-icon {
+      position: absolute; left: 16px;
+      color: var(--text-muted); font-size: 0.9rem;
+      pointer-events: none;
+    }
+    .hero-search button {
+      padding: 13px 24px;
+      background: var(--orange);
+      border: none; border-radius: 0 999px 999px 0;
+      color: #fff; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .hero-search button:hover { background: var(--orange-lt); }
+
+    .hero-img {
+      position: absolute; right: 40px; bottom: 0;
+      font-size: 140px; line-height: 1;
+      filter: drop-shadow(0 0 60px rgba(255,90,31,0.4));
+      animation: bobble 4s ease-in-out infinite;
+    }
+    @keyframes bobble {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-16px) rotate(3deg); }
+    }
+
+    /* ─── SECTION HEADINGS ───────────────────────────────────────── */
+    .sec-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .sec-label::before {
+      content: ''; width: 20px; height: 2px;
+      background: var(--orange); border-radius: 2px;
+    }
+    .sec-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--text); margin-bottom: 28px;
+    }
+
+    /* ─── WHAT'S ON YOUR MIND ────────────────────────────────────── */
+    .mind-section {
+      padding: 40px 60px;
+      animation: fadeUp 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .mind-scroll {
+      display: flex; gap: 20px;
+      overflow-x: auto; padding-bottom: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--orange) transparent;
+    }
+    .mind-scroll::-webkit-scrollbar { height: 4px; }
+    .mind-scroll::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+
+    .mind-item {
+      flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .mind-item:hover { transform: translateY(-8px) scale(1.05); }
+    .mind-img-wrap {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--dark3);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .mind-item:hover .mind-img-wrap {
+      border-color: var(--orange);
+      box-shadow: 0 0 30px var(--orange-glow);
+    }
+    .mind-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .mind-item:hover .mind-img-wrap img { transform: scale(1.12); }
+    .mind-item p {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted); text-align: center;
+      transition: color 0.2s;
+    }
+    .mind-item:hover p { color: var(--orange); }
+
+    /* ─── DIVIDER ────────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 60px;
+    }
+
+    /* ─── TOP RESTAURANTS ────────────────────────────────────────── */
+    .top-section {
+      padding: 40px 60px;
+      animation: fadeUp 0.7s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 24px;
+    }
+
+    .food-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .food-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,90,31,0.06), transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+      z-index: 0; pointer-events: none;
+    }
+    .food-card:hover {
+      transform: translateY(-10px) rotateX(2deg);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--orange), 0 0 40px var(--orange-glow);
+      border-color: var(--orange);
+    }
+    .food-card:hover::before { opacity: 1; }
+
+    .food-img-wrap {
+      position: relative; overflow: hidden;
+      height: 190px;
+    }
+    .food-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .food-card:hover .food-img-wrap img { transform: scale(1.08); }
+
+    .food-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(14,14,15,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 4px;
+    }
+    .food-badge i { font-size: 0.65rem; }
+
+    .food-offer {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(to top, rgba(255,90,31,0.9), transparent);
+      font-size: 0.75rem; font-weight: 700; color: #fff;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.3s ease;
+    }
+    .food-card:hover .food-offer { opacity: 1; transform: translateY(0); }
+
+    .food-info { padding: 16px; position: relative; z-index: 1; }
+    .food-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      margin-bottom: 6px;
+    }
+    .food-meta {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px;
+    }
+    .food-meta .dot { width: 3px; height: 3px; background: var(--text-muted); border-radius: 50%; }
+    .food-time { color: var(--gold); font-weight: 600; }
+    .food-tags { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ─── SORT / FILTER BAR ──────────────────────────────────────── */
+    .filter-bar {
+      padding: 0 60px 24px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .filter-bar h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      flex: 1 0 100%; margin-bottom: 12px;
+    }
+
+    .filter-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.83rem; font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-chip:hover, .filter-chip.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      box-shadow: 0 4px 16px var(--orange-glow);
+    }
+    .filter-chip i { font-size: 0.75rem; }
+
+    /* ─── RESTAURANT GRID (large cards) ─────────────────────────── */
+    .restaurants-section {
+      padding: 0 60px 60px;
+    }
+
+    .rest-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .rest-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+      position: relative;
+    }
+    .rest-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,90,31,0.5);
+      border-color: rgba(255,90,31,0.5);
+    }
+    .rest-img-wrap { position: relative; overflow: hidden; }
+    .rest-img-wrap img {
+      width: 100%; height: 175px; object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .rest-card:hover .rest-img-wrap img { transform: scale(1.06); }
+
+    .rest-discount {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      padding: 10px 12px 8px;
+      font-size: 0.75rem; font-weight: 700; color: var(--gold);
+    }
+
+    .rest-info { padding: 14px 12px; }
+    .rest-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      margin-bottom: 5px;
+    }
+    .rest-rating {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.8rem; font-weight: 600; color: var(--gold); margin-bottom: 3px;
+    }
+    .rest-rating span { color: var(--text-muted); font-weight: 400; }
+    .rest-tags { font-size: 0.75rem; color: var(--text-muted); }
+    .rest-location { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    .swiggy-footer {
+      background: #0A0A0B;
+      border-top: 1px solid var(--border);
+      padding: 60px 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .swiggy-footer::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-logo .logo-icon { width: 34px; height: 34px; font-size: 18px; }
+    .footer-logo .logo-text { font-size: 1.2rem; }
+
+    .brand-tagline {
+      font-size: 0.82rem; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 22px; max-width: 220px;
+    }
+
+    .social-icons { display: flex; gap: 10px; margin-bottom: 28px; }
+    .social-icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .social-icon:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      box-shadow: 0 0 16px var(--orange-glow);
+      transform: translateY(-3px);
+    }
+    .social-icon svg { width: 15px; height: 15px; fill: var(--text-muted); transition: fill 0.2s; }
+    .social-icon:hover svg { fill: #fff; }
+
+    .col-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text); margin-bottom: 18px;
+    }
+    .col-links { list-style: none; }
+    .col-links li { margin-bottom: 11px; }
+    .col-links a {
+      font-size: 0.85rem; color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+      display: inline-block;
+    }
+    .col-links a:hover { color: var(--orange); padding-left: 4px; }
+
+    .app-section { margin-top: 4px; }
+    .app-label {
+      font-size: 0.68rem; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+    }
+    .app-badges { display: flex; flex-direction: column; gap: 8px; }
+    .app-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer; width: fit-content;
+      transition: all 0.25s ease;
+    }
+    .app-badge:hover {
+      border-color: var(--orange);
+      background: rgba(255,90,31,0.08);
+      transform: translateX(4px);
+    }
+    .app-badge svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+    .app-badge-text { display: flex; flex-direction: column; }
+    .app-badge-text span:first-child { font-size: 0.65rem; color: var(--text-muted); }
+    .app-badge-text span:last-child { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+    .footer-mid {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-mid-title {
+      font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 1px;
+      white-space: nowrap; padding-top: 2px;
+    }
+    .city-links { display: flex; flex-wrap: wrap; }
+    .city-link {
+      font-size: 0.8rem; color: var(--text-muted);
+      text-decoration: none; cursor: pointer;
+      transition: color 0.2s;
+    }
+    .city-link:hover { color: var(--orange); }
+    .city-sep { font-size: 0.75rem; color: #333; margin: 0 6px; }
+
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .copyright { font-size: 0.78rem; color: #444; }
+    .copyright span { color: #555; }
+    .bottom-links { display: flex; gap: 24px; }
+    .bottom-links a {
+      font-size: 0.78rem; color: #444; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-links a:hover { color: var(--orange); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* ─── SCROLLBAR ──────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--dark4); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .rest-grid { grid-template-columns: repeat(3,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      header.hero { padding: 0 20px; }
+      .hero-banner { margin: 16px; height: auto; padding: 32px 24px; }
+      .hero-img { display: none; }
+      .hero-content h1 { font-size: 1.8rem; }
+      .mind-section, .top-section, .filter-bar, .restaurants-section { padding-left: 20px; padding-right: 20px; }
+      .rest-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .swiggy-footer { padding: 40px 24px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Background Orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="page-wrap">
+
+  <!-- ── HEADER ───────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="section-1">
+      <a class="logo-wrap" href="#">
+        <div class="logo-icon">🍜</div>
+        <span class="logo-text">SwiftBite</span>
+      </a>
+      <div class="location-pill">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <div style="font-weight:600;font-size:0.85rem;">Bhuj, Gujarat</div>
+          <span>Deliver to this location</span>
+        </div>
+        <i class="fa-solid fa-chevron-down" style="color:var(--text-muted);font-size:0.7rem;margin-left:4px;"></i>
+      </div>
+    </div>
+
+    <div class="section-2">
+      
+      <div class="nav-item"><i class="fa-solid fa-briefcase"></i> Corporate</div>
+      <div class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Search</div>
+      <div class="nav-item"><i class="fa-solid fa-percent"></i> Offers <sup>NEW</sup></div>
+      <div class="nav-item"><i class="fa-solid fa-circle-question"></i> Help</div>
+      <button class="btn-signin"><i class="fa-solid fa-user" style="margin-right:6px;"></i> Sign In</button>
+      <div class="nav-item" style="position:relative;">
+        <i class="fa-solid fa-bag-shopping"></i> Cart
+        <span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--orange);border-radius:50%;"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── HERO BANNER ───────────────────────────────────────────────── -->
+  <div class="hero-banner">
+    <div class="hero-banner-grid"></div>
+    <div class="hero-content">
+      <div class="sec-label">Order Now</div>
+      <h1>Hungry? <br/><span>We've got you.</span></h1>
+      <p>Fresh food from the best restaurants, <br/>delivered fast to your door.</p>
+      <div class="hero-search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" placeholder="Search for restaurants or food..."/>
+        <button>Search</button>
+      </div>
+    </div>
+    <div class="hero-img">🍕</div>
+  </div>
+
+  <!-- ── WHAT'S ON YOUR MIND ──────────────────────────────────────── -->
+  <section class="mind-section fade-in">
+    <div class="sec-label">Browse by Category</div>
+    <div class="sec-title">What's on your mind?</div>
+    <div class="mind-scroll">
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-1.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🍕'"/></div><p>Pizza</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-2.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🍔'"/></div><p>Burgers</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-3.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🍜'"/></div><p>Noodles</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-4.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🍱'"/></div><p>Biryani</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-5.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🥗'"/></div><p>Salads</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-6.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🍦'"/></div><p>Ice Cream</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-7.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=☕'"/></div><p>Coffee</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-8.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🍰'"/></div><p>Desserts</p></div>
+      <div class="mind-item"><div class="mind-img-wrap"><img src="itm-9.avif" onerror="this.src='https://via.placeholder.com/110x110/1F1F22/FF5A1F?text=🥪'"/></div><p>Sandwiches</p></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── TOP RESTAURANT CHAINS ─────────────────────────────────────── -->
+  <section class="top-section fade-in">
+    <div class="sec-label">Featured</div>
+    <div class="sec-title">Top restaurant chains in Bhuj</div>
+    <div class="food-grid">
+      <div class="food-card">
+        <div class="food-img-wrap">
+          <img src="food-1.avif" onerror="this.src='https://via.placeholder.com/270x190/1F1F22/FF5A1F?text=🍛+Faizz'" alt="Faizz Restaurant"/>
+          <div class="food-badge"><i class="fa-solid fa-star"></i> 4.5</div>
+          <div class="food-offer">🔥 20% OFF on first order</div>
+        </div>
+        <div class="food-info">
+          <h3>Faizz Restaurant</h3>
+          <div class="food-meta">
+            <span class="food-time"><i class="fa-regular fa-clock"></i> 29–34 min</span>
+            <span class="dot"></span>
+            <span>Madhapar</span>
+          </div>
+          <div class="food-tags">Indian · South Indian · Thalis · Biryani</div>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-img-wrap">
+          <img src="food-2.avif" onerror="this.src='https://via.placeholder.com/270x190/1F1F22/FFB347?text=🍽️+Saffron'" alt="Saffron"/>
+          <div class="food-badge"><i class="fa-solid fa-star"></i> 4.0</div>
+          <div class="food-offer">🎁 Free delivery above ₹299</div>
+        </div>
+        <div class="food-info">
+          <h3>Saffron Restaurant – Hotel Mang</h3>
+          <div class="food-meta">
+            <span class="food-time"><i class="fa-regular fa-clock"></i> 40–45 min</span>
+            <span class="dot"></span>
+            <span>Bhuj Town</span>
+          </div>
+          <div class="food-tags">Indian · South Indian · Thalis</div>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-img-wrap">
+          <img src="food-3.avif" onerror="this.src='https://via.placeholder.com/270x190/1F1F22/FF5A1F?text=🥘+Govindji'" alt="Govindji"/>
+          <div class="food-badge"><i class="fa-solid fa-star"></i> 4.2</div>
+          <div class="food-offer">⚡ Express delivery available</div>
+        </div>
+        <div class="food-info">
+          <h3>Govindji Madhavji & Co</h3>
+          <div class="food-meta">
+            <span class="food-time"><i class="fa-regular fa-clock"></i> 30 min</span>
+            <span class="dot"></span>
+            <span>Bhuj Town</span>
+          </div>
+          <div class="food-tags">Indian · South Indian · Thalis</div>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-img-wrap">
+          <img src="food-4.avif" onerror="this.src='https://via.placeholder.com/270x190/1F1F22/FFB347?text=🍬+Khavda'" alt="Khavda"/>
+          <div class="food-badge"><i class="fa-solid fa-star"></i> 4.6</div>
+          <div class="food-offer">🍭 New sweets added!</div>
+        </div>
+        <div class="food-info">
+          <h3>Khavda Sweet and Namkeen</h3>
+          <div class="food-meta">
+            <span class="food-time"><i class="fa-regular fa-clock"></i> 25–30 min</span>
+            <span class="dot"></span>
+            <span>Bhuj Town</span>
+          </div>
+          <div class="food-tags">Desserts · Sweets · Namkeen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FILTER BAR ────────────────────────────────────────────────── -->
+  <div class="filter-bar fade-in">
+    <h2 style="font-family:'Syne',sans-serif;">Restaurants with online food delivery in Bhuj</h2>
+    <div class="filter-chip active"><i class="fa-solid fa-sliders"></i> Sort By</div>
+    <div class="filter-chip"><i class="fa-regular fa-clock"></i> Fast Delivery</div>
+    <div class="filter-chip"><i class="fa-solid fa-star"></i> Ratings 4.0+</div>
+    <div class="filter-chip"><i class="fa-solid fa-indian-rupee-sign"></i> Cost: Low to High</div>
+    <div class="filter-chip"><i class="fa-solid fa-fire"></i> Trending</div>
+    <div class="filter-chip">Pure Veg</div>
+    <div class="filter-chip">Offers</div>
+  </div>
+
+  <!-- ── ALL RESTAURANTS GRID ──────────────────────────────────────── -->
+  <section class="restaurants-section fade-in">
+    <div class="rest-grid">
+
+      <!-- Row 1 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-1.avif" onerror="this.style.background='#1F1F22'" alt="Sankalp"/><div class="rest-discount">40% OFF up to ₹80</div></div><div class="rest-info"><h3>Sankalp The Taste Of South</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.5 <span>• 30–35 mins</span></div><div class="rest-tags">Indian, South Indian, Thalis</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-2.avif" onerror="this.style.background='#1F1F22'" alt="Paratha Express"/><div class="rest-discount">Free delivery</div></div><div class="rest-info"><h3>Paratha Express</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 40–45 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-3.avif" onerror="this.style.background='#1F1F22'" alt="Sandhya's Kitchen"/><div class="rest-discount">20% OFF</div></div><div class="rest-info"><h3>Sandhya's Kitchen</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.7 <span>• 45–50 mins</span></div><div class="rest-tags">Beverages, Healthy</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-4.avif" onerror="this.style.background='#1F1F22'" alt="Nityanand"/><div class="rest-discount">30% OFF</div></div><div class="rest-info"><h3>Nityanand Restaurant</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 25–30 mins</span></div><div class="rest-tags">Punjabi, Thalis, Gujarati</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+
+      <!-- Row 2 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-5.avif" onerror="this.style.background='#1F1F22'" alt="Home Made"/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-6.avif" onerror="this.style.background='#1F1F22'" alt="Kesar Foods"/><div class="rest-discount">Top Rated 🏆</div></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, North Indian, Punjabi</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-7.avif" onerror="this.style.background='#1F1F22'" alt="Subway"/><div class="rest-discount">15% OFF</div></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Salads, Wraps</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-8.avif" onerror="this.style.background='#1F1F22'" alt="La Pinoz"/><div class="rest-discount">Buy 1 Get 1 🍕</div></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Pastas, Italian</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+      <!-- Row 3 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-9.avif"  onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-10.avif" onerror="this.style.background='#1F1F22'" alt=""/><div class="rest-discount">Top Rated 🏆</div></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-11.avif" onerror="this.style.background='#1F1F22'" alt=""/><div class="rest-discount">15% OFF</div></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Salads</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-12.avif" onerror="this.style.background='#1F1F22'" alt=""/><div class="rest-discount">Buy 1 Get 1 🍕</div></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Pastas</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+      <!-- Row 4 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-13.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-14.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, Punjabi</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-15.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Wraps</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-16.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Italian</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+      <!-- Row 5 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-17.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-18.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, Punjabi</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-19.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Salads</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-20.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Italian</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+      <!-- Row 6 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-21.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-22.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, Punjabi</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-23.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Wraps</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-24.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Italian</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+      <!-- Row 7 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-25.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-26.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, Punjabi</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-27.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Wraps</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-28.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Italian</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+      <!-- Row 8 -->
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-29.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Home Made Food</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> — <span>• 50–60 mins</span></div><div class="rest-tags">North Indian</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-30.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Kesar Foods</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 5.0 <span>• 35–40 mins</span></div><div class="rest-tags">Fast Food, Punjabi</div><div class="rest-location">📍 Bhuj Town</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-12.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>Subway</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 3.9 <span>• 20–25 mins</span></div><div class="rest-tags">Sandwich, Wraps</div><div class="rest-location">📍 Pramukh Square</div></div></div>
+      <div class="rest-card"><div class="rest-img-wrap"><img src="p-22.avif" onerror="this.style.background='#1F1F22'" alt=""/></div><div class="rest-info"><h3>La Pino'z Pizza</h3><div class="rest-rating"><i class="fa-solid fa-star"></i> 4.3 <span>• 25–30 mins</span></div><div class="rest-tags">Pizzas, Italian</div><div class="rest-location">📍 Bhuj</div></div></div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer class="swiggy-footer">
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-logo">
+          <div class="logo-icon">🍜</div>
+          <span class="logo-text">SwiftBite</span>
+        </div>
+        <p class="brand-tagline">© 2024 Bundl Technologies Pvt. Ltd. Delivering happiness, one meal at a time.</p>
+        <div class="social-icons">
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></div>
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.29 6.29 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg></div>
+        </div>
+        <div class="app-section">
+          <p class="app-label">Download App</p>
+          <div class="app-badges">
+            <div class="app-badge"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div class="app-badge-text"><span>Download on the</span><span>App Store</span></div></div>
+            <div class="app-badge"><svg viewBox="0 0 24 24"><path d="M3.18 23.76c.27.15.57.22.87.2.28-.02.56-.1.82-.27l11.45-6.6-2.96-2.96-10.18 9.63zM.6 1.5C.23 1.95 0 2.57 0 3.37v17.26c0 .8.23 1.42.6 1.87l.1.1 9.67-9.67v-.23L.7 3.4l-.1.1zM19.9 10.38l-2.63-1.52-3.22 3.22 3.22 3.22 2.64-1.52c.75-.43.75-1.14 0-1.57l-.01-.01-.01-.01zM4.05.24L15.5 6.84l-2.96 2.96L3.18.24C3.44.06 3.75-.01 4.05.24z"/></svg><div class="app-badge-text"><span>Get it on</span><span>Google Play</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div><p class="col-title">Company</p><ul class="col-links"><li><a href="#">About Us</a></li><li><a href="#">Swiggy Corporate</a></li><li><a href="#">Careers</a></li><li><a href="#">Team</a></li><li><a href="#">Swiggy One</a></li><li><a href="#">Swiggy Instamart</a></li><li><a href="#">Swiggy Genie</a></li></ul></div>
+
+      <div><p class="col-title">Contact Us</p><ul class="col-links"><li><a href="#">Help & Support</a></li><li><a href="#">Partner with us</a></li><li><a href="#">Ride with us</a></li></ul><br/><p class="col-title">Legal</p><ul class="col-links"><li><a href="#">Terms & Conditions</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Investor Relations</a></li></ul></div>
+
+      <div><p class="col-title">Available in:</p><ul class="col-links"><li><a href="#">Bangalore</a></li><li><a href="#">Gurgaon</a></li><li><a href="#">Hyderabad</a></li><li><a href="#">Delhi</a></li><li><a href="#">Mumbai</a></li><li><a href="#">Pune</a></li><li><a href="#">Chennai</a></li><li><a href="#">Kolkata</a></li><li><a href="#">Ahmedabad</a></li><li><a href="#">Surat</a></li><li><a href="#">Jaipur</a></li></ul></div>
+
+      <div><p class="col-title">Life at Swiggy</p><ul class="col-links"><li><a href="#">Explore with Swiggy</a></li><li><a href="#">Swiggy News</a></li><li><a href="#">Swiggy Bytes</a></li><li><a href="#">Snackables</a></li></ul></div>
+
+    </div>
+
+    <div class="footer-mid">
+      <span class="footer-mid-title">Popular Cities :</span>
+      <div class="city-links">
+        <a class="city-link" href="#">Bangalore</a><span class="city-sep">|</span><a class="city-link" href="#">Gurgaon</a><span class="city-sep">|</span><a class="city-link" href="#">Hyderabad</a><span class="city-sep">|</span><a class="city-link" href="#">Delhi</a><span class="city-sep">|</span><a class="city-link" href="#">Mumbai</a><span class="city-sep">|</span><a class="city-link" href="#">Pune</a><span class="city-sep">|</span><a class="city-link" href="#">Chennai</a><span class="city-sep">|</span><a class="city-link" href="#">Kolkata</a><span class="city-sep">|</span><a class="city-link" href="#">Ahmedabad</a><span class="city-sep">|</span><a class="city-link" href="#">Jaipur</a><span class="city-sep">|</span><a class="city-link" href="#">Surat</a><span class="city-sep">|</span><a class="city-link" href="#">Noida</a><span class="city-sep">|</span><a class="city-link" href="#">Lucknow</a><span class="city-sep">|</span><a class="city-link" href="#">Chandigarh</a><span class="city-sep">|</span><a class="city-link" href="#">Kochi</a><span class="city-sep">|</span><a class="city-link" href="#">Indore</a><span class="city-sep">|</span><a class="city-link" href="#">Bhubaneswar</a><span class="city-sep">|</span><a class="city-link" href="#">Patna</a><span class="city-sep">|</span><a class="city-link" href="#">Nagpur</a><span class="city-sep">|</span><a class="city-link" href="#">Vadodara</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© 2024 <span>Bundl Technologies Pvt. Ltd</span></p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Responsible Disclosure</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  // ── Custom Cursor ───────────────────────────────
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animCursor(){
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  })();
+  document.querySelectorAll('a,button,.food-card,.rest-card,.mind-item,.filter-chip,.nav-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.8)'; ring.style.opacity = '1'; ring.style.borderColor = 'var(--orange)'; });
+    el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)';   ring.style.opacity = '0.6'; ring.style.borderColor = 'var(--orange)'; });
+  });
+
+  // ── Scroll Reveal ───────────────────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── 3D Card Tilt ────────────────────────────────
+  document.querySelectorAll('.food-card,.rest-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `translateY(-10px) rotateY(${x*12}deg) rotateX(${-y*10}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // ── Filter chip toggle ──────────────────────────
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => chip.classList.toggle('active'));
+  });
+</script>
+</body>
+</html>

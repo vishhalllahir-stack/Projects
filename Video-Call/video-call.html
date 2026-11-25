@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real-time Video Calling App</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, sans-serif;
+      color: #e2e8f0;
+      background: #08101f;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 1rem; background: radial-gradient(circle at top, rgba(56,189,248,.12), transparent 20%), linear-gradient(180deg, #020617, #08101f); }
+    .app { width: min(100%, 1040px); background: rgba(12, 18, 33, 0.96); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 28px; padding: 1.5rem; box-shadow: 0 30px 90px rgba(2, 8, 18, 0.55); }
+    h1 { margin: 0 0 .75rem; font-size: clamp(1.8rem, 3vw, 2.8rem); }
+    p { margin: 0; color: #94a3b8; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .video-panel, .controls-panel { background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(148, 163, 184, 0.1); border-radius: 22px; padding: 1rem; }
+    .video-panel { display: grid; gap: 1rem; }
+    video { width: 100%; border-radius: 20px; background: #020617; max-height: 360px; object-fit: cover; }
+    .label { display: block; margin-bottom: .5rem; color: #cbd5e1; font-weight: 600; }
+    .controls-panel { display: grid; gap: 1rem; }
+    .button-grid { display: grid; gap: .75rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    button { padding: .95rem 1.1rem; border-radius: 999px; border: none; font-weight: 700; background: linear-gradient(135deg,#38bdf8,#6366f1); color: #0b1120; cursor: pointer; transition: transform .2s ease, filter .2s ease; }
+    button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    textarea { width: 100%; min-height: 120px; padding: 1rem 1rem; border-radius: 18px; border: 1px solid rgba(148, 163, 184, 0.18); background: #020617; color: #e2e8f0; font-family: inherit; resize: vertical; }
+    .info { padding: 1rem; border-radius: 18px; background: rgba(148, 163, 184, 0.06); color: #cbd5e1; font-size: .95rem; line-height: 1.7; }
+    .row { display: grid; gap: .75rem; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } .button-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>Real-time Video Calling App</h1>
+    <p>This demo uses WebRTC to share video and audio between two browser peers. Use one browser window as Caller and another as Receiver, then copy/paste signals.</p>
+
+    <div class="grid">
+      <div class="video-panel">
+        <div>
+          <span class="label">Local Video</span>
+          <video id="localVideo" autoplay playsinline muted></video>
+        </div>
+        <div>
+          <span class="label">Remote Video</span>
+          <video id="remoteVideo" autoplay playsinline></video>
+        </div>
+      </div>
+
+      <div class="controls-panel">
+        <div class="row">
+          <span class="label">Controls</span>
+          <div class="button-grid">
+            <button id="startCamera">Start Camera</button>
+            <button id="createOffer">Create Offer</button>
+            <button id="createAnswer">Create Answer</button>
+            <button id="reset">Reset</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="label">Local Signal (copy to remote peer)</span>
+          <textarea id="localSignal" readonly placeholder="Local offer / answer will appear here"></textarea>
+        </div>
+
+        <div class="row">
+          <span class="label">Remote Signal (paste from other peer)</span>
+          <textarea id="remoteSignal" placeholder="Paste remote offer / answer here"></textarea>
+          <button id="setRemote">Set Remote Signal</button>
+        </div>
+
+        <div class="info">
+          After starting the camera, generate an offer in one window and paste it into the other window's remote signal field. Then create an answer from the other window and paste it back to the first window. This manual signaling flow allows WebRTC to establish the peer connection.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const localVideo = document.getElementById('localVideo');
+    const remoteVideo = document.getElementById('remoteVideo');
+    const startCameraBtn = document.getElementById('startCamera');
+    const createOfferBtn = document.getElementById('createOffer');
+    const createAnswerBtn = document.getElementById('createAnswer');
+    const resetBtn = document.getElementById('reset');
+    const localSignal = document.getElementById('localSignal');
+    const remoteSignal = document.getElementById('remoteSignal');
+    const setRemoteBtn = document.getElementById('setRemote');
+
+    let pc;
+    let localStream;
+
+    const config = {
+      iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' }
+      ]
+    };
+
+    function appendIceCandidate(candidate) {
+      const current = localSignal.value ? JSON.parse(localSignal.value) : null;
+      if (!current) return;
+      current.candidates = current.candidates || [];
+      current.candidates.push(candidate);
+      localSignal.value = JSON.stringify(current, null, 2);
+    }
+
+    function createPeerConnection() {
+      pc = new RTCPeerConnection(config);
+
+      pc.ontrack = event => {
+        remoteVideo.srcObject = event.streams[0];
+      };
+
+      pc.onicecandidate = event => {
+        if (event.candidate) {
+          appendIceCandidate(event.candidate.toJSON());
+        }
+      };
+
+      if (localStream) {
+        localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+      }
+    }
+
+    async function startCamera() {
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        localVideo.srcObject = localStream;
+        createPeerConnection();
+        localSignal.value = '';
+        remoteSignal.value = '';
+      } catch (error) {
+        alert('Camera access failed: ' + error.message);
+      }
+    }
+
+    async function createOffer() {
+      if (!pc) createPeerConnection();
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      localSignal.value = JSON.stringify({ type: offer.type, sdp: offer.sdp, candidates: [] }, null, 2);
+    }
+
+    async function createAnswer() {
+      const remote = parseSignal(remoteSignal.value);
+      if (!remote || remote.type !== 'offer') {
+        alert('Paste a valid offer before creating an answer.');
+        return;
+      }
+      if (!pc) createPeerConnection();
+      await pc.setRemoteDescription({ type: 'offer', sdp: remote.sdp });
+      remote.candidates?.forEach(c => pc.addIceCandidate(c));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      localSignal.value = JSON.stringify({ type: answer.type, sdp: answer.sdp, candidates: [] }, null, 2);
+    }
+
+    async function setRemoteSignal() {
+      const signal = parseSignal(remoteSignal.value);
+      if (!signal) {
+        alert('Paste a valid offer or answer JSON.');
+        return;
+      }
+      if (!pc) createPeerConnection();
+      await pc.setRemoteDescription({ type: signal.type, sdp: signal.sdp });
+      if (signal.candidates?.length) {
+        for (const candidate of signal.candidates) {
+          await pc.addIceCandidate(candidate);
+        }
+      }
+      localSignal.value = localSignal.value || '';
+    }
+
+    function parseSignal(text) {
+      try {
+        return JSON.parse(text);
+      } catch {
+        return null;
+      }
+    }
+
+    function resetApp() {
+      if (pc) {
+        pc.close();
+        pc = null;
+      }
+      if (localStream) {
+        localStream.getTracks().forEach(track => track.stop());
+        localStream = null;
+      }
+      localVideo.srcObject = null;
+      remoteVideo.srcObject = null;
+      localSignal.value = '';
+      remoteSignal.value = '';
+    }
+
+    startCameraBtn.addEventListener('click', startCamera);
+    createOfferBtn.addEventListener('click', createOffer);
+    createAnswerBtn.addEventListener('click', createAnswer);
+    setRemoteBtn.addEventListener('click', setRemoteSignal);
+    resetBtn.addEventListener('click', resetApp);
+  </script>
+</body>
+</html>

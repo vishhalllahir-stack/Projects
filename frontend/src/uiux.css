@@ -1,0 +1,413 @@
+/* =========================================================
+   STEP 24 — UI/UX SYSTEM
+   Shared visual layer for the whole Student Management System.
+   ========================================================= */
+
+:root {
+  --ui-bg: #f6f4f7;
+  --ui-card: #ffffff;
+  --ui-text: #30283f;
+  --ui-muted: #7f788b;
+  --ui-border: #e7e0e6;
+  --ui-primary: #c76855;
+  --ui-primary-dark: #a94f42;
+  --ui-accent: #80608e;
+  --ui-success: #23845b;
+  --ui-warning: #b67b25;
+  --ui-danger: #c84d5b;
+  --ui-shadow: 0 10px 28px rgba(48, 40, 63, 0.06);
+  --ui-shadow-hover: 0 16px 36px rgba(48, 40, 63, 0.11);
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--ui-bg); color: var(--ui-text); }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(199, 104, 85, 0.22);
+  outline-offset: 2px;
+}
+
+/* App loading */
+.app-loading-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top right, #fff4ed 0, #f6f4f7 42%, #eeeaf1 100%);
+}
+.app-loading-card {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-width: 230px;
+  padding: 28px;
+  border: 1px solid var(--ui-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--ui-shadow-hover);
+}
+.app-loading-card strong { font: 800 18px "Plus Jakarta Sans", sans-serif; }
+.app-loading-card span:last-child { color: var(--ui-muted); font-size: 12px; }
+.app-loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f0d9d2;
+  border-top-color: var(--ui-primary);
+  border-radius: 50%;
+  animation: uiSpin .8s linear infinite;
+}
+
+/* Page entrance */
+.page-content > * { animation: uiPageIn .28s ease both; }
+
+/* Common page headings */
+.data-page,
+.page-shell,
+.details-page,
+.form-page,
+.settings-card,
+.reports-page,
+.admin-users-page,
+.admin-user-form-page,
+.student-report-page,
+.teacher-report-page,
+.fee-report-page,
+.exam-report-page,
+.attendance-report-page,
+.attendance-page,
+.exams-page,
+.fees-page,
+.courses-page,
+.departments-page,
+.teachers-page {
+  animation: uiPageIn .28s ease both;
+}
+
+.data-heading,
+.page-header,
+.dashboard-header,
+.reports-header,
+.admin-users-header,
+.admin-user-form-header,
+.student-report-header,
+.teacher-report-header,
+.fee-report-header,
+.exam-report-header {
+  gap: 18px;
+}
+
+.data-heading h1,
+.page-header h1,
+.page-heading h1,
+.details-page h1,
+.form-page h1 {
+  letter-spacing: -0.7px;
+}
+
+/* Shared cards */
+.data-card,
+.details-card,
+.settings-card,
+.dashboard-card,
+.stat-card,
+.data-page .filter-section,
+.teachers-page .filter-section,
+.courses-page .filter-section,
+.departments-page .filter-section,
+.attendance-page .filter-section,
+.reports-panel,
+.report-summary-card,
+.student-report-card,
+.fee-report-card,
+.exam-report-card,
+.admin-users-filter-card,
+.admin-users-table-card,
+.admin-user-form-card {
+  border: 1px solid var(--ui-border);
+  border-radius: 16px;
+  box-shadow: var(--ui-shadow);
+  transition: box-shadow .22s ease, transform .22s ease, border-color .22s ease;
+}
+
+.data-card:hover,
+.details-card:hover,
+.settings-card:hover,
+.reports-panel:hover,
+.report-summary-card:hover,
+.student-report-card:hover,
+.fee-report-card:hover,
+.exam-report-card:hover,
+.admin-users-table-card:hover,
+.admin-user-form-card:hover {
+  box-shadow: var(--ui-shadow-hover);
+}
+
+/* Buttons */
+.primary-button,
+.add-button,
+.btn-primary,
+.refresh-btn,
+.exams-add-button,
+.fees-add-button,
+.admin-users-add-btn,
+.admin-user-save-btn,
+.student-report-print-btn,
+.student-report-filter-btn,
+.teacher-report-print-btn,
+.fee-report-print-btn,
+.exam-report-print-btn,
+.reports-refresh-btn {
+  border-radius: 9px;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.primary-button:hover,
+.add-button:hover,
+.btn-primary:hover,
+.refresh-btn:hover,
+.exams-add-button:hover,
+.fees-add-button:hover,
+.admin-users-add-btn:hover,
+.admin-user-save-btn:hover,
+.student-report-print-btn:hover,
+.student-report-filter-btn:hover,
+.teacher-report-print-btn:hover,
+.fee-report-print-btn:hover,
+.exam-report-print-btn:hover,
+.reports-refresh-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 20px rgba(199, 104, 85, 0.18);
+}
+
+/* Shared controls */
+input, select, textarea {
+  border-radius: 8px;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--ui-primary) !important;
+  box-shadow: 0 0 0 3px rgba(199, 104, 85, 0.11);
+}
+
+/* Tables */
+.table-container,
+.table-wrap,
+.table-responsive,
+.teachers-page .table-container,
+.courses-page .table-container,
+.departments-page .table-container {
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  overflow-x: auto;
+  background: var(--ui-card);
+}
+
+table { border-collapse: separate; border-spacing: 0; }
+th { position: sticky; top: 0; z-index: 1; }
+tbody tr { transition: background .16s ease, transform .16s ease; }
+tbody tr:hover { background: #fff9f6 !important; }
+
+/* Status pills used by many pages */
+.status-badge,
+.badge,
+.status,
+.pass,
+.paid,
+.pending,
+.absent,
+.fail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Forms */
+.form-page,
+.add-student-page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.form-page .form-group,
+.add-student-page .form-group { margin-bottom: 16px; }
+.form-page label,
+.add-student-page label { display: block; margin-bottom: 7px; color: var(--ui-text); font-size: 12px; font-weight: 700; }
+.form-page input,
+.form-page select,
+.form-page textarea,
+.add-student-page input,
+.add-student-page select,
+.add-student-page textarea { width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid var(--ui-border); background: #fff; color: var(--ui-text); }
+.form-page textarea,
+.add-student-page textarea { min-height: 100px; resize: vertical; }
+
+/* Search/filter areas */
+.filter-section,
+.data-toolbar,
+.admin-users-filter-card,
+.student-report-filters,
+.teacher-report-filters,
+.fee-report-filters,
+.exam-report-filters,
+.exams-filter-card,
+.fees-filter-card {
+  box-shadow: var(--ui-shadow);
+}
+
+/* Details */
+.details-grid { gap: 14px; }
+.details-card { background: var(--ui-card); }
+
+/* Mobile */
+@media (max-width: 900px) {
+  .page-content { padding: 104px 20px 30px; }
+  .topbar { padding: 0 20px; }
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    border: 0;
+    background: rgba(28, 22, 38, 0.45);
+    backdrop-filter: blur(2px);
+  }
+  .sidebar { z-index: 30; }
+}
+
+@media (max-width: 600px) {
+  .page-content { padding: 96px 13px 24px; }
+  .topbar { height: 70px; padding: 0 13px; gap: 8px; }
+  .profile-details { display: none; }
+  .profile-button { gap: 0; }
+  .page-header,
+  .data-heading,
+  .dashboard-header,
+  .reports-header,
+  .admin-users-header,
+  .student-report-header,
+  .teacher-report-header,
+  .fee-report-header,
+  .exam-report-header { align-items: flex-start; flex-direction: column; }
+  .data-heading .primary-button,
+  .dashboard-header .refresh-btn { width: 100%; }
+}
+
+/* Dark mode */
+.dark-theme {
+  --ui-bg: #0c1422;
+  --ui-card: #111c2f;
+  --ui-text: #f4f7fc;
+  --ui-muted: #9ca9bc;
+  --ui-border: #26344b;
+}
+.dark-theme,
+.dark-theme .app-shell { background: var(--ui-bg); color: var(--ui-text); }
+.dark-theme .topbar { background: rgba(13, 23, 39, 0.94); border-color: var(--ui-border); }
+.dark-theme .page-content { color: var(--ui-text); }
+.dark-theme .data-card,
+.dark-theme .details-card,
+.dark-theme .settings-card,
+.dark-theme .dashboard-card,
+.dark-theme .stat-card,
+.dark-theme .data-page .filter-section,
+.dark-theme .teachers-page .filter-section,
+.dark-theme .courses-page .filter-section,
+.dark-theme .departments-page .filter-section,
+.dark-theme .attendance-page .filter-section,
+.dark-theme .reports-panel,
+.dark-theme .report-summary-card,
+.dark-theme .student-report-card,
+.dark-theme .fee-report-card,
+.dark-theme .exam-report-card,
+.dark-theme .admin-users-filter-card,
+.dark-theme .admin-users-table-card,
+.dark-theme .admin-user-form-card { background: var(--ui-card); border-color: var(--ui-border); }
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea,
+.dark-theme .search-input,
+.dark-theme .filter-select { background: #0d1829; color: #f4f7fc; border-color: var(--ui-border); }
+.dark-theme th { background: #17243a !important; color: #dce5f1 !important; }
+.dark-theme td { color: #aeb9c9; border-color: var(--ui-border); }
+.dark-theme tbody tr:hover { background: #17243a !important; }
+.dark-theme .profile-menu,
+.dark-theme .notification-menu { background: #111c2f; border-color: var(--ui-border); }
+.dark-theme .profile-menu button { color: #e8edf5; }
+.dark-theme .profile-menu button:hover { background: #17243a; }
+.dark-theme .notification-menu strong { color: #f4f7fc; }
+.dark-theme .notification-menu p { color: #9ca9bc; }
+.dark-theme .app-loading-screen { background: #0c1422; }
+.dark-theme .app-loading-card { background: #111c2f; border-color: var(--ui-border); color: #f4f7fc; }
+
+@keyframes uiPageIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes uiSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* Dashboard finishing touches */
+.dashboard-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+.dashboard-card-heading h2 { margin-bottom: 0 !important; }
+.dashboard-card-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+  color: var(--ui-primary);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+}
+.dashboard-mini-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  border-radius: 10px;
+  background: #f9e7e1;
+  color: var(--ui-primary);
+}
+.dashboard-progress {
+  height: 8px;
+  margin: 0 0 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eee9ee;
+}
+.dashboard-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--ui-primary), #e59b77);
+  transition: width .5s ease;
+}
+.dashboard-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--ui-primary);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+.dashboard-link-button:hover { text-decoration: underline; }
+.dark-theme .dashboard-mini-icon { background: #2b2330; }
+.dark-theme .dashboard-progress { background: #26344b; }

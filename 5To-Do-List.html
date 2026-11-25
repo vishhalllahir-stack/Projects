@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"  id="guess" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Submit</button>
+    <p id="result"></p>
+
+    <script>
+        function checkGuess() {
+            const guessInput = document.getElementById('guess');
+            const totalGuesses = guessInput.value.trim()
+            if(totalGuesses === "")
+            return
+
+            let li = document.createElement('li');
+            li.textContent = totalGuesses;
+
+            let btn = document.createElement('button');
+            btn.textContent = 'Delete';
+            btn.onclick = function() {
+                li.remove();
+            };
+            li.appendChild(btn);
+            document.getElementById('result').appendChild(li);
+            guessInput.value = '';
+            
+        }
+    </script>
+</body>
+</html>

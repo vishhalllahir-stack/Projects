@@ -1,0 +1,3 @@
+import { useState } from "react";
+import "../index.css";
+export default function Setting() { const [saved, setSaved] = useState(false); return <section className="data-page"><div className="data-heading"><div><p className="page-eyebrow">System</p><h1>Settings</h1><p>Manage your account and application preferences.</p></div></div><div className="settings-card"><label className="data-field">School name<input defaultValue="StudentHub Academy" /></label><label className="data-field">Administrator email<input type="email" defaultValue="admin@studenthub.local" /></label><button className="primary-button" onClick={() => setSaved(true)}>Save settings</button>{saved && <p className="success-message">Settings saved successfully.</p>}</div></section>; }

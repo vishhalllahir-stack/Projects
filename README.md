@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI Chatbot Web App
 
 Full-stack chatbot with React + Vite, Express, MongoDB, JWT authentication, and Google Gemini.
@@ -75,3 +76,21 @@ The authenticated `POST /api/tools/:toolId` endpoint generates a result through 
 - `GET /api/usage` returns counts derived only from the authenticated user's saved conversations.
 
 The usage summary counts saved conversations, prompts, assistant replies, and messages from the last seven days. It does not report Gemini provider token usage, quota, or billing. PDF chat is available at `POST /api/chat/pdf` (authenticated). Send JSON `{ "question", "chatId?", "pdfName?", "pdfBase64?" }`. Attach a PDF on the first request; follow-up questions reuse the same owner-scoped chat. PDFs are limited to 7 MB. Voice input/read-aloud use browser speech APIs.
+=======
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+>>>>>>> 5ae7667e9c417524a21ce3ff5d954617a5dc0f17

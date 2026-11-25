@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<style>
+    body {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    h1 {
+        background-color: #081b31;
+        color: #fff;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .all {
+        height: 500px;
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 300px;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #b1b1b1;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 00.18s);
+        border-radius: 4px;
+    }
+
+    .all input {
+        padding: 10px 20px;
+        width: 259px;
+        border: none;
+        outline: none;
+        border: 1px solid #b1b1b1;
+        border-radius: 4px;
+    }
+
+    .all input:hover {
+        border: 1px solid purple;
+    }
+
+    .all button {
+        border: none;
+        outline: none;
+        border: 1px solid white;
+        padding: 10px 30px;
+        font-size: 1rem;
+        color: white;
+        background-color: #081b31;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        margin-left: 70px;
+        font-weight: bold;
+    }
+
+    .all button:hover {
+        background-color: purple;
+    }
+
+    .errore {
+        font-size: 0.85rem;
+        margin-top: 4px;
+        min-height: 1.2em;
+    }
+
+    .errore {
+        color: red;
+        font-size: 16px;
+       
+    }
+</style>
+
+<body>
+    <div class="all">
+        <h1>Submit Form</h1>
+        <br>
+        <form  id="form">
+            <input type="text" id="name" placeholder="Enter  Name">
+            <div id="ErroreName" class="errore"></div>
+            <br>
+           
+            <input type="text" id="email" placeholder="Enter Email ">
+            <div id="ErroreEmail" class="errore"></div>
+            <br>
+            
+            <input type="password" id="password" placeholder="Enter password">
+            <div id="ErrorePassword" class="errore"></div>
+            <br>
+            <input type="password"  id="confirmPassword" placeholder="Confirm Password">     
+            <div id="ErroreNewPassword" class="errore"></div>
+            <br>
+            <button type="submit">Submit</button>
+    </div>
+    </form>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+
+
+            let validation = true
+
+
+            const nameInput = document.getElementById("name").value.trim();
+            const emailInput = document.getElementById("email").value.trim();
+            const passwordInput = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+
+            document.getElementById("ErroreName").textContent = "";
+            document.getElementById("ErroreEmail").textContent = "";
+            document.getElementById("ErrorePassword").textContent = "";
+            document.getElementById("ErroreNewPassword").textContent = "";
+
+            if (nameInput === "") {
+                document.getElementById("ErroreName").textContent = "Name is Required";
+                validation = false
+            }
+
+            const EmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if (!EmailPattern.test(emailInput)) {
+                document.getElementById("ErroreEmail").textContent = "Enter a valid Email"
+                validation = false
+            }
+
+            if (passwordInput.length < 6) {
+                document.getElementById("ErrorePassword").textContent = "Min 6 character reqired"
+                validation = false
+            }
+
+
+            if (passwordInput !== confirmPassword) {
+                document.getElementById("ErroreNewPassword").textContent = "Passwords do not match";
+                validation = false
+            }
+
+            if (validation) {
+                alert("🎉 Form Submited by SuccessFully")
+            }
+
+        });
+
+
+    </script>
+</body>
+
+</html>

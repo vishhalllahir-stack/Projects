@@ -1,0 +1,1162 @@
+
+
+/* =========================================================
+   TOYOTA SPEAK-UP POLICY
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wbp-page {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wbp-page a {
+  text-decoration: none;
+}
+
+.wbp-page button {
+  font-family: inherit;
+}
+
+.wbp-container {
+  width: 88%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.wbp-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  height: 76px;
+
+  background: #fff;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.wbp-header-inner {
+  width: 92%;
+  max-width: 1400px;
+
+  height: 100%;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.wbp-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #111;
+}
+
+.wbp-logo-symbol {
+  position: relative;
+
+  width: 47px;
+  height: 31px;
+}
+
+.wbp-logo-symbol span {
+  position: absolute;
+
+  border: 2px solid #e40000;
+  border-radius: 50%;
+}
+
+.wbp-logo-v1 {
+  left: 14px;
+  top: 1px;
+
+  width: 21px;
+  height: 28px;
+}
+
+.wbp-logo-v2 {
+  left: 2px;
+  top: 9px;
+
+  width: 25px;
+  height: 14px;
+}
+
+.wbp-logo-v3 {
+  right: 0;
+  top: 9px;
+
+  width: 25px;
+  height: 14px;
+}
+
+.wbp-logo-name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+
+/* NAV */
+
+.wbp-main-nav {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+
+  height: 100%;
+}
+
+.wbp-main-nav a,
+.wbp-header-actions a {
+  position: relative;
+
+  color: #333;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.wbp-main-nav a::after,
+.wbp-header-actions a::after {
+  position: absolute;
+
+  content: "";
+
+  left: 0;
+  bottom: -9px;
+
+  width: 0;
+  height: 2px;
+
+  background: #e40000;
+
+  transition: .25s;
+}
+
+.wbp-main-nav a:hover::after,
+.wbp-header-actions a:hover::after,
+.wbp-main-nav .wbp-active::after {
+  width: 100%;
+}
+
+.wbp-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.wbp-search {
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.wbp-breadcrumb {
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+
+  background: #f6f6f6;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.wbp-breadcrumb .wbp-container {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.wbp-breadcrumb a,
+.wbp-breadcrumb strong,
+.wbp-breadcrumb span {
+  font-size: 10px;
+}
+
+.wbp-breadcrumb a {
+  color: #777;
+}
+
+.wbp-breadcrumb strong {
+  color: #e40000;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.wbp-hero {
+  position: relative;
+
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      #111 0%,
+      #222 58%,
+      #3c3c3c 100%
+    );
+
+  overflow: hidden;
+}
+
+.wbp-hero::after {
+  position: absolute;
+
+  content: "";
+
+  right: -150px;
+  top: -200px;
+
+  width: 600px;
+  height: 600px;
+
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 70px rgba(255,255,255,.025),
+    0 0 0 140px rgba(255,255,255,.018);
+}
+
+.wbp-hero-content {
+  position: relative;
+  z-index: 2;
+
+  color: #fff;
+}
+
+.wbp-red-line {
+  width: 48px;
+  height: 3px;
+
+  margin-bottom: 22px;
+
+  background: #e40000;
+}
+
+.wbp-eyebrow {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #bbb;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.wbp-hero h1 {
+  margin: 0;
+
+  font-size: clamp(60px, 7vw, 100px);
+  line-height: .88;
+
+  font-weight: 200;
+  letter-spacing: -5px;
+}
+
+.wbp-hero h1 strong {
+  font-weight: 700;
+}
+
+.wbp-hero p {
+  margin: 25px 0 0;
+
+  color: #aaa;
+
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.wbp-title-section {
+  padding: 110px 0 120px;
+
+  background: #fff;
+}
+
+.wbp-section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 38px;
+
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.wbp-section-label span {
+  width: 35px;
+  height: 2px;
+
+  background: #e40000;
+}
+
+.wbp-title-section h2 {
+  margin: 0;
+
+  font-size: clamp(55px, 6vw, 82px);
+  line-height: .95;
+
+  font-weight: 200;
+  letter-spacing: -4px;
+}
+
+.wbp-title-section h2 strong {
+  font-weight: 700;
+}
+
+.wbp-intro-text {
+  max-width: 760px;
+
+  margin: 40px 0 0;
+
+  color: #666;
+
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   EXCLUSIONS
+========================================================= */
+
+.wbp-exclusions {
+  padding: 115px 0;
+
+  background: #f4f4f4;
+}
+
+.wbp-two-column {
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  gap: 70px;
+}
+
+.wbp-two-column h2 {
+  margin: 0;
+
+  font-size: clamp(48px, 5vw, 70px);
+  line-height: .95;
+
+  font-weight: 200;
+  letter-spacing: -4px;
+}
+
+.wbp-two-column h2 strong {
+  font-weight: 700;
+}
+
+.wbp-exclusion-list {
+  border-top: 1px solid #d4d4d4;
+}
+
+.wbp-exclusion-list article {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+
+  gap: 20px;
+
+  padding: 30px 0;
+
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.wbp-card-number {
+  color: #e40000;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wbp-exclusion-list h3 {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+}
+
+.wbp-exclusion-list p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.wbp-inline-link {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  color: #e40000;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   LODGE COMPLAINT
+========================================================= */
+
+.wbp-lodge {
+  padding: 120px 0;
+
+  background: #fff;
+}
+
+.wbp-lodge h2 {
+  margin: 0 0 60px;
+
+  font-size: clamp(52px, 5.5vw, 76px);
+  line-height: .95;
+
+  font-weight: 200;
+  letter-spacing: -4px;
+}
+
+.wbp-lodge h2 strong {
+  font-weight: 700;
+}
+
+.wbp-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 1px;
+
+  background: #ddd;
+}
+
+.wbp-contact-card {
+  min-height: 280px;
+
+  padding: 38px;
+
+  background: #fff;
+
+  transition: .3s;
+}
+
+.wbp-contact-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+
+  position: relative;
+  z-index: 2;
+}
+
+.wbp-contact-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  border-radius: 50%;
+
+  color: #e40000;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.wbp-contact-card h3 {
+  margin: 30px 0 15px;
+
+  font-size: 18px;
+}
+
+.wbp-contact-card p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.wbp-phone,
+.wbp-email {
+  display: inline-block;
+
+  color: #e40000;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.wbp-online-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  color: #e40000;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.wbp-online-link span {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+.wbp-review {
+  min-height: 680px;
+
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  background: #202020;
+}
+
+.wbp-review-image {
+  min-height: 680px;
+
+  background: #111;
+
+  overflow: hidden;
+}
+
+.wbp-review-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.wbp-review-content {
+  padding: 95px 8%;
+
+  color: #fff;
+}
+
+.wbp-light-label {
+  color: #fff;
+}
+
+.wbp-light-label span {
+  background: #e40000;
+}
+
+.wbp-review-content h2 {
+  margin: 0 0 55px;
+
+  font-size: clamp(48px, 5vw, 70px);
+  line-height: .95;
+
+  font-weight: 200;
+  letter-spacing: -4px;
+}
+
+.wbp-review-content h2 strong {
+  font-weight: 700;
+}
+
+.wbp-independent {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+
+  gap: 20px;
+}
+
+.wbp-red-number {
+  color: #e40000;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wbp-independent h3 {
+  margin: 0 0 20px;
+
+  font-size: 20px;
+}
+
+.wbp-independent ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.wbp-independent li {
+  position: relative;
+
+  margin-bottom: 15px;
+  padding-left: 22px;
+
+  color: #aaa;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.wbp-independent li::before {
+  position: absolute;
+
+  content: "";
+
+  left: 0;
+  top: 8px;
+
+  width: 5px;
+  height: 5px;
+
+  background: #e40000;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.wbp-global {
+  padding: 80px 0;
+
+  background: #f2f2f2;
+}
+
+.wbp-global-box {
+  padding: 55px 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #fff;
+
+  border-left: 4px solid #e40000;
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.06);
+}
+
+.wbp-global-box > div > span {
+  color: #e40000;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.wbp-global-box h2 {
+  margin: 15px 0 0;
+
+  font-size: 40px;
+  line-height: 1;
+
+  font-weight: 200;
+}
+
+.wbp-global-box h2 strong {
+  font-weight: 700;
+}
+
+.wbp-global-links {
+  display: flex;
+  gap: 60px;
+}
+
+.wbp-global-links a {
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.wbp-global-links small {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #e40000;
+
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.wbp-faq {
+  padding: 120px 0;
+
+  background: #fff;
+}
+
+.wbp-faq h2 {
+  margin: 0 0 60px;
+
+  font-size: clamp(52px, 5.5vw, 76px);
+  line-height: .95;
+
+  font-weight: 200;
+  letter-spacing: -4px;
+}
+
+.wbp-faq h2 strong {
+  font-weight: 700;
+}
+
+.wbp-faq-list {
+  max-width: 1000px;
+
+  border-top: 1px solid #ddd;
+}
+
+.wbp-faq-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.wbp-faq-item button {
+  width: 100%;
+
+  padding: 27px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 0;
+  background: transparent;
+
+  color: #222;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.wbp-faq-item button b {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ccc;
+  border-radius: 50%;
+
+  color: #e40000;
+
+  font-size: 20px;
+
+  flex-shrink: 0;
+}
+
+.wbp-faq-answer {
+  max-height: 0;
+
+  overflow: hidden;
+
+  transition:
+    max-height .35s ease,
+    padding .35s ease;
+}
+
+.wbp-faq-answer.open {
+  max-height: 300px;
+
+  padding-bottom: 25px;
+}
+
+.wbp-faq-answer p {
+  max-width: 800px;
+
+  margin: 0;
+
+  color: #666;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.wbp-bottom-cta {
+  padding: 80px 0;
+
+  background: #e40000;
+
+  color: #fff;
+}
+
+.wbp-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wbp-cta-inner > div > span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.wbp-cta-inner h2 {
+  margin: 15px 0 0;
+
+  font-size: clamp(45px, 5vw, 68px);
+  line-height: .9;
+
+  font-weight: 200;
+}
+
+.wbp-cta-inner h2 strong {
+  font-weight: 700;
+}
+
+.wbp-cta-button {
+  padding: 18px 27px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+
+  border: 1px solid #fff;
+
+  color: #fff;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  transition: .25s;
+}
+
+.wbp-cta-button:hover {
+  background: #fff;
+
+  color: #e40000;
+}
+
+.wbp-cta-button span {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.wbp-footer {
+  padding: 70px 0 0;
+
+  background: #151515;
+
+  color: #fff;
+}
+
+.wbp-footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  gap: 50px;
+}
+
+.wbp-footer-logo {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.wbp-footer-top p {
+  color: #777;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.wbp-footer-top h3 {
+  margin: 0 0 22px;
+
+  color: #e40000;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.wbp-footer-top a {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #999;
+
+  font-size: 12px;
+}
+
+.wbp-footer-top a:hover {
+  color: #fff;
+}
+
+.wbp-footer-bottom {
+  margin-top: 60px;
+  padding: 20px 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid #292929;
+
+  color: #666;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .wbp-main-nav {
+    gap: 15px;
+  }
+
+  .wbp-main-nav a {
+    font-size: 8px;
+  }
+
+  .wbp-header-actions {
+    display: none;
+  }
+
+  .wbp-contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .wbp-header {
+    height: 68px;
+  }
+
+  .wbp-main-nav {
+    display: none;
+  }
+
+  .wbp-container {
+    width: 90%;
+  }
+
+  .wbp-hero {
+    min-height: 500px;
+  }
+
+  .wbp-hero h1 {
+    font-size: 58px;
+  }
+
+  .wbp-title-section,
+  .wbp-exclusions,
+  .wbp-lodge,
+  .wbp-faq {
+    padding: 75px 0;
+  }
+
+  .wbp-two-column {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .wbp-two-column h2,
+  .wbp-lodge h2,
+  .wbp-faq h2 {
+    font-size: 48px;
+  }
+
+  .wbp-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wbp-review {
+    grid-template-columns: 1fr;
+  }
+
+  .wbp-review-image {
+    min-height: 350px;
+  }
+
+  .wbp-review-content {
+    padding: 70px 8%;
+  }
+
+  .wbp-global-box {
+    display: block;
+
+    padding: 40px;
+  }
+
+  .wbp-global-links {
+    margin-top: 35px;
+
+    display: block;
+  }
+
+  .wbp-global-links a {
+    display: block;
+
+    margin-bottom: 25px;
+  }
+
+  .wbp-cta-inner {
+    display: block;
+  }
+
+  .wbp-cta-button {
+    margin-top: 35px;
+  }
+
+  .wbp-footer-top {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px 25px;
+  }
+
+  .wbp-footer-bottom {
+    display: block;
+  }
+
+  .wbp-footer-bottom span {
+    display: block;
+
+    margin-bottom: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .wbp-logo-name {
+    font-size: 17px;
+  }
+
+  .wbp-hero h1 {
+    font-size: 48px;
+  }
+
+  .wbp-title-section h2,
+  .wbp-two-column h2,
+  .wbp-lodge h2,
+  .wbp-faq h2 {
+    font-size: 42px;
+  }
+
+  .wbp-exclusion-list article {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .wbp-global-box {
+    padding: 30px;
+  }
+
+  .wbp-global-box h2 {
+    font-size: 32px;
+  }
+
+  .wbp-footer-top {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+
+

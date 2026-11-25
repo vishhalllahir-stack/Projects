@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#123524"/>
+  <circle cx="310" cy="290" r="150" fill="#8bd98d"/>
+  <path d="M670 220 C760 120, 980 140, 1030 290 C1080 440, 930 590, 780 560 C650 535, 590 430, 670 220Z" fill="#3cb371"/>
+  <rect x="160" y="530" width="840" height="140" rx="24" fill="#ffffff" fill-opacity="0.16"/>
+  <text x="600" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#ffffff">Happier Paths To Green</text>
+</svg>

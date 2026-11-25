@@ -1,0 +1,23 @@
+import { Navigate, Outlet } from "react-router-dom";
+import "../index.css";
+import { useAuth } from "../context/useAuth.js";
+
+const RoleRoute = ({ allowedRoles }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (!allowedRoles.includes(user.role)) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <Outlet />;
+};
+
+export default RoleRoute;

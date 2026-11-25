@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.howGuideContainer {
+  width: 100%;
+  background: #f5f5f5;
+  padding: 30px 0;
+}
+
+.howGuideWrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.howGuideItem {
+  margin-bottom: 10px;
+  border: 1px solid #d6d6d6;
+  background: #fff;
+}
+
+.howGuideHeader {
+  width: 100%;
+  border: none;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 15px;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: 500;
+  color: #111;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.howGuideHeader:hover {
+  background: #fafafa;
+}
+
+.howGuideIcon {
+  font-size: 18px;
+  color: #000;
+}
+
+.howGuideContent {
+  padding: 18px;
+  border-top: 1px solid #ddd;
+  background: #fcfcfc;
+}
+
+.howGuideContent p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.7;
+}
